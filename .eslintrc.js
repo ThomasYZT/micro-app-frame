@@ -113,7 +113,6 @@ module.exports = {
     "template-curly-spacing" : [1, "never"], //规定模板字符串中变量前后不加空格。
     "comma-style" : [1, "last"], // 规定始终将逗号置于行末。
     "no-whitespace-before-property" : 1, // 规定属性前面不能加空格。
-    "operator-linebreak" : [1, "after", { "overrides" : { "?" : "before", " :" : "before" } }], // 规定对于三元运算符 ? 和  : 与他们所负责的代码处于同一行
     "no-multiple-empty-lines" : [1, { "max" : 1, "maxEOF" : 0 }], // 规定不允许有连续多行空行且文件头部不允许空行
     "key-spacing" : [1, { "beforeColon" : false, "afterColon" : true }], // 规定键值对中冒号与值和键之间要留空白
     "func-call-spacing" : [1, "never"], // 规定函数调用时标识符与括号间不留间隔
@@ -146,7 +145,7 @@ module.exports = {
     /*"vue/order-in-components" : [1, {
       "order" : []
     }]*/
-    "vue/html-indent" : [1, 4, {
+    "vue/html-indent" : [1, 2, {
       "attribute" : 2,
       "alignAttributesVertically" : true,
     }]

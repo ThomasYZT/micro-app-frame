@@ -1,0 +1,21 @@
+.fade-enter-active, .fade-enter {
+  animation: fade .3s ease-in;
+}
+.fade-leave-active, .fade-leave-to {
+  opacity: 0;
+  max-height: 600px;
+  overflow: hidden;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+    max-height: 50px;
+    overflow: hidden;
+  }
+
+  70% {
+    opacity: 1;
+    max-height: 600px;
+  }
+}

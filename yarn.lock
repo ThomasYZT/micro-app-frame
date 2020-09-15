@@ -829,7 +829,7 @@
     core-js "^2.6.5"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.11.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
   version "7.11.2"
   resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.11.2.tgz?cache=0&sync_timestamp=1596637803941&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
   integrity sha1-9UnBPHVMxAuHZEufqfCaapX+BzY=
@@ -5401,6 +5401,13 @@ import-from@^2.1.0:
   dependencies:
     resolve-from "^3.0.0"
 
+import-html-entry@^1.9.0:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/import-html-entry/-/import-html-entry-1.9.1.tgz#91a846ab3ddad1f9a4b876a595d1e8b28bef7609"
+  integrity sha512-tWxzA981ZulXzO/5j6BFGiFaaT7ufaLkeWRMQT7oD1IWF/TG2UFzaibK5/8fo8DcmcOo/vOzA4dUoyNnPb9YNg==
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+
 import-local@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/import-local/download/import-local-2.0.0.tgz#55070be38a5993cf18ef6db7e961f5bee5c5a09d"
@@ -8092,6 +8099,17 @@ q@^1.1.2:
   resolved "https://registry.npm.taobao.org/q/download/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
+qiankun@^2.0.25:
+  version "2.0.25"
+  resolved "https://registry.yarnpkg.com/qiankun/-/qiankun-2.0.25.tgz#c1807ea03dd2ff420a7182469cb8458cae15e80c"
+  integrity sha512-UzkKlc9CJVRfhyJXySWHzKWblaQ0jyxoaUfMdRPTlcWFr4SBo0YxHJ3b7Mirfa8vpbFPZdtoNcLA19qQRdWWQA==
+  dependencies:
+    "@babel/runtime" "^7.10.5"
+    import-html-entry "^1.9.0"
+    lodash "^4.17.11"
+    single-spa "^5.3.1"
+    tslib "^1.10.0"
+
 qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.npm.taobao.org/qs/download/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
@@ -8817,6 +8835,11 @@ simple-swizzle@^0.2.2:
   integrity sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=
   dependencies:
     is-arrayish "^0.3.1"
+
+single-spa@^5.3.1:
+  version "5.5.5"
+  resolved "https://registry.yarnpkg.com/single-spa/-/single-spa-5.5.5.tgz#77a947516874d50b1e1a43aa6c316b550605d4fb"
+  integrity sha512-10YHGwETkAT6k9dkOTClig2h/R6yA5qvLdvk6i7Z4/PK8A2iD/pVvYKIud0aZVA69OzO1lrQOHB4VgT4t8/kXw==
 
 slash@^1.0.0:
   version "1.0.0"
@@ -9602,7 +9625,7 @@ tsconfig-paths@^3.9.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@^1.9.0:
+tslib@^1.10.0, tslib@^1.9.0:
   version "1.13.0"
   resolved "https://registry.npm.taobao.org/tslib/download/tslib-1.13.0.tgz?cache=0&sync_timestamp=1596751904317&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftslib%2Fdownload%2Ftslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
   integrity sha1-yIHhPMcBWJTtkUhi0nZDb6mkcEM=
