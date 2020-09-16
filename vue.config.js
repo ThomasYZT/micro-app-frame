@@ -5,6 +5,22 @@ const ProEnv = require('./config/dev.env');
 module.exports = {
   productionSourceMap: false,
   lintOnSave: process.env.NODE_ENV !== 'production',
+  devServer: {
+    https: false,
+    hotOnly: false,
+    proxy: {
+      '/pc': {
+        target: 'http://127.0.0.1:3000',
+        ws: true,
+        changeOrigin: true,
+      },
+      '/clip': {
+        target: 'http://127.0.0.1:8081',
+        ws: true,
+        changeOrigin: true,
+      }
+    },
+  },
   chainWebpack: config => {
     config.plugin('define')
       .tap(args => {
