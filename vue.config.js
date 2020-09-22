@@ -21,15 +21,33 @@ module.exports = {
       }
     },
   },
+  css: {
+    loaderOptions: {
+      postcss: {
+        plugins: [
+          require('postcss-px2rem')({ //配置项，详见官方文档
+            remUnit: 144
+          }),
+        ]
+      }
+    }
+  },
+  pwa: {
+    iconPaths: {
+      favicon32: 'favicon.ico',
+      favicon16: 'favicon.ico',
+      appleTouchIcon: 'favicon.ico',
+      maskIcon: 'favicon.ico',
+      msTileImage: 'favicon.ico',
+    }
+  },
   chainWebpack: config => {
     config.plugin('define')
       .tap(args => {
         return [{ 'process.env': process.env.NODE_ENV === 'production' ? DevEnv : ProEnv }];
       });
-
     config.when(process.env.NODE_ENV === 'production', () => {
       config.module.rule('css').oneOf('vue').use('vue-style-loader').clear();
-
       config.plugin('gzip')
         .use(CompressionWebpackPlugin, [{
           asset: '[path].gz[query]',
@@ -39,7 +57,6 @@ module.exports = {
           minRatio: 0.8
         }])
         .end();
-
       config.module.rule('css')
         .oneOf('vue')
         .use('vue-style-loader')

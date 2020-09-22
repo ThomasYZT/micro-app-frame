@@ -1,18 +1,178 @@
 <template>
-  <div class="block-wrapper">
-    production
+  <div class="production">
+    <div class="block-wrapper clip">
+      <div class="block-header">
+        <t-card title="产品介绍"
+                sub-title="Product Introduction"
+                type="title" />
+      </div>
+      <div class="block-content">
+        <div class="animation-wrapper wow" data-animate="fadeInLeft">
+          <img class="ani-1" src="../../../../assets/img/pic_product.png" alt="">
+          <img class="ani-2" src="../../../../assets/img/pic_one_music@2x.png" alt="">
+          <img class="ani-3" src="../../../../assets/img/pic_one_font@2x.png" alt="">
+        </div>
+        <div class="card-wrapper wow" data-animate="fadeInUp">
+          <t-card title="视频创作工具">
+            <p class="card-info">无需剪辑基础，无使用门槛，小白上手即用
+              颠覆传统操作，无需准备素材，文字即可生成视频
+              海量视觉素材，自动搜索，智能匹配
+              智能语音一键添加，音色完美拟人化</p>
+            <template slot="footer">
+              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary">点击体验</t-button>
+            </template>
+          </t-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-wrapper upload">
+      <div class="block-content">
+        <div class="card-wrapper wow" data-animate="fadeInUp">
+          <t-card title="视频上传使用">
+            <p class="card-info">高效批量上传视频
+              一键发布，极速审核
+              高清长视频无压缩，保留最完美观赏体验
+              公众号、小程序、APP多平台同时发布</p>
+            <template slot="footer">
+              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary">点击体验</t-button>
+            </template>
+          </t-card>
+        </div>
+
+        <div class="animation-wrapper wow" data-animate="fadeInRight">
+          <img class="ani-1" src="../../../../assets/img/pic_upload.png" alt="">
+          <img class="ani-2" src="../../../../assets/img/pic_two_plane@2x.png" alt="">
+          <img class="ani-3" src="../../../../assets/img/pic_two_picture@2x.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="block-wrapper business">
+      <div class="block-content">
+        <div class="animation-wrapper wow" data-animate="fadeInLeft">
+          <img class="ani-1" src="../../../../assets/img/pic_flow.png" alt="">
+          <img class="ani-2" src="../../../../assets/img/pic_three_date@2x.png" alt="">
+        </div>
+        <div class="card-wrapper wow" data-animate="fadeInUp">
+          <t-card title="流量/内容变现">
+            <p class="card-info">4亿平台用户基础，普通人上传内容播放也能轻松破百万
+              随时转发，快速涨粉，极易传播
+              付费，广告，电商多模式变现，助力收益增长
+              个性算法推荐，高效触达属于你的粉丝群</p>
+            <template slot="footer">
+              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary">点击体验</t-button>
+            </template>
+          </t-card>
+        </div>
+      </div>
+    </div>
+
+    <!-- 产品引导 -->
+    <product-link />
   </div>
 </template>
 
 <script>
+import productLink from '../productLink';
+import icon1 from '../../../../assets/img/icon_arrow.png'
 export default {
-
+  components : {
+    productLink
+  },
+  data () {
+    return {
+      imgSrc: {
+        icon1
+      }
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
-.block-wrapper {
-  width: 100%;
-  height: 400px;
+@import "~@/assets/style/scss/base";
+.clip {
+  .block-content {
+    padding-top: 122px;
+    padding-bottom: 119px;
+
+    .animation-wrapper {
+      position: relative;
+      .ani-1 {
+        height: 359px;
+      }
+
+      .ani-2 {
+        position: absolute;
+        top: 0;
+        left: 221px;
+        height: 57px;
+        animation: bottomToTop 3s linear infinite alternate;
+      }
+      .ani-3 {
+        position: absolute;
+        bottom: 10px;
+        right: 108px;
+        height: 120px;
+        animation: rightToLeft 3s linear infinite alternate;
+      }
+    }
+  }
+}
+.upload {
+  .block-content {
+    padding-top: 110px;
+    padding-bottom: 110px;
+
+    .animation-wrapper {
+      position: relative;
+      .ani-1 {
+        height: 379px;
+      }
+
+      .ani-2 {
+        position: absolute;
+        top: 45px;
+        left: 155px;
+        height: 44px;
+        animation: rightToLeft 3s linear infinite alternate;
+      }
+
+      .ani-3 {
+        position: absolute;
+        top: 202px;
+        right: 57px;
+        height: 73px;
+        animation: leftToRight 3s linear infinite alternate;
+      }
+    }
+  }
+}
+
+.business {
+  .block-content {
+    padding-top: 125px;
+    padding-bottom: 125px;
+
+    .animation-wrapper {
+      position: relative;
+      .ani-1 {
+        height: 350px;
+      }
+      .ani-2 {
+        position: absolute;
+        top: 51px;
+        left: 112px;
+        width: 142px;
+        height: 85px;
+        animation: bottomToTop 3s linear infinite alternate;
+      }
+    }
+  }
+}
+
+.card-info {
+  font-size: 18px;
 }
 </style>

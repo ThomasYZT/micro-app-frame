@@ -1,6 +1,18 @@
 <template>
   <button class="button" :class="{ type : type || 'primary' }">
-    <slot></slot>
+    <div v-if="hoverExpand" class="expand-box">
+      <div class="btn-wrapper">
+        <img class="prefix-icon" v-if="icon && (icon.pos === 'prefix' || !icon.pos)" v-lazy="icon || icon.src" src="" alt="">
+        <slot></slot>
+        <img class="suffix-icon" v-if="icon.src && (icon.pos === 'suffix' || !icon.pos)" v-lazy="icon.src" src="" alt="">
+      </div>
+      <slot name="expand"></slot>
+    </div>
+    <template v-else>
+      <img class="prefix-icon" v-if="icon && (icon.pos === 'prefix' || !icon.pos)" v-lazy="icon || icon.src" src="" alt="">
+      <slot></slot>
+      <img class="suffix-icon" v-if="icon.src && (icon.pos === 'suffix' || !icon.pos)" v-lazy="icon.src" src="" alt="">
+    </template>
   </button>
 </template>
 
@@ -11,6 +23,16 @@ export default {
     type: {
       type: String,
       default: 'primary'
+    },
+    icon: {
+      type: [Object, String],
+      default () {
+        return ''
+      }
+    },
+    hoverExpand: {
+      type: Boolean,
+      default: false
     }
   }
 };
@@ -23,48 +45,82 @@ button {
   outline: none;
 }
 .button {
-  min-width: 176px;
-  height: 60px;
+  @include flex_layout(row, center, center);
+  position: relative;
+  min-width: 174px;
+  height: 54px;
   font-size: 18px;
   cursor: pointer;
   transition: all .3s;
 
+  .prefix-icon {
+    margin-right: 4px;
+    height: 20px;
+  }
+
+  .suffix-icon {
+    margin-left: 8px;
+    height: 12px;
+  }
+
   &.primary {
     color: $color_white;
-    background: #E9427B;
-    box-shadow: 0 4px 8px 0 rgba(233, 66, 123, 0.5);
+    background: #FF4383;
     border-radius: 34px;
 
     &:hover {
-      background: rgba(233, 66, 123, .6);
+      box-shadow: 0px 4px 8px 0px rgba(255, 67, 131, 0.5);
     }
 
     &:active {
       background: #E9427B;
-      box-shadow: 0 4px 8px 0 rgba(233, 66, 123, 0.5);
+      box-shadow: 0px 4px 8px 0px rgba(255, 67, 131, 0.7);
       border-radius: 34px;
+    }
+
+    .expand-box {
+      background: #FF4383;
     }
   }
 
   &.white {
     color: $light_black_color;
     background: #F3F3FC;
-    box-shadow: 0px 4px 8px 0px rgba(62, 62, 62, 0.1);
     border-radius: 34px;
 
     &:hover {
-      background: rgba(243, 243, 252, .6);
-    }
-    &:active {
-      background: #E9427B;
-      box-shadow: 0 4px 8px 0 rgba(233, 66, 123, 0.5);
-      border-radius: 34px;
+      box-shadow: 0px 4px 8px 0px rgba(62, 62, 62, 0.1);
     }
     &:active {
       background: #F3F3FC;
-      box-shadow: 0px 4px 8px 0px rgba(62, 62, 62, 0.1);
+      box-shadow: 0px 4px 8px 0px rgba(62, 62, 62, 0.3);
       border-radius: 34px;
      }
+
+    .expand-box {
+      background: #F3F3FC;
+    }
+  }
+
+  .expand-box {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 34px;
+    max-height: 54px;
+    min-height: 54px;
+    overflow: hidden;
+    transition: max-height .5s ease;
+    .btn-wrapper {
+      @include flex_layout(row, center, center);
+      width: 100%;
+      height: 54px;
+    }
+    &:hover {
+      max-height: 300px;
+    }
   }
 }
 </style>

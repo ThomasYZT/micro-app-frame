@@ -1,7 +1,8 @@
 <template>
   <div class="card" :class="{ 'title-card' : type === 'title' }">
-    <div class="card-head">
-      <span class="title">{{title}}</span>
+    <div class="card-head" :class="{ 'no-mark' : !titleMark }">
+      <h4 class="title" v-html="title"></h4>
+      <h5 class="sub-title" v-html="subTitle"></h5>
       <div v-if="titleMark || type === 'title'" class="title-mark"></div>
     </div>
     <div class="card-content">
@@ -29,6 +30,10 @@ export default {
       type: String,
       default: ''
     },
+    subTitle: {
+      type: String,
+      default: ''
+    },
     content: {
       type: String,
       default: ''
@@ -44,19 +49,41 @@ export default {
   height: auto;
   .card-head {
     position: relative;
-    padding-bottom: 20px;
-    color: $normal_black_color;
-    font-weight: bold;
-    font-size: 44px;
+    margin-bottom: 24px;
+    padding-bottom: 32px;
     text-align: left;
     .title {
-
+      color: #160A19;
+      font-size: 36px;
+      font-weight: bold;
     }
+
+    .sub-title {
+      font-size: 20px;
+      color: rgba(51, 51, 51, 0.2);
+      line-height: 23px;
+    }
+
     .title-mark {
-      display: inline-block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
       height: 8px;
       width: 40px;
-      background-color: $primary_color;
+      background-color: #FF4383;
+    }
+
+    &.no-mark {
+      margin-bottom: 0;
+      padding-bottom: 24px;
+    }
+  }
+
+  &.title-card {
+    .card-head {
+      font-size: 44px;
+      padding-bottom: 28px;
+      margin-bottom: 0;
     }
   }
 

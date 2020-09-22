@@ -10,3 +10,21 @@
 @mixin flex_set($flex-grow : 0, $flex-shrink : 1, $flex-basis: null) {
   flex: $flex-grow $flex-shrink $flex-basis;
 }
+
+@mixin pos_set($position : null, $top : null, $right: null, $bottom: null, $left: null) {
+  @if($position) {
+    position: $position;
+  }
+  @if($top) {
+    top: $top;
+  }
+  @if($right) {
+    right: $right;
+  }
+  @if($bottom) {
+    bottom: $bottom;
+  }
+  @if($left) {
+    left: $left;
+  }
+}

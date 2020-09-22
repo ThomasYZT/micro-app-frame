@@ -1,30 +1,96 @@
 <template>
-  <div class="nav-wrapper">
+  <div class="nav-wrapper" :style="{ backgroundColor: bgColor }">
     <div class="nav-bar">
       <div class="nav-title">
-        <span class="title">票圈视频</span>
+        <img class="logo" src="../../assets/img/pc_logo@2x.png" alt="">
       </div>
       <div class="nav-list">
-        <div class="nav-item"
-             v-for="item in navList"
-             :key="item.hash"
-             :class="{ 'active' : item.hash === curHash }"
-             @click="onItemClick(item.hash)">
-          {{item.name}}
+        <div v-slide class="nav-list-wrapper">
+            <div class="nav-item"
+                 v-for="item in navList"
+                 :key="item.hash"
+                 :class="{ 'active' : item.hash === curHash }"
+                 @click="onItemClick(item.hash)">
+                {{item.name}}
+            </div>
         </div>
       </div>
+      <div class="login-btn" @click="login">登录</div>
     </div>
+
+
+    <loginModal ref="loginModal"></loginModal>
   </div>
 </template>
 
 <script>
+import loginModal from '../../components/loginModal';
+import debounce from 'lodash/debounce';
 export default {
+  components: {
+    loginModal
+  },
+  props : {
+    bgColor : {
+      type : String,
+      default : 'none'
+    }
+  },
+  directives : {
+    slide : (() => {
+      let _parent = null;
+      let _bar = null;
+      let _offsetMap = {};
+      let _curHash = 0;
+
+      const resize = debounce(() => {
+        _bar && _bar.remove();
+        _bar = null;
+        _offsetMap = {};
+        init(_parent, _curHash)
+      }, 1000);
+
+      function init (el, curHash = 0) {
+        _parent = el;
+        let items = document.getElementsByClassName('nav-item');
+        items.forEach((item, index) => {
+          _offsetMap[index] = {
+            width: item.offsetWidth * 0.4,
+            itemWidth: item.offsetWidth,
+            xAxis: (Object.values(_offsetMap).reduce((s, item) => s + item.itemWidth, 0) || 0) + item.offsetWidth * 0.3
+          };
+        });
+        _bar = document.createElement('span');
+        _bar.setAttribute('class', 'active-line');
+        _bar.style.width = `${_offsetMap[curHash].width}px`;
+        _bar.style.transform = `translateX(${_offsetMap[curHash].xAxis}px)`;
+        _parent.appendChild(_bar)
+
+        window.addEventListener('resize', resize)
+      }
+
+      return {
+        inserted : function (el) {
+          init(el);
+        },
+        update : function (el, bind, vnode) {
+          _curHash = vnode.context.curHash;
+          _bar.style.display = `inline-block`;
+          _bar.style.width = `${_offsetMap[_curHash].width}px`;
+          _bar.style.transform = `translateX(${_offsetMap[_curHash].xAxis}px)`;
+        },
+        unbind : function () {
+          window.removeEventListener('resize', resize);
+        }
+      }
+    })()
+  },
   data () {
     return {
       curHash: '0',
       navList: [
         {
-          name: '创作者中心',
+          name: '首页',
           hash: '0',
           active: true
         },
@@ -47,8 +113,11 @@ export default {
     onItemClick (hash) {
       this.curHash = hash;
       if (this.$route.path === '/home' && hash) {
-        this.$bus.emit('hashScroll', hash);
+        this.$emit('navClick', hash);
       }
+    },
+    login () {
+      this.$refs.loginModal.show();
     }
   }
 };
@@ -57,50 +126,85 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/style/scss/base";
 .nav-wrapper {
+  @include flex_layout(row, center, center);
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 80px;
-  background-color: #D7DFFF;
+  height: 68px;
 
   .nav-bar {
-    padding: 0 220px;
     @include flex_layout(row, center, center);
+    @include flex_set(1, 0);
+    max-width: 1000px;
     height: 100%;
     .nav-title {
       @include flex_layout(column, center, flex-start);
       @include flex_set(1, 1);
       height: 100%;
 
-      .title {
-        margin-right: 30px;
-        color: $light_black_color;
+      .logo {
+        height: 21px;
       }
     }
 
     .nav-list {
-      @include flex_layout(row, flex-end, center);
       @include flex_set(1, 0);
+      @include flex_layout(row, flex-end, center);
       height: 100%;
-      .nav-item {
-        @include flex_layout(row, center, center);
+
+      .nav-list-wrapper {
+        position: relative;
+        display: inline-block;
         height: 100%;
-        padding: 0 20px;
-        white-space: nowrap;
-        color: $light_d5_black_color;
-        cursor: pointer;
-        transition: all .3s;
-        &:hover {
-          color: $light_black_color;
+        .nav-item {
+          display: inline-block;
+          height: 100%;
+          line-height: 68px;
+          padding: 0 20px;
+          white-space: nowrap;
+          font-size: 18px;
+          color: $light_d5_black_color;
+          cursor: pointer;
+          transition: all .3s;
+          &:hover {
+            color: $light_black_color;
+          }
+
+          &.active {
+            color: $light_black_color;
+            font-weight: bold;
+          }
         }
 
-        &.active {
-          color: $light_black_color;
-          font-weight: bold;
-        }
-
-        &:last-child {
-          padding-right: 0;
+        /deep/ .active-line {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          display: inline-block;
+          width: 22px;
+          height: 4px;
+          background-color: $primary_color;
+          transition: transform .3s cubic-bezier(.645,.045,.355,1);
         }
       }
+    }
+  }
+
+  .login-btn {
+    display: inline-block;
+    margin-left: 20px;
+    padding: 5px 10px;
+    color: #FFFFFF;
+    font-size: 14px;
+    background: #160A19;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all .3s linear;
+
+    &:hover {
+      background-color: rgba(22, 10, 25, 0.5);
     }
   }
 }
