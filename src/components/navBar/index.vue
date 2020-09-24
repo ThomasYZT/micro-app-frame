@@ -43,6 +43,14 @@ export default {
       let _offsetMap = {};
       let _curHash = 0;
 
+      const reset = () => {
+        _parent = null;
+        _bar && _bar.remove();
+        _bar = null;
+        _offsetMap = {};
+        _curHash = 0
+      };
+
       const resize = debounce(() => {
         _bar && _bar.remove();
         _bar = null;
@@ -59,6 +67,12 @@ export default {
             itemWidth: item.offsetWidth,
             xAxis: (Object.values(_offsetMap).reduce((s, item) => s + item.itemWidth, 0) || 0) + item.offsetWidth * 0.3
           };
+
+          console.log({
+            width: item.offsetWidth * 0.4,
+            itemWidth: item.offsetWidth,
+            xAxis: (Object.values(_offsetMap).reduce((s, item) => s + item.itemWidth, 0) || 0) + item.offsetWidth * 0.3
+          })
         });
         _bar = document.createElement('span');
         _bar.setAttribute('class', 'active-line');
@@ -80,6 +94,7 @@ export default {
           _bar.style.transform = `translateX(${_offsetMap[_curHash].xAxis}px)`;
         },
         unbind : function () {
+          reset();
           window.removeEventListener('resize', resize);
         }
       }

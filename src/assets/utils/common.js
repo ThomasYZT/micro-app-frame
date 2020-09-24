@@ -8,3 +8,13 @@ export const rAF = (() => {
 
   return (fn) => { return window.requestAnimationFrame(fn); };
 })();
+
+
+export const Storage = {
+  get (key) {
+    return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : ''
+  },
+  set (key, value) {
+    localStorage.setItem(key, JSON.stringify(value))
+  }
+};

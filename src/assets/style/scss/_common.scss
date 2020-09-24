@@ -46,4 +46,55 @@ h1, h2, h3, h4, h5, p {
   --animate-duration: .5s;
 }
 
+//msg
+.tzld-msg-box {
+  @include flex_layout(row, center, center);
+  z-index: 2000;
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  overflow: hidden;
+
+  &.tzld-msg-box-default {
+    div {
+      max-width: 100%;
+      flex: 0 1;
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 18px;
+      color: #333333;
+      background: #FFFFFF;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+  &.tzld-msg-box-success {
+    div {
+      max-width: 100%;
+      flex: 0 1;
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 18px;
+      color: #07C160;
+      background: #FFFFFF;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+  &.tzld-msg-box-error {
+    div {
+      max-width: 100%;
+      flex: 0 1;
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 18px;
+      color: #FF2A2A;
+      background: #FFFFFF;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+
+}
+
 

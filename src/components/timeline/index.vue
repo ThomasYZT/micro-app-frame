@@ -74,6 +74,7 @@ export default {
           _flag.style.transform = `translateY(${_yAxisMap[_curLabel].yAxis - _flagH}px)`;
         },
         unbind: function () {
+          reset();
           window.removeEventListener('resize', reset);
         }
       }

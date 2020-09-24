@@ -9,11 +9,17 @@
 
 <script>
 import debounce from 'lodash/debounce';
+import { mapGetters } from 'vuex';
 export default {
   provide () {
     return {
       reload: this.reload
     };
+  },
+  computed: {
+    ...mapGetters([
+      'errMsg'
+    ])
   },
   data () {
     return {
@@ -27,6 +33,15 @@ export default {
         this.isRouterAlive = true;
       }, 500);
     })
+  },
+  watch: {
+    errMsg: {
+      handler(newVal) {
+        if (!newVal) {
+          this.$msg.error(newVal);
+        }
+      }
+    }
   }
 };
 </script>

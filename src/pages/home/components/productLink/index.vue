@@ -24,7 +24,7 @@
               <t-button :icon="imgSrc.icon2" hover-expand class="primary hover-expand">
                 下载APP
                 <div slot="expand">
-                  <img class="qr-code" v-lazy="imgSrc.code1" src="" alt="">
+                  <img class="qr-code" v-lazy="imgSrc.code2" src="" alt="">
                 </div>
               </t-button>
             </template>
@@ -40,13 +40,15 @@
 import icon1 from '../../../../assets/img/pic_four_ewm.png';
 import icon2 from '../../../../assets/img/pic_four_ewm_red.png';
 import code1 from '../../../../assets/img/app_qrcode.png';
+import code2 from '../../../../assets/img/mini_pro_code.png';
 export default {
   data () {
     return {
       imgSrc: {
         icon1,
         icon2,
-        code1
+        code1,
+        code2
       }
     }
   }
