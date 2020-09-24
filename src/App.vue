@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <transition v-if="isRouterAlive" name="fade" mode="out-in">
+    <transition v-if="isRouterAlive" enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
       <router-view class="view"></router-view>
     </transition>
+    <div id="app-container"></div>
   </div>
 </template>
 
@@ -38,7 +39,7 @@ html, body {
   width: 100%;
   overflow: hidden;
 }
-#app {
+#app, #app-container {
   height: 100%;
   width: 100%;
   overflow: hidden;

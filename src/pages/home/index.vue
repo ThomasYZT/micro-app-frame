@@ -18,8 +18,8 @@
                 <p class="content">一个快速实现你 “ 从记录到创作，从创作到表达，从表达到分享” 全过程的视频发声平台。</p>
               </div>
               <template slot="footer">
-                <t-button :icon="imgSrc.icon1" class="primary">创作视频</t-button>
-                <t-button :icon="imgSrc.icon2"  class="white">发布视频</t-button>
+                <t-button :icon="imgSrc.icon1" class="primary" @click="go('/clip')">创作视频</t-button>
+                <t-button :icon="imgSrc.icon2"  class="white" @click="go('/pc')">发布视频</t-button>
               </template>
             </t-card>
           </div>
@@ -49,6 +49,7 @@ import contact from './components/contact';
 import { rAF } from '../../assets/utils/common';
 import icon1 from '../../assets/img/icon_create.png';
 import icon2 from '../../assets/img/icon_upload.png';
+import { loadMicroApp } from 'qiankun';
 export default {
   components: {
     navBar,
@@ -121,6 +122,9 @@ export default {
         }
       });
       return map;
+    },
+    go (path) {
+      this.$router.push(path);
     }
   },
   mounted() {

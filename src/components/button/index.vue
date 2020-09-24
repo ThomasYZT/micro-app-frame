@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :class="{ type : type || 'primary' }">
+  <button class="button" :class="{ type : type || 'primary' }"  @click="$emit('click')">
     <div v-if="hoverExpand" class="expand-box">
       <div class="btn-wrapper">
         <img class="prefix-icon" v-if="icon && (icon.pos === 'prefix' || !icon.pos)" v-lazy="icon || icon.src" src="" alt="">
