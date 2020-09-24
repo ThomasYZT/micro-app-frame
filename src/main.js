@@ -13,5 +13,7 @@ Vue.config.productionTip = false;
 const baseLayer = new BaseLayer({ Vue, root, router, store });
 
 baseLayer.startup();
-
+// baseLayer.startMicroService();
 baseLayer.preloadApp();
+
+export default baseLayer;

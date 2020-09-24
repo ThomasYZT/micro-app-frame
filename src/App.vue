@@ -3,14 +3,19 @@
     <transition v-if="isRouterAlive" enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
       <router-view class="view"></router-view>
     </transition>
+    <loginModal ref="loginModal"></loginModal>
     <div id="app-container"></div>
   </div>
 </template>
 
 <script>
+import loginModal from './components/loginModal';
 import debounce from 'lodash/debounce';
 import { mapGetters } from 'vuex';
 export default {
+  components: {
+    loginModal
+  },
   provide () {
     return {
       reload: this.reload
@@ -18,7 +23,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'errMsg'
+      'loginModalStatus'
     ])
   },
   data () {
@@ -35,10 +40,10 @@ export default {
     })
   },
   watch: {
-    errMsg: {
-      handler(newVal) {
-        if (!newVal) {
-          this.$msg.error(newVal);
+    loginModalStatus: {
+      handler (newVal) {
+        if (newVal) {
+          this.$refs.loginModal.show();
         }
       }
     }

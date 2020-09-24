@@ -2,6 +2,15 @@ import Vue from 'vue';
 import store from '../store';
 import config from '../config';
 import VueRouter from 'vue-router';
+import baseLayer from "../main";
+
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push (location, onResolve, onReject) {
+  if (onResolve || onReject){
+    return originalPush.call(this, location, onResolve, onReject)
+  }
+  return originalPush.call(this, location).catch(err => err)
+};
 
 Vue.use(VueRouter);
 
@@ -18,7 +27,18 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.path === '/') {
+  if (baseLayer) {
+    auth(to, from, next)
+  } else {
+    setTimeout(() => {
+      auth(to, from, next);
+    }, 0);
+  }
+});
+
+function auth (to, from, next) {
+  baseLayer.startMicroService();
+  if (to.path === '' || to.path === '/') {
     if (!store.getters.userInfo) {
       if (to.query.code) {
         store.dispatch('login', {
@@ -26,25 +46,23 @@ router.beforeEach((to, from, next) => {
           appType : 8,
           appId : config.APPID
         }).then(res => {
-          next({
-            path: '/pc'
-          })
+          next({ path: '/pc', replace: true });
         }).catch(err => {
-          next(false)
+          next({ path: '/', replace: true });
         });
       } else {
-        next();
+        next({ replace: true });
       }
     } else {
-      next({ path: '/pc' });
+      next({ path: '/pc', replace: true });
     }
   } else {
     if (!store.getters.userInfo) {
-      next('/');
+      next({ path: '/', replace: true });
     } else {
-      next();
+      next({ replace: true });
     }
   }
-});
+}
 
 export default router;

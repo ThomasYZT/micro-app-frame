@@ -53,7 +53,6 @@ h1, h2, h3, h4, h5, p {
   position: fixed;
   top: 50px;
   width: 100%;
-  overflow: hidden;
 
   &.tzld-msg-box-default {
     div {
@@ -64,6 +63,7 @@ h1, h2, h3, h4, h5, p {
       border-radius: 8px;
       font-size: 18px;
       color: #333333;
+      white-space: nowrap;
       background: #FFFFFF;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
     }
@@ -77,6 +77,7 @@ h1, h2, h3, h4, h5, p {
       border-radius: 8px;
       font-size: 18px;
       color: #07C160;
+      white-space: nowrap;
       background: #FFFFFF;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
     }
@@ -90,6 +91,7 @@ h1, h2, h3, h4, h5, p {
       border-radius: 8px;
       font-size: 18px;
       color: #FF2A2A;
+      white-space: nowrap;
       background: #FFFFFF;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
     }

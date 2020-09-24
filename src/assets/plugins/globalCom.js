@@ -44,7 +44,7 @@ const msg = ((config) => {
     setTimeout(() => {
       obj._msgBox.setAttribute('class', `${obj._baseClazz} animate__animated animate__fadeOutUpBig`);
       removeTag(obj._msgBox)
-    }, 3000);
+    }, 2000);
   }
 
   function _msg (msg) {

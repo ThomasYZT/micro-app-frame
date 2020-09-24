@@ -24,6 +24,7 @@ const subAppList = [
 
 export default class BaseLayer {
   mainApp = null;
+  isMicroServiceRunning = false;
 
   constructor({ Vue, router, store, root }) {
     this._createMainApp({ Vue, root, router, store })
@@ -59,8 +60,14 @@ export default class BaseLayer {
 
   startup () {
     BaseLayer._registSubApp();
-    start({ prefetch: 'all' });
     this.mainApp.$mount("#app");
+  }
+
+  startMicroService () {
+    if (!this.isMicroServiceRunning) {
+      this.isMicroServiceRunning = true;
+      start({ prefetch: 'all' });
+    }
   }
 
   preloadApp () {

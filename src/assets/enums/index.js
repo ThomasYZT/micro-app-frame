@@ -1,3 +1,3 @@
 export const storageKeys = {
-  userInfo: 'tzld:user'
+  userInfo: 'lv_userInfo'
 };

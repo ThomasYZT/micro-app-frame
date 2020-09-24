@@ -49,13 +49,18 @@ import contact from './components/contact';
 import { rAF } from '../../assets/utils/common';
 import icon1 from '../../assets/img/icon_create.png';
 import icon2 from '../../assets/img/icon_upload.png';
-import { loadMicroApp } from 'qiankun';
+import { mapGetters, mapActions } from 'vuex';
 export default {
   components: {
     navBar,
     about,
     production,
     contact
+  },
+  computed: {
+    ...mapGetters([
+      'userInfo'
+    ])
   },
   data () {
     return {
@@ -70,6 +75,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions([
+      'showLoginModal'
+    ]),
     onScroll (e) {
       if (e.target.scrollTop <= 0) {
         this.navBgColor !== 'transparent' && (this.navBgColor = 'transparent');
@@ -124,6 +132,11 @@ export default {
       return map;
     },
     go (path) {
+      if (!this.userInfo) {
+        this.$msg.error('请先登录');
+        this.showLoginModal();
+        return;
+      }
       this.$router.push(path);
     }
   },

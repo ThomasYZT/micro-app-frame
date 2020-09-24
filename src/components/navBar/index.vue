@@ -17,19 +17,13 @@
       </div>
       <div class="login-btn" @click="login">登录</div>
     </div>
-
-
-    <loginModal ref="loginModal"></loginModal>
   </div>
 </template>
 
 <script>
-import loginModal from '../../components/loginModal';
 import debounce from 'lodash/debounce';
+import { mapActions } from 'vuex';
 export default {
-  components: {
-    loginModal
-  },
   props : {
     bgColor : {
       type : String,
@@ -67,12 +61,6 @@ export default {
             itemWidth: item.offsetWidth,
             xAxis: (Object.values(_offsetMap).reduce((s, item) => s + item.itemWidth, 0) || 0) + item.offsetWidth * 0.3
           };
-
-          console.log({
-            width: item.offsetWidth * 0.4,
-            itemWidth: item.offsetWidth,
-            xAxis: (Object.values(_offsetMap).reduce((s, item) => s + item.itemWidth, 0) || 0) + item.offsetWidth * 0.3
-          })
         });
         _bar = document.createElement('span');
         _bar.setAttribute('class', 'active-line');
@@ -125,6 +113,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions([
+      'showLoginModal'
+    ]),
     onItemClick (hash) {
       this.curHash = hash;
       if (this.$route.path === '/home' && hash) {
@@ -132,7 +123,7 @@ export default {
       }
     },
     login () {
-      this.$refs.loginModal.show();
+      this.showLoginModal();
     }
   }
 };

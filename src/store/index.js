@@ -10,6 +10,7 @@ export default new Vuex.Store({
   state: {
     userInfo: Storage.get(storageKeys.userInfo),
     errMsg: '',
+    loginModalStatus: false,
   },
   getters: {
     userInfo: state => {
@@ -17,12 +18,18 @@ export default new Vuex.Store({
     },
     errMsg: state => {
       return state.errMsg
+    },
+    loginModalStatus: state => {
+      return state.loginModalStatus;
     }
   },
   mutations: {
     UPDATE_USERINFO: (state, data) => {
       state.userInfo = data;
       Storage.set(storageKeys.userInfo, data);
+    },
+    UUPDATE_LOGINMODAL_STATUS: (state, status) => {
+      state.loginModalStatus = status
     }
   },
   actions: {
@@ -41,8 +48,14 @@ export default new Vuex.Store({
         }
       })
     },
-    showMsg : ({ state }, msgObj) => {
+    showMsg : (msgObj) => {
       Vue.prototype.$msg[msgObj.type](msgObj.content);
+    },
+    showLoginModal : ({ commit }) => {
+      commit('UUPDATE_LOGINMODAL_STATUS', true);
+      setTimeout(() => {
+        commit('UUPDATE_LOGINMODAL_STATUS', false);
+      }, 0)
     },
   }
 })
