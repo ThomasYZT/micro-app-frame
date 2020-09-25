@@ -72,7 +72,7 @@ export default {
         let maxZIndex = this.getMaxZIndex();
         let mask = document.createElement('div');
         mask.setAttribute('class', 't-mask');
-        mask.style.zIndex = maxZIndex - 1;
+        mask.style.zIndex = maxZIndex + 1;
         document.body.appendChild(mask);
         return mask;
       } else {

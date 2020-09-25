@@ -103,6 +103,7 @@ export default {
   }
   .card-info {
     font-size: 18px;
+    line-height: 44px;
   }
 
   .qr-code {

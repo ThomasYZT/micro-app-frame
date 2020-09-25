@@ -52,7 +52,6 @@ export default {
     ]),
     go (path) {
       if (!this.userInfo) {
-        this.$msg.error('请先登录');
         this.showLoginModal();
         return;
       }
@@ -77,7 +76,7 @@ export default {
     .block-content {
       @include flex_layout(row, space-between, flex-start);
       @include pos_set(absolute, 0, 0, 0, 0);
-      margin-top: 120px;
+      margin-top: 140px;
       margin-bottom: 94px;
 
       .animation-wrapper {
@@ -114,6 +113,7 @@ export default {
           font-size: 21.5px;
           margin-bottom: 12px;
           color: rgba(51, 51, 51, 0.8);
+          white-space: nowrap;
         }
 
         .content {
