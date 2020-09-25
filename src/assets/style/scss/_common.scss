@@ -9,6 +9,9 @@ html,body{
 h1, h2, h3, h4, h5, p {
   margin: 0;
 }
+div[data-name='longvideo-pc'], div[data-name='clip'] {
+  height: 100%;
+}
 
 .block-wrapper {
   @include flex_layout(column, center, center);

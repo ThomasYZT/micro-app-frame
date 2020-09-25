@@ -1,24 +1,29 @@
 import {registerMicroApps, start, loadMicroApp} from "qiankun";
 
-let entry = process.env.HTTP_ENV === 'test'
-  ? process.env.HTTP_ENV === 'pre'
-    ? 'https://piaoquan.yishihui.com:30003/'
-    : 'https://piaoquan.yishihui.com:30003/'
-  : 'https://piaoquan.yishihui.com:30003/';
+let pcEntry = process.env.HTTP_ENV === 'test'
+  ? 'https://pctest.yishihui.com/'
+  : process.env.HTTP_ENV === 'pre'
+    ? 'https://pcpre.yishihui.com/'
+    : 'https://pc.yishihui.com/';
 
+let clipEntry = process.env.HTTP_ENV === 'test'
+  ? 'https://cliptest.yishihui.com/'
+  : process.env.HTTP_ENV === 'pre'
+    ? 'https://clippre.yishihui.com/'
+    : 'https://clip.yishihui.com/';
 
 const subAppList = [
   {
     name: 'clip',
-    entry: process.env.NODE_ENV === 'development' ? 'http://localhost:8081/' : entry,
+    entry: process.env.NODE_ENV === 'development' ? 'http://localhost:8081/' : pcEntry,
     container: "#app-container",
-    activeRule: '/clip',
+    activeRule: '/clip'
   },
   {
     name: 'longvideo-pc',
-    entry: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : entry,
+    entry: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : clipEntry,
     container: "#app-container",
-    activeRule: '/pc',
+    activeRule: '/pc'
   },
 ];
 
