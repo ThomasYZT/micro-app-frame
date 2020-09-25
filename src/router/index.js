@@ -37,7 +37,6 @@ router.beforeEach((to, from, next) => {
 });
 
 function auth (to, from, next) {
-  baseLayer.startMicroService();
   if (to.path === '' || to.path === '/') {
     if (!store.getters.userInfo) {
       if (to.query.code) {
@@ -46,6 +45,7 @@ function auth (to, from, next) {
           appType : 8,
           appId : config.APPID
         }).then(res => {
+          baseLayer.startMicroService();
           next({ path: '/pc', replace: true });
         }).catch(err => {
           next({ path: '/', replace: true });
@@ -54,12 +54,14 @@ function auth (to, from, next) {
         next({ replace: true });
       }
     } else {
+      baseLayer.startMicroService();
       next({ path: '/pc', replace: true });
     }
   } else {
     if (!store.getters.userInfo) {
       next({ path: '/', replace: true });
     } else {
+      baseLayer.startMicroService();
       next({ replace: true });
     }
   }
