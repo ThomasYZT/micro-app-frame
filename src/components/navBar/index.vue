@@ -28,6 +28,10 @@ export default {
     bgColor : {
       type : String,
       default : 'none'
+    },
+    curNav : {
+      type: String,
+      default: '0'
     }
   },
   directives : {
@@ -118,12 +122,20 @@ export default {
     ]),
     onItemClick (hash) {
       this.curHash = hash;
-      if (this.$route.path === '/home' && hash) {
+      if (this.$route.path === '/' && hash) {
+        this.$emit('curNav:update', hash);
         this.$emit('navClick', hash);
       }
     },
     login () {
       this.showLoginModal();
+    }
+  },
+  watch: {
+    curNav: {
+      handler(newVal) {
+        this.curHash = newVal
+      }
     }
   }
 };

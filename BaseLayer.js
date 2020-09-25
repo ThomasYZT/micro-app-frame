@@ -1,16 +1,16 @@
-import {registerMicroApps, start, loadMicroApp} from "qiankun";
+import {registerMicroApps, start} from "qiankun";
 
 let pcEntry = process.env.HTTP_ENV === 'test'
-  ? 'https://pctest.yishihui.com/'
+  ? 'https://uploadtest.yishihui.com/'
   : process.env.HTTP_ENV === 'pre'
-    ? 'https://pcpre.yishihui.com/'
-    : 'https://pc.yishihui.com/';
+    ? 'https://uploadpre.piaoquantv.com/'
+    : 'https://upload.piaoquantv.com/';
 
 let clipEntry = process.env.HTTP_ENV === 'test'
   ? 'https://cliptest.yishihui.com/'
   : process.env.HTTP_ENV === 'pre'
-    ? 'https://clippre.yishihui.com/'
-    : 'https://clip.yishihui.com/';
+    ? 'https://clippre.piaoquantv.com/'
+    : 'https://clip.piaoquantv.com/';
 
 const subAppList = [
   {
