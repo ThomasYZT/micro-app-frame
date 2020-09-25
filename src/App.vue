@@ -59,7 +59,7 @@ html, body {
   width: 100%;
   overflow: hidden;
 }
-#app, #app-container {
+#app {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -68,5 +68,9 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.#app-container {
+
 }
 </style>
