@@ -13,7 +13,7 @@
           <p class="para">4大核心产品：PC版票圈视频，票圈视频APP，票圈视频小程序，票圈Vlog小程序相辅相成，构建票圈视频矩阵。历时两年，高居阿拉丁视频榜单Top3，累计4亿+平台用户，服务上百万内容创作生产者，创造百万收益。</p>
           <p class="para">我们以视频为核心，为用户提供智能AI功能，视频制作、上传、处理、展示、个性分发、互动、变现等服务，助力工具运用，内容沉淀、分发、传播，粉丝获取，以及关系沉淀。</p>
           <p class="para">我们相信人人皆是UP主，票圈视频旨在为大家打造一个展现自我，创造财富，实现价值，赋能生活，扩大品牌势能，构建完整生态的视频平台。</p>
-          <p class="para">我们相信人人皆是UP主，票圈视频旨在为大家打造一个展现自我，创造财富，实现价值，赋能生活，扩大品牌势能，构建完整生态的视频平台。</p>
+          <p class="para">我们的愿景：成为一家引领全球表达方式的公司。<br> 我们的使命：激发创造，丰富表达。<br>我们的Slogan：用视频发声。</p>
         </div>
       </div>
     </div>
@@ -116,6 +116,7 @@ export default {
           font-size: 14px;
           color: #333333;
           text-align: left;
+          line-height: 32px;
 
           &:last-child {
             margin: 0;
@@ -130,10 +131,11 @@ export default {
       .time-wrapper {
         width: 100%;
         .time-item {
-          margin: 40px 0;
+          margin: 30px 0;
           .time {
             margin-bottom: 8px;
             font-size: 22px;
+            font-weight: bold;
             color: #333333;
           }
 

@@ -50,6 +50,7 @@ button {
   min-width: 174px;
   height: 54px;
   font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
   transition: all .3s;
 

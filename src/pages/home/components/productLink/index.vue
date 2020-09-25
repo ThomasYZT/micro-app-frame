@@ -8,7 +8,7 @@
     <div class="block-wrapper">
       <div class="block-content">
         <img class="ani-1 wow" data-animate="fadeInUp" src="../../../../assets/img/pic_four_code@2x.png" alt="">
-        <div class="card-wrapper wow"  data-animate="fadeInRight">
+        <div class="card-wrapper wow"  data-animate="fadeInUp">
           <t-card title="移动端快捷创作">
             <p class="card-info">不受场景限制，移动制作上传发布视频
               APP+小程序双端操作，随时记录灵感分享创意

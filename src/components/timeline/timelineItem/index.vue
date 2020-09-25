@@ -74,6 +74,7 @@ export default {
       bottom: 0;
       width: 120px;
       height: 100%;
+      font-weight: bold;
       white-space: nowrap;
 
       .arrow {

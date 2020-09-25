@@ -60,8 +60,9 @@ export default {
 
     .sub-title {
       font-size: 20px;
-      color: rgba(51, 51, 51, 0.2);
+      color: rgba(51, 51, 51, 0.8);
       line-height: 23px;
+      font-weight: lighter;
     }
 
     .title-mark {

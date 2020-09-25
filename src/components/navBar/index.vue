@@ -199,7 +199,7 @@ export default {
         /deep/ .active-line {
           position: absolute;
           left: 0;
-          bottom: 0;
+          bottom: 9px;
           display: inline-block;
           width: 22px;
           height: 4px;

@@ -7,8 +7,8 @@
           <t-card :title="`引领全球视频表达<br/>让你的观点被世界看见`"
                   :titleMark="true">
             <div class="custom-content">
-              <h3 class="sub-title">4亿用户-都在用的视频创作分享平台</h3>
-              <p class="content">一个快速实现你 “ 从记录到创作，从创作到表达，从表达到分享” 全过程的视频发声平台。</p>
+              <h3 class="sub-title">4亿用户 - 都在用的视频创作分享平台</h3>
+              <p class="content">打破视频创作边界，用更简洁的操作，更智能的技术，更短的时间，创造更精致的视频。</p>
             </div>
             <template slot="footer">
               <t-button :icon="imgSrc.icon1" class="primary" @click="go('/clip')">创作视频</t-button>
@@ -30,7 +30,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import icon1 from '../../../../assets/img/icon_create.png';
+import icon1 from '../../../../assets/img/icon_create@2x.png';
 import icon2 from '../../../../assets/img/icon_upload.png';
 export default {
   computed: {
@@ -75,7 +75,9 @@ export default {
     }
 
     .block-content {
+      @include flex_layout(row, space-between, flex-start);
       @include pos_set(absolute, 0, 0, 0, 0);
+      margin-top: 120px;
       margin-bottom: 94px;
 
       .animation-wrapper {
@@ -111,11 +113,12 @@ export default {
         .sub-title {
           font-size: 21.5px;
           margin-bottom: 12px;
+          color: rgba(51, 51, 51, 0.8);
         }
 
         .content {
           font-size: 14px;
-          color: #160A19;
+          color: rgba(51, 51, 51, .8);
         }
       }
     }
