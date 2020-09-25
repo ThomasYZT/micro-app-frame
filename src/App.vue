@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition v-if="isRouterAlive" enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
-      <router-view class="view"></router-view>
+      <router-view class="tzld-view"></router-view>
     </transition>
     <loginModal ref="loginModal"></loginModal>
     <div id="app-container"></div>
@@ -63,11 +63,14 @@ html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+  .tzld-view {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
 }
 #app-container {
   width: 100%;
