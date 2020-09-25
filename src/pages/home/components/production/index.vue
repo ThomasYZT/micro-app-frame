@@ -19,7 +19,7 @@
               海量视觉素材，自动搜索，智能匹配
               智能语音一键添加，音色完美拟人化</p>
             <template slot="footer">
-              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary">点击体验</t-button>
+              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary" @click="go('/pc')">点击体验</t-button>
             </template>
           </t-card>
         </div>
@@ -35,7 +35,7 @@
               高清长视频无压缩，保留最完美观赏体验
               公众号、小程序、APP多平台同时发布</p>
             <template slot="footer">
-              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary">点击体验</t-button>
+              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary" @click="go('/pc')">点击体验</t-button>
             </template>
           </t-card>
         </div>
@@ -61,7 +61,7 @@
               付费，广告，电商多模式变现，助力收益增长
               个性算法推荐，高效触达属于你的粉丝群</p>
             <template slot="footer">
-              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary">点击体验</t-button>
+              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary" @click="go('/pc')">点击体验</t-button>
             </template>
           </t-card>
         </div>
@@ -76,6 +76,7 @@
 <script>
 import productLink from '../productLink';
 import icon1 from '../../../../assets/img/icon_arrow.png'
+import { mapGetters, mapActions } from 'vuex';
 export default {
   components : {
     productLink
@@ -85,6 +86,24 @@ export default {
       imgSrc: {
         icon1
       }
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'userInfo'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'showLoginModal'
+    ]),
+    go (path) {
+      if (!this.userInfo) {
+        this.$msg.error('请先登录');
+        this.showLoginModal();
+        return;
+      }
+      this.$router.push(path);
     }
   }
 };

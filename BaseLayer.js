@@ -15,13 +15,13 @@ let clipEntry = process.env.HTTP_ENV === 'test'
 const subAppList = [
   {
     name: 'clip',
-    entry: process.env.NODE_ENV === 'development' ? 'http://localhost:8081/' : pcEntry,
+    entry: process.env.NODE_ENV === 'development' ? 'http://localhost:8081/' : clipEntry,
     container: "#app-container",
     activeRule: '/clip'
   },
   {
     name: 'longvideo-pc',
-    entry: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : clipEntry,
+    entry: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : pcEntry,
     container: "#app-container",
     activeRule: '/pc'
   },
