@@ -11,7 +11,7 @@ export default {
   name: "Timeline",
   provide () {
     return {
-      itemClick: this.itemClick,
+      onItemActive: this.onItemActive,
       activeItem: this.activeItem
     }
   },
@@ -81,7 +81,7 @@ export default {
     })()
   },
   methods : {
-    itemClick (e, label, isInit) {
+    onItemActive (e, label, isInit) {
       if (isInit) {
 
       } else {
@@ -102,7 +102,7 @@ export default {
     margin-left: 30%;
     position: absolute;
     left: -17px;
-    top: 0;
+    top: 2px;
     width: 34px;
     height: 37px;
     transition: transform .3s cubic-bezier(.645,.045,.355,1);

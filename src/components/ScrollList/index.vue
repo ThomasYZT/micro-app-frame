@@ -59,7 +59,9 @@ export default {
       const _contentHeight = this.$refs.content.scrollHeight;
       return _hList.map((curH, index) => {
         if (index !== _hList.length - 1) {
-          return _hList.slice(0, index).reduce((s, c) => s + c, 0) - 91
+          return index === 0
+            ? 0
+            : _hList.slice(0, index).reduce((s, c) => s + c, 0)
         } else {
           return _contentHeight - this.$refs.content.offsetHeight;
         }

@@ -53,6 +53,7 @@
         <div class="animation-wrapper wow" data-animate="fadeInUp">
           <img class="ani-1" src="../../../../assets/img/pic_flow.png" alt="">
           <img class="ani-2" src="../../../../assets/img/pic_three_date@2x.png" alt="">
+          <img class="ani-3" src="../../../../assets/img/pic_three_light@2x.png" alt="">
         </div>
         <div class="card-wrapper wow" data-animate="fadeInUp">
           <t-card title="流量/内容变现">
@@ -99,7 +100,6 @@ export default {
     ]),
     go (path) {
       if (!this.userInfo) {
-        this.$msg.error('请先登录');
         this.showLoginModal();
         return;
       }
@@ -181,11 +181,19 @@ export default {
       }
       .ani-2 {
         position: absolute;
-        top: 51px;
+        top: 40px;
         left: 112px;
         width: 142px;
         height: 85px;
         animation: bottomToTop 3s linear infinite alternate;
+      }
+      .ani-3 {
+        position: absolute;
+        bottom: 63px;
+        right: 27px;
+        width: 102px;
+        height: 102px;
+        animation: lightToDark 1s linear infinite alternate;
       }
     }
   }

@@ -113,14 +113,17 @@ button {
     max-height: 54px;
     min-height: 54px;
     overflow: hidden;
-    transition: max-height .5s ease;
     .btn-wrapper {
       @include flex_layout(row, center, center);
       width: 100%;
       height: 54px;
     }
     &:hover {
-      max-height: 300px;
+      max-height: 400px;
+      border-radius: 20px;
+      .btn-wrapper {
+        display: none;
+      }
     }
   }
 }

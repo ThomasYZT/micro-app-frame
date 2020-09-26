@@ -9,6 +9,11 @@ module.exports = {
     https: false,
     hotOnly: false,
   },
+  configureWebpack: {
+    externals: {
+      AMap : 'AMap',
+    }
+  },
   css: {
     loaderOptions: {
       postcss: {

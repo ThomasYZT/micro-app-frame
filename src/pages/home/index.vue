@@ -12,6 +12,11 @@
       <about class="hash"/>
       <contact class="hash"/>
     </ScrollList>
+
+    <div v-if="navBgColor === 'transparent'" class="guide-icon">
+      <img class="arrow" src="../../assets/img/icon_arrow_up@2x.png" alt="">
+      <img class="mouse" src="../../assets/img/icon_mouse@2x.png" alt="">
+    </div>
   </div>
 </template>
 
@@ -33,8 +38,9 @@ export default {
   },
   data () {
     return {
-      navBgColor: 'none',
-      curNav: '0'
+      navBgColor: 'transparent',
+      curNav: '0',
+      inControl: false
     };
   },
   methods: {
@@ -45,17 +51,35 @@ export default {
         this.navBgColor !== '#FFFFFF' && (this.navBgColor = '#FFFFFF');
       }
 
-      if (e.target.scrollTop < scrollMap[1]) {
-        this.curNav !== '0' && (this.curNav = '0');
-      } else if (e.target.scrollTop < scrollMap[2]) {
-        this.curNav !== '1' && (this.curNav = '1');
-      } else if (e.target.scrollTop < scrollMap[3]) {
-        this.curNav !== '2' && (this.curNav = '2');
+      if (!this.inControl) {
+        if (e.target.scrollTop < scrollMap[1]) {
+          this.curNav !== '0' && (this.curNav = '0');
+        } else if (e.target.scrollTop < scrollMap[2]) {
+          this.curNav !== '1' && (this.curNav = '1');
+        } else if (e.target.scrollTop < scrollMap[3]) {
+          this.curNav !== '2' && (this.curNav = '2');
+        } else {
+          this.curNav !== '3' && (this.curNav = '3');
+        }
       } else {
-        this.curNav !== '3' && (this.curNav = '3');
+        switch (this.curNav) {
+          case "0":
+            (e.target.scrollTop === scrollMap[0]) && (this.inControl = false);
+            break;
+          case "1":
+            (e.target.scrollTop === scrollMap[1]) && (this.inControl = false);
+            break;
+          case "2":
+            (e.target.scrollTop === scrollMap[2]) && (this.inControl = false);
+            break;
+          case "3":
+            (e.target.scrollTop === scrollMap[3]) && (this.inControl = false);
+            break;
+        }
       }
     },
     navHandler (index, fn) {
+      this.inControl = true;
       this.$refs.List.scrollTo(index, fn);
     },
   },
@@ -87,6 +111,24 @@ export default {
       border-radius: 5px;
       width: 2px;
       background: rgba(0,0,0, .6);
+    }
+  }
+
+
+  .guide-icon {
+    @include flex_layout(column, center, center);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 600px;
+    .arrow {
+      margin-bottom: 5px;
+      height: 15px;
+      animation: smallBottomToTop 1s linear infinite alternate;
+    }
+
+    .mouse {
+      height: 38px;
     }
   }
 

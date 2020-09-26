@@ -1,6 +1,6 @@
 <template>
   <div ref="TimelineItem" :data-label="label" class="timeline-item">
-    <div class="tail" @click="onTimeClick">
+    <div class="tail" @mouseenter="onActive">
       <img ref="flag" src="../img/pic_five_plane@2x.png" alt="">
       <div class="time">
         <img class="arrow" src="../img/icon_arrow_red@2x.png" alt="">
@@ -14,7 +14,7 @@
 <script>
 export default {
   name: "TimelineItem",
-  inject: ['itemClick', 'activeItem'],
+  inject: ['onItemActive', 'activeItem'],
   props: {
     label : {
       type : String,
@@ -26,13 +26,13 @@ export default {
     }
   },
   methods: {
-    onTimeClick (e) {
-      this.itemClick(e, this.label);
+    onActive (e) {
+      this.onItemActive(e, this.label);
     }
   },
   mounted() {
     if (this.label === this.activeItem.value) {
-      this.itemClick({}, this.label, true)
+      this.onItemActive({}, this.label, true)
     }
   }
 }
@@ -51,7 +51,7 @@ export default {
   .tail {
     position: absolute;
     left: -18px;
-    bottom: 0;
+    bottom: -2px;
     width: 34px;
     height: 37px;
     cursor: pointer;

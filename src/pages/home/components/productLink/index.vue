@@ -16,15 +16,17 @@
               智能算法推荐，主动唤醒粉丝，不错过你的消息</p>
             <template slot="footer">
               <t-button :icon="imgSrc.icon1" hover-expand class="white hover-expand">
-                打开小程序
-                <div slot="expand">
+                下载APP
+                <div class="code-wrapper" slot="expand">
                   <img class="qr-code" v-lazy="imgSrc.code1" src="" alt="">
+                  <span>扫描二维码，下载APP</span>
                 </div>
               </t-button>
               <t-button :icon="imgSrc.icon2" hover-expand class="primary hover-expand">
-                下载APP
-                <div slot="expand">
-                  <img class="qr-code" v-lazy="imgSrc.code2" src="" alt="">
+                打开小程序
+                <div class="code-wrapper" slot="expand">
+                  <img class="qr-code circle" v-lazy="imgSrc.code2" src="" alt="">
+                  <span>扫描二维码，打开小程序</span>
                 </div>
               </t-button>
             </template>
@@ -102,13 +104,26 @@ export default {
     }
   }
   .card-info {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 44px;
   }
 
-  .qr-code {
-    margin-bottom: 20px;
-    width: 100px;
+  .code-wrapper {
+    @include flex_layout(column, center, center);
+    padding: 20px 0;
+    .qr-code {
+      margin-bottom: 8px;
+      width: 126px;
+
+      &.circle {
+        border-radius: 50%;
+      }
+    }
+
+    span {
+      font-size: 14px;
+      font-weight: normal;
+    }
   }
 }
 </style>

@@ -123,7 +123,7 @@ export default {
     onItemClick (hash) {
       this.curHash = hash;
       if (this.$route.path === '/' && hash) {
-        this.$emit('curNav:update', hash);
+        this.$emit('update:curNav', hash);
         this.$emit('navClick', hash);
       }
     },

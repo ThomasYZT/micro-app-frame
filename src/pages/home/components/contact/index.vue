@@ -11,6 +11,7 @@
           <t-card title="联系我们"
                   sub-title="Contact Us"
                   type="title" />
+          <div id="map-container"></div>
         </div>
         <div class="desc wow"  data-animate="fadeInUp">
           <div class="info-row">
@@ -59,6 +60,7 @@
 import icon1 from '../../../../assets/img/icon_call.png';
 import icon2 from '../../../../assets/img/icon_phone.png';
 import icon3 from '../../../../assets/img/icon_add.png';
+import AMap from  'AMap'
 export default {
   data () {
     return {
@@ -68,6 +70,22 @@ export default {
         icon3
       }
     }
+  },
+  mounted() {
+    var map = new AMap.Map('map-container', {
+      dragEnable: false,
+      doubleClickZoom: false,
+      scrollWheel: false,
+      zoom: 17,
+      center: [116.27912, 40.04972] //设置地图中心点坐标
+    });
+    map.on('click', function(e) {
+      console.log(e)
+    });
+    let marker = new AMap.Marker({
+      position: [116.279749, 40.04968]
+    });
+    map.add(marker);
   }
 };
 </script>
@@ -98,7 +116,7 @@ export default {
     width: 100%;
     height: 100%;
     .block-content {
-      @include flex_layout(row, space-between, flex-start);
+      @include flex_layout(row, space-between, flex-end);
 
       /deep/ .title-card {
         .title {
@@ -108,6 +126,10 @@ export default {
         .sub-title {
           color: rgba(255, 255, 255, .5);
         }
+      }
+      #map-container {
+        width: 411px;
+        height: 236px;
       }
 
       .desc {
@@ -167,5 +189,10 @@ export default {
       color: #FFFFFF;
     }
   }
+}
+</style>
+<style lang="css">
+.amap-logo, .amap-copyright {
+  display: none !important;
 }
 </style>

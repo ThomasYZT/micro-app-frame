@@ -65,7 +65,7 @@ html, body {
   overflow: hidden;
 
   .tzld-view {
-    font-family: PingFang SC, -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Roboto, Arial, Hiragino Sans GB, Microsoft Yahei, Microsoft Jhenghei, sans-serif;
+    font-family: ArialMT, -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Roboto, Arial, Hiragino Sans GB, Microsoft Yahei, Microsoft Jhenghei, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;

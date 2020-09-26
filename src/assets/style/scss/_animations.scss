@@ -32,11 +32,21 @@
 
 @keyframes bottomToTop {
   0% {
-    transform: translateY(-20px);
+    transform: translateY(0px);
   }
 
   100% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes smallBottomToTop {
+  0% {
     transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-10px);
   }
 }
 
@@ -47,5 +57,15 @@
 
   100% {
     transform: translateX(0px);
+  }
+}
+
+@keyframes lightToDark {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
