@@ -190,9 +190,7 @@ export default {
     }
   }
 }
-</style>
-<style lang="css">
-.amap-logo, .amap-copyright {
+/deep/ .amap-logo, /deep/ .amap-copyright {
   display: none !important;
 }
 </style>
