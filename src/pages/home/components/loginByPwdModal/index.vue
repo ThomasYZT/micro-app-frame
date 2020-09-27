@@ -67,6 +67,7 @@ export default {
             this.UPDATE_USERINFO(res.data);
             this.$router.push('/upload');
             this.$msg.success('登录成功');
+            this.hide();
           } else {
             this.$msg.error('登录失败');
           }
