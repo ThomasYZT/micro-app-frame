@@ -49,12 +49,8 @@ export default {
         this.visible = false;
       },
       formValidate () {
-        if (!this.formData.pwd) {
-          this.$msg.error('请填写密码');
-          return;
-        }
-        if (!this.formData.uid) {
-          this.$msg.error('请填写uid');
+        if (!this.formData.pwd || !this.formData.uid) {
+          this.$msg.error('请输入完整信息');
           return;
         }
         this.pwdLogin();
