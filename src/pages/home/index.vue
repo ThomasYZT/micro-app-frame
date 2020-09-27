@@ -84,7 +84,10 @@ export default {
       this.$refs.List.scrollTo(index, fn);
     },
     setGuideIconPos () {
-      this.guideTop = `${document.body.clientHeight - document.querySelector('#homeGuideIcon').offsetHeight - this.$util.realPx(40)}px`
+      let _el = document.querySelector('#homeGuideIcon');
+      if (_el) {
+        this.guideTop = `${document.body.clientHeight - _el.offsetHeight - this.$util.realPx(40)}px`
+      }
     }
   },
   mounted() {

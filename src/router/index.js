@@ -58,7 +58,7 @@ function auth (to, from, next) {
       next({ path: '/pc', replace: true });
     }
   } else {
-    if (to.path !== '/pc/help' && !store.getters.userInfo) {
+    if (to.path !== '/pc/help' && !store.getters.userInfo && !/\/pc|\/clip/.test(to.path)) {
       next({ path: '/', replace: true });
     } else {
       baseLayer.startMicroService();
