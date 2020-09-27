@@ -63,11 +63,10 @@ export default {
             pwd : MD5(this.formData.pwd).toString()
           }
         }).then(res => {
-          res = res.data;
           if (res.code === 0) {
             this.UPDATE_USERINFO(res.data);
             this.$router.push('/upload');
-            this.$msg.error('登录成功');
+            this.$msg.success('登录成功');
           } else {
             this.$msg.error('登录失败');
           }
