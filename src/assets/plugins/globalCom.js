@@ -1,11 +1,13 @@
 import Card from '../../components/card'
 import ajax from '../../assets/api';
+import util from '../../assets/utils/util';
 export default {
   install (Vue) {
     Vue.component(Card.name, Card);
 
     Vue.prototype.$ajax = ajax;
     Vue.prototype.$msg = msg;
+    Vue.prototype.$util = util;
   }
 }
 

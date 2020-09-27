@@ -135,7 +135,6 @@ export default {
           .time {
             margin-bottom: 8px;
             font-size: 22px;
-            font-weight: bold;
             color: #333333;
           }
 

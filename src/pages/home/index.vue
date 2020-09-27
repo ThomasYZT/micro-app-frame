@@ -13,7 +13,7 @@
       <contact class="hash"/>
     </ScrollList>
 
-    <div v-if="navBgColor === 'transparent'" class="guide-icon">
+    <div id="homeGuideIcon" v-if="navBgColor === 'transparent'" class="guide-icon" :style="{ top: guideTop }">
       <img class="arrow" src="../../assets/img/icon_arrow_up@2x.png" alt="">
       <img class="mouse" src="../../assets/img/icon_mouse@2x.png" alt="">
     </div>
@@ -40,7 +40,8 @@ export default {
     return {
       navBgColor: 'transparent',
       curNav: '0',
-      inControl: false
+      inControl: false,
+      guideTop: '0px'
     };
   },
   methods: {
@@ -82,11 +83,19 @@ export default {
       this.inControl = true;
       this.$refs.List.scrollTo(index, fn);
     },
+    setGuideIconPos () {
+      this.guideTop = `${document.body.clientHeight - document.querySelector('#homeGuideIcon').offsetHeight - this.$util.realPx(40)}px`
+    }
   },
   mounted() {
     this.$nextTick(() => {
       this.$wow('.wow')
-    })
+    });
+    this.setGuideIconPos();
+    window.addEventListener('resize', this.setGuideIconPos)
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.setGuideIconPos)
   }
 };
 </script>
@@ -120,7 +129,6 @@ export default {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 600px;
     .arrow {
       margin-bottom: 5px;
       height: 15px;

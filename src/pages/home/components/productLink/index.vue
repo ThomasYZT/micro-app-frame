@@ -10,9 +10,9 @@
         <img class="ani-1 wow" data-animate="fadeInUp" src="../../../../assets/img/pic_four_code@2x.png" alt="">
         <div class="card-wrapper wow"  data-animate="fadeInUp">
           <t-card title="移动端快捷创作">
-            <p class="card-info">不受场景限制，移动制作上传发布视频
-              APP+小程序双端操作，随时记录灵感分享创意
-              高清视频永久保存，释放手机内存
+            <p class="card-info">不受场景限制，移动制作上传发布视频<br>
+              APP+小程序双端操作，随时记录灵感分享创意<br>
+              高清视频永久保存，释放手机内存<br>
               智能算法推荐，主动唤醒粉丝，不错过你的消息</p>
             <template slot="footer">
               <t-button :icon="imgSrc.icon1" hover-expand class="white hover-expand">
@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import icon1 from '../../../../assets/img/pic_four_ewm.png';
-import icon2 from '../../../../assets/img/pic_four_ewm_red.png';
+import icon1 from '../../../../assets/img/pic_four_ewm@2x.png';
+import icon2 from '../../../../assets/img/pic_four_ewm_red@2x.png';
 import code1 from '../../../../assets/img/app_qrcode.png';
 import code2 from '../../../../assets/img/mini_pro_code.png';
 export default {
@@ -104,8 +104,9 @@ export default {
     }
   }
   .card-info {
-    font-size: 14px;
+    font-size: 18px;
     line-height: 44px;
+    white-space: nowrap;
   }
 
   .code-wrapper {

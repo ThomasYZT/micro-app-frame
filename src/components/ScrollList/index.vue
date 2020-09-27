@@ -61,7 +61,7 @@ export default {
         if (index !== _hList.length - 1) {
           return index === 0
             ? 0
-            : _hList.slice(0, index).reduce((s, c) => s + c, 0)
+            : _hList.slice(0, index).reduce((s, c) => s + c, 0) - document.querySelector('.nav-wrapper').offsetHeight
         } else {
           return _contentHeight - this.$refs.content.offsetHeight;
         }

@@ -57,9 +57,9 @@
 </template>
 
 <script>
-import icon1 from '../../../../assets/img/icon_call.png';
-import icon2 from '../../../../assets/img/icon_phone.png';
-import icon3 from '../../../../assets/img/icon_add.png';
+import icon1 from '../../../../assets/img/icon_call@2x.png';
+import icon2 from '../../../../assets/img/icon_phone@2x.png';
+import icon3 from '../../../../assets/img/icon_add@2x.png';
 import AMap from  'AMap'
 export default {
   data () {
@@ -113,6 +113,7 @@ export default {
   }
   .block-wrapper {
     @include pos_set(absolute, 0, 0, 0, 0);
+    margin-top: -60px;
     width: 100%;
     height: 100%;
     .block-content {
@@ -146,6 +147,7 @@ export default {
             font-size: 14px;
 
             img {
+              height: 20px;
               margin-right: 8px;
             }
           }

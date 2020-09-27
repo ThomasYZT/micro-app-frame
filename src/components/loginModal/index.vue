@@ -1,6 +1,7 @@
 <template>
   <div v-if="visible" class="modal-wrapper" ref="modalWrapper" @click.self="close">
     <div class="modal-box">
+      <img class="close-btn" src="../../assets/img/icon_pop_close@2x.png" alt=""  @click="close">
       <div class="modal-body flex-box">
         <div class="left-box">
           <span class="code-title">请使用微信扫描登录</span>
@@ -98,10 +99,19 @@ export default {
     position: relative;
     margin: 25% auto;
     transform: translateY(-50%);
-    width: 743px;
-    height: 560px;
+    width: 743Px;
+    height: 560Px;
     background: #FFFFFF;
-    border-radius: 24px;
+    border-radius: 24Px;
+
+    .close-btn {
+      position: absolute;
+      top: 24Px;
+      right: 24Px;
+      height: 24Px;
+      cursor: pointer;
+    }
+
     .modal-body {
       width: 100%;
       height: 100%;
@@ -110,15 +120,18 @@ export default {
         .left-box {
           @include flex_set(1, 1);
           @include flex_layout(column, center, center);
+          padding: 30Px 0;
+          border-right: 1Px solid #EDEDED;
           .code-title {
-            margin-bottom: 50px;
+            margin-top: -10Px;
+            margin-bottom: 50Px;
             color: #333333;
-            font-size: 24px;
+            font-size: 24Px;
           }
           .code {
             @include flex_layout(row, center, center);
-            width: 200px;
-            height: 200px;
+            width: 200Px;
+            height: 200Px;
             background: linear-gradient(to left, #FF4383, #FF4383) left top no-repeat,
             linear-gradient(to bottom, #FF4383, #FF4383) left top no-repeat,
             linear-gradient(to left, #FF4383, #FF4383) right top no-repeat,
@@ -128,11 +141,11 @@ export default {
             linear-gradient(to left, #FF4383, #FF4383) right bottom no-repeat,
             linear-gradient(to left, #FF4383, #FF4383) right bottom no-repeat;
             /*设置大小*/
-            background-size: 3px 20px, 20px 3px, 3px 20px, 20px 3px;
+            background-size: 3Px 20Px, 20Px 3Px, 3Px 20Px, 20Px 3Px;
 
             /deep/ iframe {
-              width: 180px;
-              height: 180px;
+              width: 180Px;
+              height: 180Px;
 
 
               .loginPanel  {
@@ -143,10 +156,10 @@ export default {
                   display: none;
                 }
                 .qrcode {
-                  width: 160px;
-                  height: 160px;
+                  width: 160Px;
+                  height: 160Px;
                   margin-top: 0;
-                  margin-left: -6px;
+                  margin-left: -6Px;
                   border: 0;
                 }
               }
@@ -156,11 +169,10 @@ export default {
         .right-box {
           @include flex_set(1, 0);
           @include flex_layout(column, center, center);
-
           span {
-            margin-top: 20px;
+            margin-top: 20Px;
             color: #666666;
-            font-style: 14px;
+            font-size: 14Px;
           }
         }
       }
