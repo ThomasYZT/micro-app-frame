@@ -50,7 +50,7 @@
 
     <div class="copryright-block">
       <p>© 2020 湖南为趣时代网络科技有限公司</p>
-      <p>| 用户服务协议 | 隐私政策 | 帮助中心 | 客服及举报: 0731-85679198  |  举报邮箱：dengfeng@piaoquantv.com</p>
+      <p>| 用户服务协议 | 隐私政策 | <span class="link" @click="go('/pc/help')">帮助中心</span> | 客服及举报: 0731-85679198  |  举报邮箱：dengfeng@piaoquantv.com</p>
       <p>网络文化经营许可证：湘网文（2019）4171-013号 | 广播电视节目制作经营许可证：（湘）字第000349号 | ICP备案：湘B2-20180063</p>
     </div>
   </div>
@@ -69,6 +69,11 @@ export default {
         icon2,
         icon3
       }
+    }
+  },
+  methods: {
+    go (path) {
+      this.$router.push(path);
     }
   },
   mounted() {
@@ -190,6 +195,10 @@ export default {
       font-size: 14px;
       color: #FFFFFF;
     }
+  }
+  
+  .link {
+    cursor: pointer;
   }
 }
 /deep/ .amap-logo, /deep/ .amap-copyright {

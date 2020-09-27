@@ -215,7 +215,9 @@ export default {
     margin-left: 20px;
     padding: 5px 10px;
     color: #FFFFFF;
+    line-height: 20px;
     font-size: 14px;
+    text-align: justify;
     background: #160A19;
     border-radius: 15px;
     cursor: pointer;
