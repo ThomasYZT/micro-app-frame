@@ -19,7 +19,7 @@
               海量视觉素材，自动搜索，智能匹配<br>
               智能语音一键添加，音色完美拟人化</p>
             <template slot="footer">
-              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary" @click="go('/pc')">立即体验</t-button>
+              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary" @click="go('/upload')">立即体验</t-button>
             </template>
           </t-card>
         </div>
@@ -35,7 +35,7 @@
               高清长视频无压缩，保留最完美观赏体验<br>
               公众号、小程序、APP多平台同时发布</p>
             <template slot="footer">
-              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary" @click="go('/pc')">立即体验</t-button>
+              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary" @click="go('/upload')">立即体验</t-button>
             </template>
           </t-card>
         </div>
@@ -62,7 +62,7 @@
               付费，广告，电商多模式变现，助力收益增长<br>
               个性算法推荐，高效触达属于你的粉丝群</p>
             <template slot="footer">
-              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary" @click="go('/pc')">立即体验</t-button>
+              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary" @click="go('/upload')">立即体验</t-button>
             </template>
           </t-card>
         </div>

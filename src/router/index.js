@@ -46,7 +46,7 @@ function auth (to, from, next) {
           appId : config.APPID
         }).then(res => {
           baseLayer.startMicroService();
-          next({ path: '/pc', replace: true });
+          next({ path: '/upload', replace: true });
         }).catch(err => {
           next({ path: '/', replace: true });
         });
@@ -55,14 +55,23 @@ function auth (to, from, next) {
       }
     } else {
       baseLayer.startMicroService();
-      next({ path: '/pc', replace: true });
+      next({ path: '/upload', replace: true });
     }
   } else {
-    if (to.path !== '/pc/help' && !store.getters.userInfo && !/\/pc|\/clip/.test(to.path)) {
-      next({ path: '/', replace: true });
+    if (/\/upload|\/clip/.test(to.path)) {
+      if (!store.getters.userInfo) {
+        if (to.path === '/upload/help') {
+          baseLayer.startMicroService();
+          next();
+        } else {
+          next({ path: '/', replace: true });
+        }
+      } else {
+        baseLayer.startMicroService();
+        next({ replace: true });
+      }
     } else {
-      baseLayer.startMicroService();
-      next({ replace: true });
+      next({ path: '/', replace: true });
     }
   }
 }

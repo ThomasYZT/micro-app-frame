@@ -12,7 +12,7 @@
             </div>
             <template slot="footer">
               <t-button :icon="imgSrc.icon1" class="primary" @click="go('/clip')">创作视频</t-button>
-              <t-button :icon="imgSrc.icon2"  class="white" @click="go('/pc')">发布视频</t-button>
+              <t-button :icon="imgSrc.icon2"  class="white" @click="go('/upload')">发布视频</t-button>
             </template>
           </t-card>
         </div>

@@ -23,7 +23,7 @@ const subAppList = [
     name: 'longvideo-pc',
     entry: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : pcEntry,
     container: "#app-container",
-    activeRule: '/pc'
+    activeRule: '/upload'
   },
 ];
 
