@@ -11,11 +11,11 @@ switch (HTTP_ENV) {
     config.AUTHURL = 'https://piaoquantv.yishihui.com/';
     break;
   case 'pre':
-    config.APPID = 'wx853a8d12eea0e682';
+    config.APPID = 'wx4ad82552268afc8d';
     config.AUTHURL = 'https://pre.piaoquantv.com/';
     break;
   case 'prod':
-    config.APPID = 'wx4ad82552268afc8d';
+    config.APPID = 'wx73a6cb4d85be594f';
     config.AUTHURL = 'https://piaoquantv.com/';
     break;
 }

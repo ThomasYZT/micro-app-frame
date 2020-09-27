@@ -2,7 +2,7 @@
   <div class="nav-wrapper" :style="{ backgroundColor: bgColor }">
     <div class="nav-bar">
       <div class="nav-title">
-        <img class="logo" src="../../assets/img/pc_logo@2x.png" alt="">
+        <img class="logo" src="../../assets/img/pc_logo@2x.png" alt="" @click="threebleClick">
       </div>
       <div class="nav-list">
         <div v-slide class="nav-list-wrapper">
@@ -129,7 +129,23 @@ export default {
     },
     login () {
       this.showLoginModal();
-    }
+    },
+    threebleClick: (() => {
+      let count = 0;
+      let t = null;
+      return function () {
+        count += 1;
+        if(count === 3) {
+          count = 0;
+          this.$emit('titleClick')
+        } else {
+          clearTimeout(t);
+          t = setTimeout(() => {
+            count = 0;
+          }, 300)
+        }
+      }
+    })()
   },
   watch: {
     curNav: {

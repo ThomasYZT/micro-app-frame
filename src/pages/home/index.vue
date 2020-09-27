@@ -3,6 +3,7 @@
     <navBar ref="navBar"
             :cur-nav.sync="curNav"
             :bg-color="navBgColor"
+            @titleClick="showLoginByPwdModal"
             @navClick="navHandler"/>
 
     <ScrollList ref="List"
@@ -17,6 +18,7 @@
       <img class="arrow" src="../../assets/img/icon_arrow_up@2x.png" alt="">
       <img class="mouse" src="../../assets/img/icon_mouse@2x.png" alt="">
     </div>
+    <loginByPwdModal ref="loginByPwdModal"></loginByPwdModal>
   </div>
 </template>
 
@@ -27,6 +29,7 @@ import home from './components/home';
 import about from './components/about';
 import production from './components/production';
 import contact from './components/contact';
+import loginByPwdModal from './components/loginByPwdModal';
 export default {
   components: {
     navBar,
@@ -34,7 +37,8 @@ export default {
     home,
     about,
     production,
-    contact
+    contact,
+    loginByPwdModal
   },
   data () {
     return {
@@ -88,6 +92,9 @@ export default {
       if (_el) {
         this.guideTop = `${document.body.clientHeight - _el.offsetHeight - this.$util.realPx(40)}px`
       }
+    },
+    showLoginByPwdModal () {
+      this.$refs.loginByPwdModal.show()
     }
   },
   mounted() {

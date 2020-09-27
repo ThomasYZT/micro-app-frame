@@ -3,7 +3,6 @@ import axios from 'axios';
 import apiList from './apiList';
 import qs from 'querystring';
 import defaultsDeep from 'lodash/defaultsDeep';
-import store from '../../store';
 
 //创建自定义axios实例
 let instance = axios.create({

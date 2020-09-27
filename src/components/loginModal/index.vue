@@ -1,8 +1,7 @@
 <template>
-  <div v-if="visible" class="modal-wrapper" ref="modalWrapper" @click.self="close">
-    <div class="modal-box">
-      <img class="close-btn" src="../../assets/img/icon_pop_close@2x.png" alt=""  @click="close">
-      <div class="modal-body flex-box">
+  <div class="modal-wrapper">
+    <t-modal v-model="visible">
+      <div class="modal-box flex-box">
         <div class="left-box">
           <span class="code-title">请使用微信扫描登录</span>
           <div class="code" id="code"></div>
@@ -12,7 +11,7 @@
           <span>打开「微信」-「扫一扫」</span>
         </div>
       </div>
-    </div>
+    </t-modal>
   </div>
 </template>
 
@@ -26,11 +25,7 @@ export default {
     }
   },
   methods: {
-    //-------------------------------------------------------
-    //  业务逻辑
-    //-------------------------------------------------------
     show () {
-      this.showMask();
       this.visible = true;
       this.$nextTick(() => {
         new WxLogin({
@@ -43,48 +38,8 @@ export default {
       })
     },
     close () {
-      this.closeMask();
       this.visible = false;
     },
-    //-------------------------------------------------------
-    //  公共逻辑
-    //-------------------------------------------------------
-    showMask () {
-      let mask = this.createMask();
-      let maskZIndex = mask.style.zIndex;
-      setTimeout(() => {
-        this.$refs.modalWrapper.style.zIndex = Number(maskZIndex) + 1;
-        mask.style.backgroundColor = 'rgba(0, 0, 0, .5)';
-      }, 0)
-    },
-    closeMask () {
-      let mask = document.getElementsByClassName('t-mask').length > 0
-        ? document.getElementsByClassName('t-mask')[0]
-        : null;
-      if (mask) {
-        mask.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-        setTimeout(() => {
-          mask.remove();
-        }, 300)
-      }
-    },
-    createMask () {
-      if (document.getElementsByClassName('t-mask').length === 0) {
-        let maxZIndex = this.getMaxZIndex();
-        let mask = document.createElement('div');
-        mask.setAttribute('class', 't-mask');
-        mask.style.zIndex = maxZIndex + 1;
-        document.body.appendChild(mask);
-        return mask;
-      } else {
-        return document.getElementsByClassName('t-mask')[0];
-      }
-    },
-    getMaxZIndex () {
-      return [...document.body.querySelectorAll('*')].reduce((r, e) => {
-        return Math.max(r, +window.getComputedStyle(e).zIndex || 0)
-      }, 0)
-    }
   }
 }
 </script>
@@ -92,92 +47,75 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/style/scss/base";
 .modal-wrapper {
-  @include pos_set(fixed, 0,0,0,0);
-  width: 100%;
-  height: 100%;
-  .modal-box {
-    position: relative;
-    margin: 25% auto;
-    transform: translateY(-50%);
+  /deep/ .t-modal-box {
     width: 743Px;
     height: 560Px;
-    background: #FFFFFF;
-    border-radius: 24Px;
+  }
+}
 
-    .close-btn {
-      position: absolute;
-      top: 24Px;
-      right: 24Px;
-      height: 24Px;
-      cursor: pointer;
-    }
-
-    .modal-body {
-      width: 100%;
-      height: 100%;
-      &.flex-box {
+.modal-box {
+  width: 100%;
+  height: 100%;
+  &.flex-box {
+    @include flex_layout(row, center, center);
+    .left-box {
+      @include flex_set(1, 1);
+      @include flex_layout(column, center, center);
+      padding: 30Px 0;
+      border-right: 1Px solid #EDEDED;
+      .code-title {
+        margin-top: -10Px;
+        margin-bottom: 50Px;
+        color: #333333;
+        font-size: 24Px;
+      }
+      .code {
         @include flex_layout(row, center, center);
-        .left-box {
-          @include flex_set(1, 1);
-          @include flex_layout(column, center, center);
-          padding: 30Px 0;
-          border-right: 1Px solid #EDEDED;
-          .code-title {
-            margin-top: -10Px;
-            margin-bottom: 50Px;
-            color: #333333;
-            font-size: 24Px;
-          }
-          .code {
-            @include flex_layout(row, center, center);
-            width: 200Px;
-            height: 200Px;
-            background: linear-gradient(to left, #FF4383, #FF4383) left top no-repeat,
-            linear-gradient(to bottom, #FF4383, #FF4383) left top no-repeat,
-            linear-gradient(to left, #FF4383, #FF4383) right top no-repeat,
-            linear-gradient(to bottom, #FF4383, #FF4383) right top no-repeat,
-            linear-gradient(to left, #FF4383, #FF4383) left bottom no-repeat,
-            linear-gradient(to bottom, #FF4383, #FF4383) left bottom no-repeat,
-            linear-gradient(to left, #FF4383, #FF4383) right bottom no-repeat,
-            linear-gradient(to left, #FF4383, #FF4383) right bottom no-repeat;
-            /*设置大小*/
-            background-size: 3Px 20Px, 20Px 3Px, 3Px 20Px, 20Px 3Px;
+        width: 200Px;
+        height: 200Px;
+        background: linear-gradient(to left, #FF4383, #FF4383) left top no-repeat,
+        linear-gradient(to bottom, #FF4383, #FF4383) left top no-repeat,
+        linear-gradient(to left, #FF4383, #FF4383) right top no-repeat,
+        linear-gradient(to bottom, #FF4383, #FF4383) right top no-repeat,
+        linear-gradient(to left, #FF4383, #FF4383) left bottom no-repeat,
+        linear-gradient(to bottom, #FF4383, #FF4383) left bottom no-repeat,
+        linear-gradient(to left, #FF4383, #FF4383) right bottom no-repeat,
+        linear-gradient(to left, #FF4383, #FF4383) right bottom no-repeat;
+        /*设置大小*/
+        background-size: 3Px 20Px, 20Px 3Px, 3Px 20Px, 20Px 3Px;
 
-            /deep/ iframe {
-              width: 180Px;
-              height: 180Px;
+        /deep/ iframe {
+          width: 180Px;
+          height: 180Px;
 
 
-              .loginPanel  {
-                .title {
-                  display: none;
-                }
-                .info {
-                  display: none;
-                }
-                .qrcode {
-                  width: 160Px;
-                  height: 160Px;
-                  margin-top: 0;
-                  margin-left: -6Px;
-                  border: 0;
-                }
-              }
+          .loginPanel  {
+            .title {
+              display: none;
             }
-          }
-        }
-        .right-box {
-          @include flex_set(1, 0);
-          @include flex_layout(column, center, center);
-          span {
-            margin-top: 20Px;
-            color: #666666;
-            font-size: 14Px;
+            .info {
+              display: none;
+            }
+            .qrcode {
+              width: 160Px;
+              height: 160Px;
+              margin-top: 0;
+              margin-left: -6Px;
+              border: 0;
+            }
           }
         }
       }
     }
+    .right-box {
+      @include flex_set(1, 0);
+      @include flex_layout(column, center, center);
+      span {
+        margin-top: 20Px;
+        color: #666666;
+        font-size: 14Px;
+      }
+    }
   }
-
 }
 </style>
