@@ -19,7 +19,7 @@
               海量视觉素材，自动搜索，智能匹配<br>
               智能语音一键添加，音色完美拟人化</p>
             <template slot="footer">
-              <t-button :icon="imgSrc.icon2" class="dark play-btn" @click="showTutorial">观看教程</t-button>
+              <t-button :icon="imgSrc.icon2" class="dark play-btn" @click="showTutorial">观看介绍</t-button>
               <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary" @click="go('/upload')">立即体验</t-button>
             </template>
           </t-card>
