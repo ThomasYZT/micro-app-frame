@@ -35,6 +35,9 @@ export default {
     ]),
     show () {
       this.visible = true;
+      this.$nextTick(() => {
+        this.$refs.video.play();
+      })
     },
     hide () {
       this.visible = false;
