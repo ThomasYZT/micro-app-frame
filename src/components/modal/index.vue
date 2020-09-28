@@ -51,9 +51,7 @@ export default {
         : null;
       if (mask) {
         mask.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-        setTimeout(() => {
-          mask.remove();
-        }, 300)
+        mask.remove();
       }
     },
     createMask () {

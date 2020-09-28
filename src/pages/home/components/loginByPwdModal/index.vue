@@ -64,10 +64,12 @@ export default {
           }
         }).then(res => {
           if (res.code === 0) {
-            this.UPDATE_USERINFO(res.data);
-            this.$router.push('/upload');
-            this.$msg.success('登录成功');
             this.hide();
+            this.$nextTick(() => {
+              this.UPDATE_USERINFO(res.data);
+              this.$router.push('/upload');
+              this.$msg.success('登录成功');
+            })
           } else {
             this.$msg.error('登录失败');
           }

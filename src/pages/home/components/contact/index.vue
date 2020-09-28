@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     go (path) {
-      this.$router.push(path);
+      window.open(location.origin + path);
     },
     open (type) {
       switch (type) {
