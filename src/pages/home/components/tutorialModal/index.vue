@@ -5,7 +5,8 @@
              @close="hide">
       <!-- 内容 -->
       <div class="box">
-        <video ref="video"
+        <video v-if="visible"
+               ref="video"
                id="video"
                controls="controls"
                preload="auto"
@@ -87,6 +88,7 @@ export default {
       height: 100%;
       border-radius: 24Px;
       outline: none;
+      object-fit: fill
     }
   }
 }

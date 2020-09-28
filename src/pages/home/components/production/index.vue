@@ -19,7 +19,7 @@
               海量视觉素材，自动搜索，智能匹配<br>
               智能语音一键添加，音色完美拟人化</p>
             <template slot="footer">
-              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="dark" @click="showTutorial">观看教程</t-button>
+              <t-button :icon="imgSrc.icon2" class="dark play-btn" @click="showTutorial">观看教程</t-button>
               <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary" @click="go('/upload')">立即体验</t-button>
             </template>
           </t-card>
@@ -80,6 +80,7 @@
 import productLink from '../productLink';
 import tutorialModal from '../tutorialModal';
 import icon1 from '../../../../assets/img/icon_arrow.png'
+import icon2 from '../../../../assets/img/btn_play_icon@2x.png';
 import { mapGetters, mapActions } from 'vuex';
 export default {
   components : {
@@ -89,7 +90,8 @@ export default {
   data () {
     return {
       imgSrc: {
-        icon1
+        icon1,
+        icon2
       }
     }
   },
@@ -143,6 +145,14 @@ export default {
         height: 120px;
         animation: rightToLeft 3s linear infinite alternate;
       }
+    }
+  }
+
+  /deep/ .play-btn {
+    .prefix-icon {
+      margin-left: -7px;
+      padding-top: 7px;
+      height: 30px;
     }
   }
 }
