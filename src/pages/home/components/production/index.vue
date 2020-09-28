@@ -19,6 +19,7 @@
               海量视觉素材，自动搜索，智能匹配<br>
               智能语音一键添加，音色完美拟人化</p>
             <template slot="footer">
+              <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="dark" @click="showTutorial">观看教程</t-button>
               <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary" @click="go('/upload')">立即体验</t-button>
             </template>
           </t-card>
@@ -71,16 +72,19 @@
 
     <!-- 产品引导 -->
     <product-link />
+    <tutorialModal ref="tutorialModal"></tutorialModal>
   </div>
 </template>
 
 <script>
 import productLink from '../productLink';
+import tutorialModal from '../tutorialModal';
 import icon1 from '../../../../assets/img/icon_arrow.png'
 import { mapGetters, mapActions } from 'vuex';
 export default {
   components : {
-    productLink
+    productLink,
+    tutorialModal
   },
   data () {
     return {
@@ -104,6 +108,9 @@ export default {
         return;
       }
       this.$router.push(path);
+    },
+    showTutorial () {
+      this.$refs.tutorialModal.show();
     }
   }
 };

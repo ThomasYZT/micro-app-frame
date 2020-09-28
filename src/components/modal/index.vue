@@ -1,10 +1,17 @@
 <template>
   <div ref="modalWrapper"
        class="t-modal-wrapper"
-       v-if="visible"
+       v-show="visible"
        @click.self="close">
     <div class="t-modal-box">
-      <img class="t-close-btn" src="../../assets/img/icon_pop_close@2x.png"
+      <img v-if="outerClose"
+           class="t-close-btn outer"
+           src="../../assets/img/icon_pop_close_white@2x.png"
+           alt=""
+           @click="close">
+      <img v-else
+           class="t-close-btn inset"
+           src="../../assets/img/icon_pop_close@2x.png"
            alt=""
            @click="close">
       <div class="t-modal-body">
@@ -22,6 +29,10 @@ export default {
     event: 'change'
   },
   props: {
+    outerClose: {
+      typpe: Boolean,
+      default: false
+    },
     visible: {
       type: Boolean,
       default: false
@@ -105,10 +116,17 @@ export default {
 
   .t-close-btn {
     position: absolute;
-    top: 24Px;
-    right: 24Px;
     height: 24Px;
     cursor: pointer;
+
+    &.inset {
+      top: 24Px;
+      right: 24Px;
+    }
+    &.outer {
+      top: -48px;
+      right: 24px;
+    }
   }
 
   .t-modal-body {

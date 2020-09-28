@@ -84,6 +84,26 @@ button {
     }
   }
 
+  &.dark {
+    color: $color_white;
+    background: #160A19;
+    border-radius: 34px;
+
+    &:hover {
+      box-shadow: 0px 4px 8px 0px rgba(62, 62, 62, 0.3);
+    }
+
+    &:active {
+      background: #160A19;
+      box-shadow: 0px 4px 8px 0px rgba(62, 62, 62, 0.7);
+      border-radius: 34px;
+    }
+
+    .expand-box {
+      background: #160A19;
+    }
+  }
+
   &.white {
     color: $light_black_color;
     background: #F3F3FC;

@@ -8,6 +8,16 @@ export default (function(win, lib) {
   var tid;
   var flexible = lib.flexible || (lib.flexible = {});
 
+  function refreshRem(){
+    var width = docEl.getBoundingClientRect().width;
+    if (width / dpr > 540) {
+      width = width * dpr;
+    }
+    var rem = width / 10;
+    docEl.style.fontSize = rem + 'px';
+    flexible.rem = win.rem = rem;
+  }
+
   function resizeHandler () {
     clearTimeout(tid);
     tid = setTimeout(refreshRem, 300);
@@ -89,16 +99,6 @@ export default (function(win, lib) {
           wrap.appendChild(metaEl);
           doc.write(wrap.innerHTML);
         }
-      }
-
-      function refreshRem(){
-        var width = docEl.getBoundingClientRect().width;
-        if (width / dpr > 540) {
-          width = width * dpr;
-        }
-        var rem = width / 10;
-        docEl.style.fontSize = rem + 'px';
-        flexible.rem = win.rem = rem;
       }
 
       win.addEventListener('resize', resizeHandler, false);
