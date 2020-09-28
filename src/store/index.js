@@ -3,10 +3,15 @@ import Vuex from 'vuex';
 import { Storage } from '../assets/utils/common';
 import { storageKeys } from '../assets/enums';
 import ajax from '../assets/api';
+import MD5 from "crypto-js/md5";
+import logs from './modules/log'
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  modules: {},
+  modules: {
+    logs
+  },
   state: {
     userInfo: Storage.get(storageKeys.userInfo),
     errMsg: '',
@@ -57,5 +62,30 @@ export default new Vuex.Store({
         commit('UUPDATE_LOGINMODAL_STATUS', false);
       }, 0)
     },
+
+    // 日志上报
+    logging ({ commit, state }, params) {
+      params.operationType = 'PC_' + params.operationType;
+      params.clientTimestamp = new Date().getTime();
+      if (params.extParams) {
+        let extParams = JSON.parse(params.extParams);
+        extParams.hostType = state.hostType;
+        params.extParams = JSON.stringify(extParams);
+      }else {
+        params.extParams = JSON.stringify({ hostType : state.hostType });
+      }
+      return new Promise((resolve, reject) => {
+        ajax.post({
+          apiKey: 'uploadOperationInfo',
+          params: params,
+          config : null,
+          module : 'commonURL'
+        }).then(res => {
+          resolve(res);
+        }).catch((error) => {
+          reject(error);
+        });
+      });
+    }
   }
 })

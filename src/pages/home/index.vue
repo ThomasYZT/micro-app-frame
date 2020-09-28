@@ -30,6 +30,7 @@ import about from './components/about';
 import production from './components/production';
 import contact from './components/contact';
 import loginByPwdModal from './components/loginByPwdModal';
+import { mapActions } from "vuex";
 export default {
   components: {
     navBar,
@@ -49,6 +50,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions([
+      'log',
+    ]),
     onScroll (e, scrollMap) {
       if (e.target.scrollTop <= 0) {
         this.navBgColor !== 'transparent' && (this.navBgColor = 'transparent');
@@ -95,9 +99,20 @@ export default {
     },
     showLoginByPwdModal () {
       this.$refs.loginByPwdModal.show()
-    }
+    },
+    /**
+     * 访问上报
+     */
+    visitorsLog() {
+      let performance = window.performance || window.msPerformance || window.webkitPerformance;
+      let t = performance.timing;
+      let navigationStart = t.navigationStart;
+      let loadTime = (new Date().getTime() - navigationStart);
+      this.log({ name : 'visitors', params : { loadTime : loadTime } });
+    },
   },
   mounted() {
+    this.visitorsLog();
     this.$nextTick(() => {
       this.$wow('.wow')
     });
