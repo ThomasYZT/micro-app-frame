@@ -3,6 +3,7 @@ import store from '../store';
 import config from '../config';
 import VueRouter from 'vue-router';
 import baseLayer from "../main";
+import flexible from '../assets/utils/flexible';
 
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push (location, onResolve, onReject) {
@@ -45,6 +46,7 @@ function auth (to, from, next) {
           appType : 8,
           appId : config.APPID
         }).then(res => {
+          flexible.clear();
           baseLayer.startMicroService();
           next({ path: '/upload', replace: true });
         }).catch(err => {
@@ -54,6 +56,7 @@ function auth (to, from, next) {
         next({ replace: true });
       }
     } else {
+      flexible.clear();
       baseLayer.startMicroService();
       next({ path: '/upload', replace: true });
     }
@@ -61,12 +64,14 @@ function auth (to, from, next) {
     if (/\/upload|\/clip/.test(to.path)) {
       if (!store.getters.userInfo) {
         if (to.path === '/upload/help') {
+          flexible.clear();
           baseLayer.startMicroService();
           next();
         } else {
           next({ path: '/', replace: true });
         }
       } else {
+        flexible.clear();
         baseLayer.startMicroService();
         next({ replace: true });
       }

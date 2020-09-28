@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import './assets/utils/flexible';
+import flexible from './assets/utils/flexible';
 import root from './App.vue';
 import router from './router';
 import store from './store';
@@ -10,6 +10,7 @@ import BaseLayer from '../BaseLayer';
 
 Vue.config.productionTip = false;
 
+flexible.init();
 const baseLayer = new BaseLayer({ Vue, root, router, store });
 
 baseLayer.startup();

@@ -40,7 +40,7 @@ export default new Vuex.Store({
       }).then(res => {
         if (res.code === 0) {
           commit('UPDATE_USERINFO', res.data);
-          dispatch('showMsg', { type: 'success', content: '登录成功' });
+          // dispatch('showMsg', { type: 'success', content: '登录成功' });
           return res.data;
         } else {
           dispatch('showMsg', { type: 'error', content: '登录失败' });
