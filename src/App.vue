@@ -49,6 +49,20 @@ export default {
     }
   }
 };
+
+const HTTP_ENV = process.env.HTTP_ENV;
+if (HTTP_ENV === 'prod') {
+  var _mtac = {"senseQuery":1};
+  (function() {
+    var mta = document.createElement("script");
+    mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+    mta.setAttribute("name", "MTAH5");
+    mta.setAttribute("sid", "500730622");
+    mta.setAttribute("cid", "500730623");
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mta, s);
+  })();
+}
 </script>
 
 <style lang="scss">
