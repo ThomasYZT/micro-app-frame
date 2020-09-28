@@ -40,9 +40,9 @@ module.exports = {
       .tap(args => {
         return [{ 'process.env': process.env.NODE_ENV === 'production' ? DevEnv : ProEnv }];
       });
-    config
-      .plugin('webpack-bundle-analyzer')
-      .use(bundleAnalyzer.BundleAnalyzerPlugin);
+    // config
+    //   .plugin('webpack-bundle-analyzer')
+    //   .use(bundleAnalyzer.BundleAnalyzerPlugin);
     config.when(process.env.NODE_ENV === 'production', () => {
       config.module.rule('css').oneOf('vue').use('vue-style-loader').clear();
       config.plugin('gzip')
