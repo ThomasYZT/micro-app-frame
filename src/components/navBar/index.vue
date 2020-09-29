@@ -15,7 +15,9 @@
             </div>
         </div>
       </div>
-      <div class="login-btn" @click="login">登录</div>
+      <div class="login-block" @click="login">
+        <div class="login-btn">登录</div>
+      </div>
     </div>
   </div>
 </template>
@@ -224,23 +226,27 @@ export default {
       }
     }
   }
+  .login-block {
+    display: flex;
+    align-items: center;
+    .login-btn {
+      display: inline-block;
+      margin-left: 20px;
+      padding: 5px 10px;
+      color: #FFFFFF;
+      line-height: 20px;
+      font-size: 14px;
+      text-align: justify;
+      background: #160A19;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all .3s linear;
 
-  .login-btn {
-    display: inline-block;
-    margin-left: 20px;
-    padding: 5px 10px;
-    color: #FFFFFF;
-    line-height: 20px;
-    font-size: 14px;
-    text-align: justify;
-    background: #160A19;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: all .3s linear;
-
-    &:hover {
-      background-color: rgba(22, 10, 25, 0.5);
+      &:hover {
+        background-color: rgba(22, 10, 25, 0.5);
+      }
     }
   }
+  
 }
 </style>
