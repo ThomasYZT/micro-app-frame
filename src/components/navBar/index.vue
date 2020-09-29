@@ -160,7 +160,6 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/style/scss/base";
 .nav-wrapper {
-  @include flex_layout(row, center, center);
   z-index: 10;
   position: absolute;
   top: 0;
@@ -169,10 +168,10 @@ export default {
   height: 68px;
 
   .nav-bar {
-    @include flex_layout(row, center, center);
-    @include flex_set(1, 0);
+    display: flex;
     max-width: 1000px;
     height: 100%;
+    margin: auto;
     .nav-title {
       @include flex_layout(column, center, flex-start);
       @include flex_set(1, 1);
