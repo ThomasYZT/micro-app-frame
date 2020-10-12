@@ -51,7 +51,7 @@
     <div class="copryright-block">
       <p>© 2020 湖南为趣时代网络科技有限公司</p>
       <p>| <span class="link" @click="open('service')">用户服务协议</span> | <span class="link" @click="open('agreement')">隐私政策</span> | <span class="link" @click="go('/upload/help')">帮助中心</span> | 客服及举报: 0731-85679198  |  举报邮箱：dengfeng@piaoquantv.com</p>
-      <p>网络文化经营许可证：湘网文（2019）4171-013号 | 广播电视节目制作经营许可证：（湘）字第000349号 | ICP备案：湘B2-20180063</p>
+      <p>网络文化经营许可证：湘网文（2019）4171-013号 | 广播电视节目制作经营许可证：（湘）字第000349号 | ICP备案：湘B2-20180063 | <span class="link" @click="open('beian')">湘ICP备16013107号</span></p>
     </div>
   </div>
 </template>
@@ -83,6 +83,8 @@ export default {
         case 'agreement':
           window.open('https://rescdn.yishihui.com/agreement/piaoquantvagreement.html');
           break;
+        case 'beian':
+          window.open('https://beian.miit.gov.cn');
       }
     }
   },

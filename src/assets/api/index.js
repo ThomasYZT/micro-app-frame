@@ -37,6 +37,8 @@ export default {
         }
         //设置时间戳
         params.clientTimestamp = Date.now();
+        params.appType = 8;
+
         let needStringify = !(myConfig.headers &&
             (myConfig.headers['content-type'].includes('application/json') ||
                 myConfig.headers['content-type'].includes('multipart/form-data')));
@@ -55,6 +57,8 @@ export default {
         }
         //设置时间戳
         myConfig.params.clientTimestamp = Date.now();
+        myConfig.params.appType = 8;
+
         return instance.get(HttpConfig[module] + `${apiList[apiKey]}`, myConfig).then(res => {
           return res;
         }).catch(err => {
