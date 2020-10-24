@@ -16,7 +16,7 @@ switch (HTTP_ENV) {
     break;
   case 'prod':
     config.APPID = 'wx73a6cb4d85be594f';
-    config.AUTHURL = 'https://piaoquantv.com/';
+    config.AUTHURL = 'https://www.piaoquantv.com/';
     break;
 }
  export default config;
