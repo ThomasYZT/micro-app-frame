@@ -100,7 +100,7 @@ export default {
       center: [116.27912, 40.04972] // 设置地图中心点坐标
     });
     map.on('click', function (e) {
-      console.log(e);
+      // console.log(e);
     });
     const marker = new AMap.Marker({
       position: [116.279749, 40.04968]

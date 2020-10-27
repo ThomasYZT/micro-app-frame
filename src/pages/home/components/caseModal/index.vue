@@ -17,6 +17,7 @@
         </div>
         <div class="dialog-body">
           <div v-for="(item, index) in videoList"
+               :key="index"
                v-show="index === curHash"
                class="info-panel">
             <div class="info-block">
@@ -83,7 +84,6 @@ export default {
       function init (el, curHash = 0) {
         _parent = el;
         const items = Array.from(el.getElementsByClassName('nav-item'));
-        console.log(items);
         items.forEach((item, index) => {
           _offsetMap[index] = {
             width: item.offsetWidth * 0.4,
@@ -91,7 +91,6 @@ export default {
             xAxis: (Object.values(_offsetMap).reduce((s, item) => s + item.itemWidth, 0) || 0) + item.offsetWidth * 0.3
           };
         });
-        console.log(_offsetMap);
         _bar = document.createElement('span');
         _bar.setAttribute('class', 'active-line');
         _bar.style.width = `${_offsetMap[curHash].width}px`;
@@ -179,8 +178,8 @@ export default {
 @import "~@/assets/style/scss/base";
 .modal-wrapper {
   /deep/ .t-modal-box {
-    width: 1000Px;
-    height: 480Px;
+    width: 1000px;
+    height: 480px;
 
     .t-close-btn {
       height: 20px;

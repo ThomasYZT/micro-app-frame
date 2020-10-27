@@ -12,16 +12,16 @@ module.exports = {
   },
   configureWebpack: {
     externals: {
-      AMap : 'AMap',
+      AMap: 'AMap'
     }
   },
   css: {
     loaderOptions: {
       postcss: {
         plugins: [
-          require('postcss-px2rem')({ //配置项，详见官方文档
+          require('postcss-px2rem')({
             remUnit: 144
-          }),
+          })
         ]
       }
     }
