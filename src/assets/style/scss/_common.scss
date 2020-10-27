@@ -20,6 +20,10 @@ div[data-name='longvideo-pc'], div[data-name='clip'] {
   .block-header {
     margin: 0 auto;
     width: 1000px;
+
+    &.align-center {
+      @include flex_layout(row, center, center);
+    }
   }
   .block-content {
     @include flex_layout(row, space-between, center);

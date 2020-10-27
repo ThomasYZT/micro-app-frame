@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="{ 'title-card' : type === 'title' }">
+  <div class="card" :class="[{ 'title-card' : type === 'title' }, `${align}-align`]">
     <div class="card-head" :class="{ 'no-mark' : !titleMark }">
       <h4 class="title" v-html="title"></h4>
       <h5 class="sub-title" v-html="subTitle"></h5>
@@ -37,6 +37,12 @@ export default {
     content: {
       type: String,
       default: ''
+    },
+    align: {
+      type: String,
+      default: (val) => {
+        return val || 'left';
+      }
     }
   }
 };
@@ -47,11 +53,42 @@ export default {
 .card {
   max-width: 360px;
   height: auto;
+
+  &.title-card {
+    .card-head {
+      padding-bottom: 28px;
+      margin-bottom: 0;
+      .title {
+        font-size: 44px;
+      }
+    }
+  }
+
+  &.center-align {
+    .card-head {
+      text-align: center;
+
+      .title-mark {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  &.left-align {
+    .card-head {
+      text-align: left;
+
+      .title-mark {
+        left: 0;
+      }
+    }
+  }
+
   .card-head {
     position: relative;
     margin-bottom: 24px;
     padding-bottom: 32px;
-    text-align: left;
     .title {
       color: #160A19;
       font-size: 36px;
@@ -60,14 +97,13 @@ export default {
 
     .sub-title {
       font-size: 20px;
-      color: rgba(51, 51, 51, 0.8);
+      color: rgba(51, 51, 51, 0.2);
       line-height: 23px;
       font-weight: lighter;
     }
 
     .title-mark {
       position: absolute;
-      left: 0;
       bottom: 0;
       height: 8px;
       width: 40px;
@@ -77,14 +113,6 @@ export default {
     &.no-mark {
       margin-bottom: 0;
       padding-bottom: 24px;
-    }
-  }
-
-  &.title-card {
-    .card-head {
-      font-size: 44px;
-      padding-bottom: 28px;
-      margin-bottom: 0;
     }
   }
 

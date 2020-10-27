@@ -5,7 +5,7 @@
       <!-- 内容 -->
       <div class="box">
         <div class="box-header">
-            <span>账号登录</span>
+          <span>账号登录</span>
         </div>
         <div class="box-content">
           <div class="form-wrapper">
@@ -31,52 +31,52 @@ import { mapMutations } from 'vuex';
 export default {
   data () {
     return {
-      visible : false,
-      formData : {
-        uid : '',
-        pwd : ''
+      visible: false,
+      formData: {
+        uid: '',
+        pwd: ''
       }
     };
   },
-    methods : {
-      ...mapMutations([
-        'UPDATE_USERINFO'
-      ]),
-      show () {
-        this.visible = true;
-      },
-      hide () {
-        this.visible = false;
-      },
-      formValidate () {
-        if (!this.formData.pwd || !this.formData.uid) {
-          this.$msg.error('请输入完整信息');
-          return;
-        }
-        this.pwdLogin();
-      },
-      pwdLogin () {
-        this.$ajax.post({
-          apiKey: 'wxLoginByPwd',
-          params: {
-            uid : this.formData.uid,
-            pwd : MD5(this.formData.pwd).toString()
-          }
-        }).then(res => {
-          if (res.code === 0) {
-            this.hide();
-            this.UPDATE_USERINFO(res.data);
-            this.$nextTick(() => {
-              this.$router.push('/upload');
-            })
-          } else {
-            this.$msg.error('登录失败');
-          }
-        }).catch(() => {
-          this.$msg.error('登录失败');
-        });
+  methods: {
+    ...mapMutations([
+      'UPDATE_USERINFO'
+    ]),
+    show () {
+      this.visible = true;
+    },
+    hide () {
+      this.visible = false;
+    },
+    formValidate () {
+      if (!this.formData.pwd || !this.formData.uid) {
+        this.$msg.error('请输入完整信息');
+        return;
       }
+      this.pwdLogin();
+    },
+    pwdLogin () {
+      this.$ajax.post({
+        apiKey: 'wxLoginByPwd',
+        params: {
+          uid: this.formData.uid,
+          pwd: MD5(this.formData.pwd).toString()
+        }
+      }).then(res => {
+        if (res.code === 0) {
+          this.hide();
+          this.UPDATE_USERINFO(res.data);
+          this.$nextTick(() => {
+            this.$router.push('/upload');
+          });
+        } else {
+          this.$msg.error('登录失败');
+        }
+      }).catch(() => {
+        this.$msg.error('登录失败');
+      });
     }
+  }
 };
 </script>
 

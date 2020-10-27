@@ -22,14 +22,14 @@ import { mapMutations } from 'vuex';
 export default {
   data () {
     return {
-      visible : false,
-      formData : {
-        uid : '',
-        pwd : ''
+      visible: false,
+      formData: {
+        uid: '',
+        pwd: ''
       }
     };
   },
-  methods : {
+  methods: {
     ...mapMutations([
       'UPDATE_USERINFO'
     ]),
@@ -37,7 +37,7 @@ export default {
       this.visible = true;
       this.$nextTick(() => {
         this.$refs.video.play();
-      })
+      });
     },
     hide () {
       this.visible = false;
@@ -53,8 +53,8 @@ export default {
       this.$ajax.post({
         apiKey: 'wxLoginByPwd',
         params: {
-          uid : this.formData.uid,
-          pwd : MD5(this.formData.pwd).toString()
+          uid: this.formData.uid,
+          pwd: MD5(this.formData.pwd).toString()
         }
       }).then(res => {
         if (res.code === 0) {
@@ -62,7 +62,7 @@ export default {
           this.UPDATE_USERINFO(res.data);
           this.$nextTick(() => {
             this.$router.push('/upload');
-          })
+          });
         } else {
           this.$msg.error('登录失败');
         }

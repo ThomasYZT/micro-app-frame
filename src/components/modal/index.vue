@@ -3,7 +3,7 @@
        class="t-modal-wrapper"
        v-show="visible"
        @click.self="close">
-    <div class="t-modal-box">
+    <div v-if="visible" class="t-modal-box">
       <img v-if="outerClose"
            class="t-close-btn outer"
            src="../../assets/img/icon_pop_close_white@2x.png"
@@ -49,15 +49,15 @@ export default {
       this.$emit('change', false);
     },
     showMask () {
-      let mask = this.createMask();
-      let maskZIndex = mask.style.zIndex;
+      const mask = this.createMask();
+      const maskZIndex = mask.style.zIndex;
       setTimeout(() => {
         this.$refs.modalWrapper.style.zIndex = Number(maskZIndex) + 1;
         mask.style.backgroundColor = 'rgba(0, 0, 0, .5)';
-      }, 0)
+      }, 0);
     },
     closeMask () {
-      let mask = document.getElementsByClassName('t-mask').length > 0
+      const mask = document.getElementsByClassName('t-mask').length > 0
         ? document.getElementsByClassName('t-mask')[0]
         : null;
       if (mask) {
@@ -67,8 +67,8 @@ export default {
     },
     createMask () {
       if (document.getElementsByClassName('t-mask').length === 0) {
-        let maxZIndex = this.getMaxZIndex();
-        let mask = document.createElement('div');
+        const maxZIndex = this.getMaxZIndex();
+        const mask = document.createElement('div');
         mask.setAttribute('class', 't-mask');
         mask.style.zIndex = maxZIndex + 1;
         document.body.appendChild(mask);
@@ -79,13 +79,13 @@ export default {
     },
     getMaxZIndex () {
       return [...document.body.querySelectorAll('*')].reduce((r, e) => {
-        return Math.max(r, +window.getComputedStyle(e).zIndex || 0)
-      }, 0)
+        return Math.max(r, +window.getComputedStyle(e).zIndex || 0);
+      }, 0);
     }
   },
   watch: {
     visible: {
-      handler(newVal) {
+      handler (newVal) {
         if (newVal) {
           this.show();
         } else {
@@ -94,7 +94,7 @@ export default {
       }
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -115,6 +115,7 @@ export default {
   height: 300Px;
 
   .t-close-btn {
+    z-index: 1000;
     position: absolute;
     height: 24Px;
     cursor: pointer;

@@ -27,7 +27,7 @@ export default {
     icon: {
       type: [Object, String],
       default () {
-        return ''
+        return '';
       }
     },
     hoverExpand: {
@@ -124,7 +124,7 @@ button {
   }
 
   .expand-box {
-    z-index: 10;
+    z-index: 9;
     position: absolute;
     top: 0;
     left: 0;

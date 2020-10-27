@@ -6,11 +6,14 @@
     </div>
 
     <div class="block-wrapper">
+      <div class="block-header align-center">
+        <t-card title="联系我们"
+                sub-title="Contact Us"
+                type="title"
+                align="center" />
+      </div>
       <div class="block-content">
         <div class="addr wow"  data-animate="fadeInUp">
-          <t-card title="联系我们"
-                  sub-title="Contact Us"
-                  type="title" />
           <div id="map-container"></div>
         </div>
         <div class="desc wow"  data-animate="fadeInUp">
@@ -60,16 +63,16 @@
 import icon1 from '../../../../assets/img/icon_call@2x.png';
 import icon2 from '../../../../assets/img/icon_phone@2x.png';
 import icon3 from '../../../../assets/img/icon_add@2x.png';
-import AMap from  'AMap'
+import AMap from 'AMap';
 export default {
   data () {
     return {
-      imgSrc : {
+      imgSrc: {
         icon1,
         icon2,
         icon3
       }
-    }
+    };
   },
   methods: {
     go (path) {
@@ -88,18 +91,18 @@ export default {
       }
     }
   },
-  mounted() {
-    var map = new AMap.Map('map-container', {
+  mounted () {
+    const map = new AMap.Map('map-container', {
       dragEnable: false,
       doubleClickZoom: false,
       scrollWheel: false,
       zoom: 17,
-      center: [116.27912, 40.04972] //设置地图中心点坐标
+      center: [116.27912, 40.04972] // 设置地图中心点坐标
     });
-    map.on('click', function(e) {
-      console.log(e)
+    map.on('click', function (e) {
+      console.log(e);
     });
-    let marker = new AMap.Marker({
+    const marker = new AMap.Marker({
       position: [116.279749, 40.04968]
     });
     map.add(marker);
@@ -133,9 +136,8 @@ export default {
     margin-top: -60px;
     width: 100%;
     height: 100%;
-    .block-content {
-      @include flex_layout(row, space-between, flex-end);
 
+    .block-header {
       /deep/ .title-card {
         .title {
           color: #FFFFFF;
@@ -145,6 +147,9 @@ export default {
           color: rgba(255, 255, 255, .5);
         }
       }
+    }
+    .block-content {
+      @include flex_layout(row, space-between, flex-end);
       #map-container {
         width: 411px;
         height: 236px;

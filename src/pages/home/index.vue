@@ -9,9 +9,10 @@
     <ScrollList ref="List"
                 @scroll="onScroll">
       <home id="home" class="hash" />
-      <production class="hash"/>
+      <production class="hash" />
+      <caseDisplay class="hash" />
+      <productLink class="hash" />
       <about class="hash"/>
-      <contact class="hash"/>
     </ScrollList>
 
     <div id="homeGuideIcon" v-if="navBgColor === 'transparent'" class="guide-icon" :style="{ top: guideTop }">
@@ -26,11 +27,12 @@
 import navBar from '../../components/navBar';
 import ScrollList from '../../components/ScrollList';
 import home from './components/home';
-import about from './components/about';
 import production from './components/production';
-import contact from './components/contact';
+import caseDisplay from './components/caseDisplay';
+import about from './components/about';
+import productLink from './components/productLink';
 import loginByPwdModal from './components/loginByPwdModal';
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex';
 export default {
   components: {
     navBar,
@@ -38,7 +40,8 @@ export default {
     home,
     about,
     production,
-    contact,
+    caseDisplay,
+    productLink,
     loginByPwdModal
   },
   data () {
@@ -51,7 +54,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'log',
+      'log'
     ]),
     onScroll (e, scrollMap) {
       if (e.target.scrollTop <= 0) {
@@ -67,22 +70,27 @@ export default {
           this.curNav !== '1' && (this.curNav = '1');
         } else if (e.target.scrollTop < scrollMap[3]) {
           this.curNav !== '2' && (this.curNav = '2');
-        } else {
+        } else if (e.target.scrollTop < scrollMap[4]) {
           this.curNav !== '3' && (this.curNav = '3');
+        } else {
+          this.curNav !== '4' && (this.curNav = '4');
         }
       } else {
         switch (this.curNav) {
-          case "0":
+          case '0':
             (e.target.scrollTop === scrollMap[0]) && (this.inControl = false);
             break;
-          case "1":
+          case '1':
             (e.target.scrollTop === scrollMap[1]) && (this.inControl = false);
             break;
-          case "2":
+          case '2':
             (e.target.scrollTop === scrollMap[2]) && (this.inControl = false);
             break;
-          case "3":
+          case '3':
             (e.target.scrollTop === scrollMap[3]) && (this.inControl = false);
+            break;
+          case '4':
+            (e.target.scrollTop === scrollMap[4]) && (this.inControl = false);
             break;
         }
       }
@@ -92,35 +100,35 @@ export default {
       this.$refs.List.scrollTo(index, fn);
     },
     setGuideIconPos () {
-      let _el = document.querySelector('#homeGuideIcon');
+      const _el = document.querySelector('#homeGuideIcon');
       if (_el) {
-        this.guideTop = `${document.body.clientHeight - _el.offsetHeight - this.$util.realPx(40)}px`
+        this.guideTop = `${document.body.clientHeight - _el.offsetHeight - this.$util.realPx(40)}px`;
       }
     },
     showLoginByPwdModal () {
-      this.$refs.loginByPwdModal.show()
+      this.$refs.loginByPwdModal.show();
     },
     /**
      * 访问上报
      */
-    visitorsLog() {
-      let performance = window.performance || window.msPerformance || window.webkitPerformance;
-      let t = performance.timing;
-      let navigationStart = t.navigationStart;
-      let loadTime = (new Date().getTime() - navigationStart);
-      this.log({ name : 'visitors', params : { loadTime : loadTime } });
-    },
+    visitorsLog () {
+      const performance = window.performance || window.msPerformance || window.webkitPerformance;
+      const t = performance.timing;
+      const navigationStart = t.navigationStart;
+      const loadTime = (new Date().getTime() - navigationStart);
+      this.log({ name: 'visitors', params: { loadTime: loadTime } });
+    }
   },
-  mounted() {
+  mounted () {
     this.visitorsLog();
     this.$nextTick(() => {
-      this.$wow('.wow')
+      this.$wow('.wow');
     });
     this.setGuideIconPos();
-    window.addEventListener('resize', this.setGuideIconPos)
+    window.addEventListener('resize', this.setGuideIconPos);
   },
-  destroyed() {
-    window.removeEventListener('resize', this.setGuideIconPos)
+  destroyed () {
+    window.removeEventListener('resize', this.setGuideIconPos);
   }
 };
 </script>
@@ -148,7 +156,6 @@ export default {
     }
   }
 
-
   .guide-icon {
     @include flex_layout(column, center, center);
     position: absolute;
@@ -166,6 +173,5 @@ export default {
   }
 
 }
-
 
 </style>

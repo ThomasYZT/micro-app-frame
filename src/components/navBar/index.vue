@@ -6,13 +6,13 @@
       </div>
       <div class="nav-list">
         <div v-slide class="nav-list-wrapper">
-            <div class="nav-item"
-                 v-for="item in navList"
-                 :key="item.hash"
-                 :class="{ 'active' : item.hash === curHash }"
-                 @click="onItemClick(item.hash)">
-                {{item.name}}
-            </div>
+          <div class="nav-item"
+               v-for="item in navList"
+               :key="item.hash"
+               :class="{ 'active' : item.hash === curHash }"
+               @click="onItemClick(item.hash)">
+            {{item.name}}
+          </div>
         </div>
       </div>
       <div class="login-block" @click="login">
@@ -26,18 +26,18 @@
 import debounce from 'lodash/debounce';
 import { mapActions } from 'vuex';
 export default {
-  props : {
-    bgColor : {
-      type : String,
-      default : 'none'
+  props: {
+    bgColor: {
+      type: String,
+      default: 'none'
     },
-    curNav : {
+    curNav: {
       type: String,
       default: '0'
     }
   },
-  directives : {
-    slide : (() => {
+  directives: {
+    slide: (() => {
       let _parent = null;
       let _bar = null;
       let _offsetMap = {};
@@ -48,19 +48,19 @@ export default {
         _bar && _bar.remove();
         _bar = null;
         _offsetMap = {};
-        _curHash = 0
+        _curHash = 0;
       };
 
       const resize = debounce(() => {
         _bar && _bar.remove();
         _bar = null;
         _offsetMap = {};
-        init(_parent, _curHash)
+        init(_parent, _curHash);
       }, 1000);
 
       function init (el, curHash = 0) {
         _parent = el;
-        let items = document.getElementsByClassName('nav-item');
+        const items = document.getElementsByClassName('nav-item');
         items.forEach((item, index) => {
           _offsetMap[index] = {
             width: item.offsetWidth * 0.4,
@@ -72,26 +72,26 @@ export default {
         _bar.setAttribute('class', 'active-line');
         _bar.style.width = `${_offsetMap[curHash].width}px`;
         _bar.style.transform = `translateX(${_offsetMap[curHash].xAxis}px)`;
-        _parent.appendChild(_bar)
+        _parent.appendChild(_bar);
 
-        window.addEventListener('resize', resize)
+        window.addEventListener('resize', resize);
       }
 
       return {
-        inserted : function (el) {
+        inserted: function (el) {
           init(el);
         },
-        update : function (el, bind, vnode) {
+        update: function (el, bind, vnode) {
           _curHash = vnode.context.curHash;
           _bar.style.display = `inline-block`;
           _bar.style.width = `${_offsetMap[_curHash].width}px`;
           _bar.style.transform = `translateX(${_offsetMap[_curHash].xAxis}px)`;
         },
-        unbind : function () {
+        unbind: function () {
           reset();
           window.removeEventListener('resize', resize);
         }
-      }
+      };
     })()
   },
   data () {
@@ -108,12 +108,16 @@ export default {
           hash: '1'
         },
         {
-          name: '关于我们',
+          name: '优秀案例',
           hash: '2'
         },
         {
-          name: '联系我们',
+          name: 'App/小程序',
           hash: '3'
+        },
+        {
+          name: '关于我们',
+          hash: '4'
         }
       ]
     };
@@ -137,22 +141,22 @@ export default {
       let t = null;
       return function () {
         count += 1;
-        if(count === 3) {
+        if (count === 3) {
           count = 0;
-          this.$emit('titleClick')
+          this.$emit('titleClick');
         } else {
           clearTimeout(t);
           t = setTimeout(() => {
             count = 0;
-          }, 300)
+          }, 300);
         }
-      }
+      };
     })()
   },
   watch: {
     curNav: {
-      handler(newVal) {
-        this.curHash = newVal
+      handler (newVal) {
+        this.curHash = newVal;
       }
     }
   }
@@ -176,7 +180,7 @@ export default {
     margin: auto;
     .nav-title {
       @include flex_layout(column, center, flex-start);
-      @include flex_set(1, 1);
+      @include flex_set(0, 1, auto);
       height: 100%;
 
       .logo {
@@ -185,7 +189,7 @@ export default {
     }
 
     .nav-list {
-      @include flex_set(1, 0);
+      @include flex_set(1, 0, auto);
       @include flex_layout(row, flex-end, center);
       height: 100%;
 
@@ -203,6 +207,7 @@ export default {
           color: $light_d5_black_color;
           cursor: pointer;
           transition: all .3s;
+
           &:hover {
             color: $light_black_color;
           }
@@ -238,7 +243,7 @@ export default {
       font-size: 14px;
       text-align: justify;
       background: #160A19;
-      border-radius: 15px;
+      border-radius: 4px;
       cursor: pointer;
       transition: all .3s linear;
 
@@ -247,6 +252,6 @@ export default {
       }
     }
   }
-  
+
 }
 </style>

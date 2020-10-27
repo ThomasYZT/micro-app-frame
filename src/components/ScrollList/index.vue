@@ -10,28 +10,28 @@
 <script>
 import { rAF } from '../../assets/utils/common';
 export default {
-  name: "ScrollList",
+  name: 'ScrollList',
   data () {
     return {
       timer: null,
-      scollMap: null,
-    }
+      scollMap: null
+    };
   },
   methods: {
     onwheel () {
       if (this.timer) {
         window.cancelAnimationFrame(this.timer);
-        this.timer = null
+        this.timer = null;
       }
     },
-    onScroll(e) {
+    onScroll (e) {
       !this.scollMap && (this.scollMap = this.genScrollMap());
-      this.$emit('scroll', e, this.scollMap)
+      this.$emit('scroll', e, this.scollMap);
     },
     scrollTo (index, fn) {
       if (this.timer) {
         window.cancelAnimationFrame(this.timer);
-        this.timer = null
+        this.timer = null;
       }
       !this.scollMap && (this.scollMap = this.genScrollMap());
       const that = this;
@@ -45,7 +45,7 @@ export default {
           that.$refs.content.scrollTop = srollOffset;
           fn && fn();
           window.cancelAnimationFrame(that.timer);
-          that.timer = null
+          that.timer = null;
         } else {
           _dir === 'up'
             ? (_lastScrollTop = that.$refs.content.scrollTop += _speed)
@@ -61,14 +61,16 @@ export default {
         if (index !== _hList.length - 1) {
           return index === 0
             ? 0
-            : _hList.slice(0, index).reduce((s, c) => s + c, 0) - document.querySelector('.nav-wrapper').offsetHeight
+            : _hList.slice(0, index).reduce((s, c) => s + c, 0) - document.querySelector('.nav-wrapper').offsetHeight;
         } else {
-          return _contentHeight - this.$refs.content.offsetHeight;
+          const maxScrollH = _contentHeight - this.$refs.content.offsetHeight;
+          const calcScrollH = _hList.slice(0, index).reduce((s, c) => s + c, 0) - document.querySelector('.nav-wrapper').offsetHeight;
+          return calcScrollH > maxScrollH ? maxScrollH : calcScrollH;
         }
       });
-    },
+    }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">

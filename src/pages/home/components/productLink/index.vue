@@ -6,6 +6,12 @@
     </div>
 
     <div class="block-wrapper">
+      <div class="block-header align-center">
+        <t-card title="移动端创作"
+                sub-title="App/Mini Program"
+                type="title"
+                align="center" />
+      </div>
       <div class="block-content">
         <img class="ani-1 wow" data-animate="fadeInUp" src="../../../../assets/img/pic_four_code@2x.png" alt="">
         <div class="card-wrapper wow"  data-animate="fadeInUp">
@@ -52,17 +58,21 @@ export default {
         code1,
         code2
       }
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
 @import "~@/assets/style/scss/base";
 .product-link {
   position: relative;
+  padding: 80px 0;
   .bg {
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
     width: 100%;
     font-size: 0;
 
@@ -80,9 +90,20 @@ export default {
   }
 
   .block-wrapper {
-    @include pos_set(absolute, 0, 0, 0, 0);
     width: 100%;
     height: 100%;
+
+    .block-header {
+      /deep/ .title-card {
+        .title {
+          color: #FFFFFF;
+        }
+
+        .sub-title {
+          color: rgba(255, 255, 255, .5);
+        }
+      }
+    }
 
     .block-content {
       @include flex_layout(row, space-between, center);

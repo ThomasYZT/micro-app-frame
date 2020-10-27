@@ -43,8 +43,8 @@ export default {
       imgSrc: {
         icon1,
         icon2
-      },
-    }
+      }
+    };
   },
   methods: {
     ...mapActions([
@@ -58,7 +58,7 @@ export default {
       this.$router.push(path);
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
