@@ -59,6 +59,7 @@
 <script>
 import debounce from 'lodash/debounce';
 import util from '../../../../assets/utils/util';
+import { mapActions, mapGetters } from 'vuex';
 export default {
   directives: {
     slide: (() => {
@@ -128,6 +129,11 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters([
+      'userInfo'
+    ])
+  },
   data () {
     return {
       visible: false,
@@ -150,6 +156,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions([
+      'showLoginModal'
+    ]),
     show (index) {
       this.curHash = index;
       this.visible = true;
@@ -164,6 +173,13 @@ export default {
       if (util.browser.versions.trident) {
         this.$msg.error('请用其他浏览器打开');
       } else {
+        if (!this.userInfo) {
+          this.visible = false;
+          this.$nextTick(() => {
+            this.showLoginModal();
+          });
+          return;
+        }
         if (!item || type === 'clip') {
           location.href = `${location.origin}/clip`;
         } else {
