@@ -161,7 +161,7 @@ export default {
       this.curHash = hash;
     },
     goClip (item, type) {
-      if (!util.browser.versions.trident) {
+      if (util.browser.versions.trident) {
         this.$msg.error('请用其他浏览器打开');
       } else {
         if (!item || type === 'clip') {
