@@ -3,8 +3,8 @@ import Vuex from 'vuex';
 import { Storage } from '../assets/utils/common';
 import { storageKeys } from '../assets/enums';
 import ajax from '../assets/api';
-import MD5 from "crypto-js/md5";
-import logs from './modules/log'
+import MD5 from 'crypto-js/md5';
+import logs from './modules/log';
 
 Vue.use(Vuex);
 
@@ -15,14 +15,14 @@ export default new Vuex.Store({
   state: {
     userInfo: Storage.get(storageKeys.userInfo),
     errMsg: '',
-    loginModalStatus: false,
+    loginModalStatus: false
   },
   getters: {
     userInfo: state => {
-      return state.userInfo
+      return state.userInfo;
     },
     errMsg: state => {
-      return state.errMsg
+      return state.errMsg;
     },
     loginModalStatus: state => {
       return state.loginModalStatus;
@@ -34,7 +34,7 @@ export default new Vuex.Store({
       Storage.set(storageKeys.userInfo, data);
     },
     UUPDATE_LOGINMODAL_STATUS: (state, status) => {
-      state.loginModalStatus = status
+      state.loginModalStatus = status;
     }
   },
   actions: {
@@ -51,16 +51,16 @@ export default new Vuex.Store({
           dispatch('showMsg', { type: 'error', content: '登录失败' });
           return Promise.reject();
         }
-      })
+      });
     },
-    showMsg : (msgObj) => {
+    showMsg: (msgObj) => {
       Vue.prototype.$msg[msgObj.type](msgObj.content);
     },
-    showLoginModal : ({ commit }) => {
+    showLoginModal: ({ commit }) => {
       commit('UUPDATE_LOGINMODAL_STATUS', true);
       setTimeout(() => {
         commit('UUPDATE_LOGINMODAL_STATUS', false);
-      }, 0)
+      }, 0);
     },
 
     // 日志上报
@@ -68,18 +68,18 @@ export default new Vuex.Store({
       params.operationType = 'PC_' + params.operationType;
       params.clientTimestamp = new Date().getTime();
       if (params.extParams) {
-        let extParams = JSON.parse(params.extParams);
+        const extParams = JSON.parse(params.extParams);
         extParams.hostType = state.hostType;
         params.extParams = JSON.stringify(extParams);
-      }else {
-        params.extParams = JSON.stringify({ hostType : state.hostType });
+      } else {
+        params.extParams = JSON.stringify({ hostType: state.hostType });
       }
       return new Promise((resolve, reject) => {
         ajax.post({
           apiKey: 'uploadOperationInfo',
           params: params,
-          config : null,
-          module : 'commonURL'
+          config: null,
+          module: 'commonURL'
         }).then(res => {
           resolve(res);
         }).catch((error) => {
@@ -88,4 +88,4 @@ export default new Vuex.Store({
       });
     }
   }
-})
+});

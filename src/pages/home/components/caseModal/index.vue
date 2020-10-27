@@ -38,11 +38,11 @@
                   <span>—— {{item.userName}}</span>
                 </div>
                 <div class="operator">
-                  <div class="t-btn" @click="goClip('check')">
+                  <div class="t-btn" @click="goClip(item, 'check')">
                     查看创作过程
                     <img style="height: 12px;margin-left: 6px;" src="./img/btn-angle-dark@2x.png.png" alt="">
                   </div>
-                  <div class="t-btn primary-btn" @click="goClip('go')">
+                  <div class="t-btn primary-btn" @click="goClip(item, 'clip')">
                     开始我的创作
                     <img style="height: 12px;margin-left: 6px;" src="./img/btn-angle-white@2x.png" alt="">
                   </div>
@@ -58,6 +58,7 @@
 
 <script>
 import debounce from 'lodash/debounce';
+import util from '../../../../assets/utils/util';
 export default {
   directives: {
     slide: (() => {
@@ -159,11 +160,16 @@ export default {
     onItemClick (hash) {
       this.curHash = hash;
     },
-    goClip (type) {
-      this.$emit('goClick', {
-        type,
-        link: type === 'check' ? this.videoList[this.curHash].clipAddr : ''
-      });
+    goClip (item, type) {
+      if (!util.browser.versions.trident) {
+        this.$msg.error('请用其他浏览器打开');
+      } else {
+        if (!item || type === 'clip') {
+          location.href = `${location.origin}/clip`;
+        } else {
+          window.open(item.clipAddr);
+        }
+      }
       if (this.$refs.video) {
         this.$refs.video.forEach(video => {
           video.pause();
