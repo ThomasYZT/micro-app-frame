@@ -127,8 +127,7 @@ export default {
     @include flex_layout(row, space-between, center);
     position: absolute;
     padding: 0 20px;
-    width: 100%;
-    box-sizing: border-box;
+    width: calc(100% - 40px);
     bottom: 20px;
     left: 0;
     margin-top: 13px;

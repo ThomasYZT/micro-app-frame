@@ -43,16 +43,16 @@ export default {
   .img-block {
     @include flex_set(1, 0, 50%);
     position: relative;
-    height: 100%;
+    height: 50%;
     width: 100%;
     background-size: 100%;
     background-position: center center;
     border-radius: 8px 8px 0 0;
   }
   .text-block {
-    @include flex_set(1, 0, 50%);
+    @include flex_set(0, 1, 50%);
     position: relative;
-    height: calc(100% - 40px);
+    height: 100%;
     width: calc(100% - 40px);
     padding: 20px 20px;
     border: 1px solid #E5E5E5;

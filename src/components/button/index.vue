@@ -53,6 +53,7 @@ button {
   font-weight: bold;
   cursor: pointer;
   transition: all .3s;
+  overflow: visible;
 
   .prefix-icon {
     margin-right: 4px;
