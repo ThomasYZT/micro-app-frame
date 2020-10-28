@@ -274,9 +274,9 @@ export default {
               color: #333333;
               line-height: 35px;
               text-align: left;
+              font-weight: bold;
               /deep/ .em-test {
                 color: #FF4383;
-                font-weight: bold;
               }
             }
 

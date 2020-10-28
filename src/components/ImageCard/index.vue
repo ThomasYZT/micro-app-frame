@@ -5,7 +5,7 @@
       <slot name="cover"></slot>
     </div>
     <div class="text-block">
-      <div v-html="text"></div>
+      <div class="desc" v-html="text"></div>
       <slot name="text-footer"></slot>
     </div>
   </div>
@@ -61,6 +61,10 @@ export default {
     font-size: 14px;
     color: #333333;
     text-align: left;
+
+    .desc {
+      font-weight: bold;
+    }
   }
 }
 </style>
