@@ -1,6 +1,6 @@
 <template>
   <div class="card" :class="[{ 'title-card' : type === 'title' }, `${align}-align`]">
-    <div class="card-head" :class="{ 'no-mark' : !titleMark }">
+    <div v-if="title" class="card-head" :class="{ 'no-mark' : !titleMark }">
       <h4 class="title" v-html="title"></h4>
       <h5 class="sub-title" v-html="subTitle"></h5>
       <div v-if="titleMark || type === 'title'" class="title-mark"></div>

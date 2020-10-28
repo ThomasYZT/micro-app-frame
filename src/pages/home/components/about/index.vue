@@ -36,7 +36,7 @@
                 <div class="desc">票圈视频PC端在线视频制作工具上线，重新定义视频制作剪辑</div>
               </div>
             </timeline-item>
-            <timeline-item label="1" :has-tail="false" left-time="2020年9月">
+            <timeline-item label="1" :has-tail="false" left-time="2020年9月" class="time-line-item-2">
               <div slot="left" class="time-item">
                 <div class="desc">平台广告模式引入，首创平台视频UP主获取流量收益模式</div>
               </div>
@@ -49,7 +49,7 @@
                 <div class="desc">平台自有个性化算法上线，小程序DAU突破500万</div>
               </div>
             </timeline-item>
-            <timeline-item label="3" :has-tail="false" left-time="2018年11月">
+            <timeline-item label="3" :has-tail="false" left-time="2018年11月" class="time-line-item-1">
               <div slot="left" class="time-item">
                 <div class="desc">票圈由视频工具转型为内容平台，DAU100万+。</div>
               </div>
@@ -142,6 +142,10 @@ export default {
           &:first-child {
             margin: 0;
           }
+        }
+
+        .time-line-item-1, .time-line-item-2 {
+          padding-top: 80px;
         }
       }
     }

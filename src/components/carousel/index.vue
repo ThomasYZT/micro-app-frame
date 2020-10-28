@@ -148,14 +148,14 @@ export default {
         transition: all .3s ease-in-out;
         &:after {
           position: absolute;
-          left: -9.5px;
-          top: -9.5px;
+          left: -10px;
+          top: -10px;
           display: inline-block;
           content: ' ';
           width: 24px;
           height: 24px;
           border-radius: 50%;
-          border: 1.5px solid #FF4383;
+          border: 2px solid #FF4383;
         }
       }
     }

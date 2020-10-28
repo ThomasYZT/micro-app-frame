@@ -2,7 +2,7 @@
   <div class="nav-wrapper" :style="{ backgroundColor: bgColor }">
     <div class="nav-bar">
       <div class="nav-title">
-        <img class="logo" src="../../assets/img/pc_logo@2x.png" alt="" @click="threebleClick">
+        <img class="logo" src="../../assets/img/pc_logo@2x.svg" alt="" @click="threebleClick">
       </div>
       <div class="nav-list">
         <div v-slide class="nav-list-wrapper">

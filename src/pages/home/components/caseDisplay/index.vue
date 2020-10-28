@@ -121,6 +121,7 @@ export default {
   }
   /deep/ .em-text {
     color: #FF4383;
+    font-weight: bold;
   }
 
   .text-footer {
@@ -141,7 +142,6 @@ export default {
 
     .username {
       font-size: 14px;
-      font-weight: bold;
     }
   }
 

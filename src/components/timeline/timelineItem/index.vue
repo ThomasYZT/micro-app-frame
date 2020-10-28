@@ -152,7 +152,7 @@ export default {
 }
 
 .double-timeline-item {
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 37px;
   position: relative;
 

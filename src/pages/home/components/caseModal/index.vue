@@ -287,7 +287,6 @@ export default {
               align-items: center;
               font-size: 18px;
               color: #333333;
-              font-weight: bold;
             }
 
             .operator {
@@ -307,6 +306,7 @@ export default {
                 border-radius: 8px;
                 background-color: #FFFFFF;
                 cursor: pointer;
+                font-weight: bold;
 
                 &.primary-btn {
                   color: #FFFFFF;

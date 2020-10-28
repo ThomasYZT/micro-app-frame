@@ -109,6 +109,9 @@ export default {
     .right-box {
       @include flex_set(1, 0);
       @include flex_layout(column, center, center);
+      img {
+        height: 360Px;
+      }
       span {
         margin-top: 20Px;
         color: #666666;
