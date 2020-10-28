@@ -42,7 +42,7 @@ export default {
       let _yAxisMap = {};
 
       const reset = debounce(() => {
-        _flag.remove();
+        (_flag.remove ? _flag.remove() : _flag.removeNode());
         _flagH = 0;
         _yAxisMap = {};
         init(_parent, _vnode);

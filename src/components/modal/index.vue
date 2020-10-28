@@ -72,7 +72,7 @@ export default {
         : null;
       if (mask && this.existModal.length === 0) {
         mask.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-        mask.remove();
+        mask.remove ? mask.remove() : mask.removeNode(true);
       }
       this.existModal.forEach(item => {
         item.style.display = '';

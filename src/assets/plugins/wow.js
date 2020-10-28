@@ -5,6 +5,7 @@ export default {
 };
 
 const wow = (selector, options) => {
+  if (!IntersectionObserver) return;
   const _eles = document.querySelectorAll(selector) || [];
   if (_eles && _eles.length > 0) {
     const _options = options || {

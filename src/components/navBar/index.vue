@@ -45,14 +45,14 @@ export default {
 
       const reset = () => {
         _parent = null;
-        _bar && _bar.remove();
+        _bar && _bar.remove ? _bar.remove() : _bar.removeNode(true);
         _bar = null;
         _offsetMap = {};
         _curHash = 0;
       };
 
       const resize = debounce(() => {
-        _bar && _bar.remove();
+        _bar && (_bar.remove ? _bar.remove() : _bar.removeNode());
         _bar = null;
         _offsetMap = {};
         init(_parent, _curHash);

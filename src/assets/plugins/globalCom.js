@@ -38,7 +38,7 @@ const msg = ((config) => {
 
   function removeTag (tag) {
     setTimeout(() => {
-      tag.remove();
+      tag.remove ? tag.remove() : tag.removeNode(true);
     }, 300);
   }
 

@@ -52,9 +52,8 @@ export default {
   .text-block {
     @include flex_set(1, 0, 50%);
     position: relative;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
+    height: calc(100% - 40px);
+    width: calc(100% - 40px);
     padding: 20px 20px;
     border: 1px solid #E5E5E5;
     border-top: none;
