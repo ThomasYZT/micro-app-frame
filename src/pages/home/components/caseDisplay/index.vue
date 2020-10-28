@@ -24,7 +24,7 @@
           </image-card>
         </div>
       </div>
-      <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary case-btn">开始我的创作</t-button>
+      <t-button :icon="{ pos: 'suffix', src: imgSrc.icon1 }" class="primary case-btn" @click="goClip">开始我的创作</t-button>
     </div>
 
     <caseModal ref="caseModal" :videoList="caseList"></caseModal>
@@ -34,6 +34,7 @@
 <script>
 import icon1 from '../../../../assets/img/icon_arrow.png';
 import ImageCard from '../../../../components/ImageCard';
+import { mapActions } from 'vuex';
 import caseModal from '../caseModal';
 export default {
   components: {
@@ -77,8 +78,14 @@ export default {
     };
   },
   methods: {
+    ...mapActions([
+      'showLoginModal'
+    ]),
     cardClick (index) {
       this.$refs.caseModal.show(index);
+    },
+    goClip () {
+      this.showLoginModal();
     }
   }
 };
