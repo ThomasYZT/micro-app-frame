@@ -1,19 +1,20 @@
 <template>
   <div ref="modalWrapper"
+       :data-vid="vid"
        class="t-modal-wrapper"
        v-show="visible"
-       @click.self="close">
+       @click.self.stop="statusChange(false)">
     <div v-if="visible" class="t-modal-box">
       <img v-if="outerClose"
            class="t-close-btn outer"
            src="../../assets/img/icon_pop_close_white@2x.png"
            alt=""
-           @click="close">
+           @click="statusChange(false)">
       <img v-else
            class="t-close-btn inset"
            src="../../assets/img/icon_pop_close@2x.png"
            alt=""
-           @click="close">
+           @click="statusChange(false)">
       <div class="t-modal-body">
         <slot></slot>
       </div>
@@ -22,6 +23,7 @@
 </template>
 
 <script>
+let vid = 0;
 export default {
   name: 'TModal',
   model: {
@@ -38,15 +40,23 @@ export default {
       default: false
     }
   },
+  data () {
+    return {
+      vid: vid++,
+      existModal: []
+    };
+  },
   methods: {
+    statusChange (status) {
+      this.$emit('change', status);
+    },
     show () {
+      this.cacheStatus();
       this.showMask();
-      this.$emit('change', true);
     },
     close () {
-      this.$emit('close');
       this.closeMask();
-      this.$emit('change', false);
+      this.$emit('close');
     },
     showMask () {
       const mask = this.createMask();
@@ -60,10 +70,14 @@ export default {
       const mask = document.getElementsByClassName('t-mask').length > 0
         ? document.getElementsByClassName('t-mask')[0]
         : null;
-      if (mask) {
+      if (mask && this.existModal.length === 0) {
         mask.style.backgroundColor = 'rgba(0, 0, 0, 0)';
         mask.remove();
       }
+      this.existModal.forEach(item => {
+        item.style.display = '';
+      });
+      this.existModal = [];
     },
     createMask () {
       if (document.getElementsByClassName('t-mask').length === 0) {
@@ -76,6 +90,14 @@ export default {
       } else {
         return document.getElementsByClassName('t-mask')[0];
       }
+    },
+    cacheStatus () {
+      const modalList = document.getElementsByClassName('t-modal-wrapper');
+      this.existModal = Array.from(modalList)
+        .filter(item => Number(item.dataset.vid) !== this.vid && item.style.display !== 'none');
+      this.existModal.forEach(item => {
+        item.style.display = 'none';
+      });
     },
     getMaxZIndex () {
       return [...document.body.querySelectorAll('*')].reduce((r, e) => {

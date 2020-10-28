@@ -38,11 +38,11 @@
                   <span>—— {{item.userName}}</span>
                 </div>
                 <div class="operator">
-                  <div class="t-btn" @click="goClip(item, 'check')">
+                  <div class="t-btn" @click="goClip">
                     查看创作过程
                     <img style="height: 12px;margin-left: 6px;" src="./img/btn-angle-dark@2x.png.png" alt="">
                   </div>
-                  <div class="t-btn primary-btn" @click="goClip(item, 'clip')">
+                  <div class="t-btn primary-btn" @click="goClip">
                     开始我的创作
                     <img style="height: 12px;margin-left: 6px;" src="./img/btn-angle-white@2x.png" alt="">
                   </div>
@@ -169,28 +169,8 @@ export default {
     onItemClick (hash) {
       this.curHash = hash;
     },
-    goClip (item, type) {
-      if (util.browser.versions.trident) {
-        this.$msg.error('请用其他浏览器打开');
-      } else {
-        if (!this.userInfo) {
-          this.visible = false;
-          this.$nextTick(() => {
-            this.showLoginModal();
-          });
-          return;
-        }
-        if (!item || type === 'clip') {
-          location.href = `${location.origin}/clip`;
-        } else {
-          window.open(item.clipAddr);
-        }
-      }
-      if (this.$refs.video) {
-        this.$refs.video.forEach(video => {
-          video.pause();
-        });
-      }
+    goClip () {
+      this.showLoginModal();
     }
   }
 };
