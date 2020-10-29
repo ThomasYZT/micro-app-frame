@@ -66,7 +66,7 @@ export default {
           desc: `我是个航拍爱好者，喜欢讲解风景视频。之前会花很多时间在配音上，现在<span class="em-text">文字可以自动生成语音，而且声音很好听、不生硬。</span>`
         },
         {
-          videoCover: 'https://rescdn.yishihui.com/longvideo/clip/snapshot/c4fd9d330c4c4966adcc144690e65224_0?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1280,h_720,limit_0/format,jpg',
+          videoCover: 'https://rescdn.yishihui.com/longvideo/clip/snapshot/c4fd9d330c4c4966adcc144690e65224_0?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1450,h_720,limit_0/format,jpg',
           src: 'https://rescdn.yishihui.com/longvideo/transcode/clip/video/c4fd9d330c4c4966adcc144690e65224.mp4',
           title: '极速剪辑：海量图片/视频素材智能匹配，再无找素材的烦恼',
           tag: '极速剪辑',

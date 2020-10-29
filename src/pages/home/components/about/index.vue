@@ -30,23 +30,23 @@
           <timeline :doubleSide="true" v-model="activeName">
             <timeline-item label="0" left-time="2020年3月" right-time="2020年9月">
               <div slot="left" class="time-item">
-                <div class="desc">票圈视频APP上线，小程序累计用户超4亿，视频生态圈更完善</div>
+                <div class="desc">票圈视频APP上线，小程序累计用户超4亿，视频生态圈更完善。</div>
               </div>
               <div slot="right" class="time-item">
-                <div class="desc">票圈视频PC端在线视频制作工具上线，重新定义视频制作剪辑</div>
+                <div class="desc">票圈视频PC端在线视频制作工具上线，重新定义视频制作剪辑。</div>
               </div>
             </timeline-item>
             <timeline-item label="1" :has-tail="false" left-time="2020年9月" class="time-line-item-2">
               <div slot="left" class="time-item">
-                <div class="desc">平台广告模式引入，首创平台视频UP主获取流量收益模式</div>
+                <div class="desc">平台广告模式引入，首创平台视频UP主获取流量收益模式。</div>
               </div>
             </timeline-item>
             <timeline-item label="2" left-time="2019年2月" right-time="2019年7月">
               <div slot="left" class="time-item">
-                <div class="desc">推出内容付费功能，平台用户获益 ，收益超200万</div>
+                <div class="desc">推出内容付费功能，平台用户获益 ，收益超200万。</div>
               </div>
               <div slot="right" class="time-item">
-                <div class="desc">平台自有个性化算法上线，小程序DAU突破500万</div>
+                <div class="desc">平台自有个性化算法上线，小程序DAU突破500万。</div>
               </div>
             </timeline-item>
             <timeline-item label="3" :has-tail="false" left-time="2018年11月" class="time-line-item-1">

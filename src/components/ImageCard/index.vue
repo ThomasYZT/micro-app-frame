@@ -45,7 +45,7 @@ export default {
     position: relative;
     height: 50%;
     width: 100%;
-    background-size: 100%;
+    background-size: auto 100%;
     background-position: center center;
     border-radius: 8px 8px 0 0;
   }
