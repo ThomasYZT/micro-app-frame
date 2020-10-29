@@ -1,12 +1,12 @@
-import {registerMicroApps, start} from "qiankun";
+import { registerMicroApps, start } from 'qiankun';
 
-let pcEntry = process.env.HTTP_ENV === 'test'
+const pcEntry = process.env.HTTP_ENV === 'test'
   ? 'https://uploadtest.yishihui.com/'
   : process.env.HTTP_ENV === 'pre'
     ? 'https://uploadpre.piaoquantv.com/'
     : 'https://upload.piaoquantv.com/';
 
-let clipEntry = process.env.HTTP_ENV === 'test'
+const clipEntry = process.env.HTTP_ENV === 'test'
   ? 'https://cliptest.yishihui.com/'
   : process.env.HTTP_ENV === 'pre'
     ? 'https://clippre.piaoquantv.com/'
@@ -16,24 +16,25 @@ const subAppList = [
   {
     name: 'clip',
     entry: process.env.NODE_ENV === 'development' ? 'http://localhost:8081/' : clipEntry,
-    container: "#app-container",
+    container: '#app-container',
     activeRule: '/clip'
   },
   {
     name: 'longvideo-pc',
     entry: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : pcEntry,
-    container: "#app-container",
+    container: '#app-container',
     activeRule: '/upload'
-  },
+  }
 ];
 
 export default class BaseLayer {
   mainApp = null;
   isMicroServiceRunning = false;
 
-  constructor({ Vue, router, store, root }) {
-    this._createMainApp({ Vue, root, router, store })
+  constructor ({ Vue, router, store, root }) {
+    this._createMainApp({ Vue, root, router, store });
   }
+
   _createMainApp ({ Vue, router, store, root }) {
     this.mainApp = new Vue({
       router,
@@ -44,28 +45,28 @@ export default class BaseLayer {
 
   static _registSubApp () {
     registerMicroApps(subAppList, {
-        beforeLoad (app) {
-          // console.log('beforeLoad', app)
-        },
-        beforeMount (app) {
-          // console.log('beforeMount', app)
-        },
-        afterMount (app) {
-          // console.log('afterMount', app)
-        },
-        beforeUnmount (app) {
-          // console.log('beforeUnmount', app)
-        },
-        afterUnmount (app) {
-          // console.log('afterUnmount', app)
-        },
+      beforeLoad (app) {
+        // console.log('beforeLoad', app)
+      },
+      beforeMount (app) {
+        // console.log('beforeMount', app)
+      },
+      afterMount (app) {
+        // console.log('afterMount', app)
+      },
+      beforeUnmount (app) {
+        // console.log('beforeUnmount', app)
+      },
+      afterUnmount (app) {
+        // console.log('afterUnmount', app)
       }
+    }
     );
   }
 
   startup () {
     BaseLayer._registSubApp();
-    this.mainApp.$mount("#app");
+    this.mainApp.$mount('#app');
   }
 
   startMicroService () {
@@ -76,7 +77,7 @@ export default class BaseLayer {
   }
 
   preloadApp () {
-    let len = subAppList.length - 1;
+    const len = subAppList.length - 1;
     // function load (config) {
     //   if (len < 0) return;
     //   console.log(len)
@@ -108,6 +109,5 @@ export default class BaseLayer {
     //   console.log(app.getStatus())
     //   // app.unmount();
     // });
-
   }
 }

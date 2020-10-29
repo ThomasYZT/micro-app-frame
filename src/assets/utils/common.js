@@ -11,7 +11,12 @@ export const rAF = (() => {
 
 export const Storage = {
   get (key) {
-    return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : '';
+    const item = localStorage.getItem(key);
+    try {
+      return item ? JSON.parse(item) : '';
+    } catch (e) {
+      return item;
+    }
   },
   set (key, value) {
     localStorage.setItem(key, JSON.stringify(value));

@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { Storage } from '../assets/utils/common';
+import util from '../assets/utils/util';
 import { storageKeys } from '../assets/enums';
 import ajax from '../assets/api';
-import MD5 from 'crypto-js/md5';
 import logs from './modules/log';
 
 Vue.use(Vuex);
@@ -14,8 +14,10 @@ export default new Vuex.Store({
   },
   state: {
     userInfo: Storage.get(storageKeys.userInfo),
-    errMsg: '',
-    loginModalStatus: false
+    machineCode: Storage.get(storageKeys.machineCode),
+    channelInfo: Storage.get(storageKeys.channelInfo),
+    loginModalStatus: false,
+    errMsg: ''
   },
   getters: {
     userInfo: state => {
@@ -26,6 +28,12 @@ export default new Vuex.Store({
     },
     loginModalStatus: state => {
       return state.loginModalStatus;
+    },
+    machineCode: state => {
+      return state.machineCode;
+    },
+    channelInfo: state => {
+      return state.channelInfo;
     }
   },
   mutations: {
@@ -35,6 +43,14 @@ export default new Vuex.Store({
     },
     UUPDATE_LOGINMODAL_STATUS: (state, status) => {
       state.loginModalStatus = status;
+    },
+    UPDATE_MACHINE_CODE: (state, data) => {
+      state.machineCode = data;
+      Storage.set(storageKeys.machineCode, data);
+    },
+    UPDATE_CHANNEL_INFO: (state, data) => {
+      state.channelInfo = data;
+      Storage.set(storageKeys.channelInfo, data);
     }
   },
   actions: {
@@ -53,6 +69,39 @@ export default new Vuex.Store({
         }
       });
     },
+    setMachineCode ({ commit }) {
+      const mid = util.generateID();
+      commit('UPDATE_MACHINE_CODE', mid);
+    },
+    setChannelInfo ({ commit }, data = '') {
+      const _channelInfo = {
+        primaryChannel: '',
+        secondChannel: ''
+      };
+      try {
+        const _channelArr = data.split('.');
+        _channelInfo.primaryChannel = _channelArr[0] || '';
+        _channelInfo.secondChannel = _channelArr[1] || '';
+        commit('UPDATE_CHANNEL_INFO', _channelInfo);
+      } catch (e) {
+        commit('UPDATE_CHANNEL_INFO', _channelInfo);
+      }
+    },
+    channelReport ({ state }) {
+      return new Promise((resolve, reject) => {
+        ajax.post({
+          apiKey: 'channelReport',
+          params: {
+            loginUid: state.userInfo && state.userInfo.uid,
+            ...state.channelInfo
+          }
+        }).then(() => {
+          resolve();
+        }).catch(() => {
+          reject();
+        });
+      });
+    },
     showMsg: (msgObj) => {
       Vue.prototype.$msg[msgObj.type](msgObj.content);
     },
@@ -62,8 +111,6 @@ export default new Vuex.Store({
         commit('UUPDATE_LOGINMODAL_STATUS', false);
       }, 0);
     },
-
-    // 日志上报
     logging ({ commit, state }, params) {
       params.operationType = 'PC_' + params.operationType;
       params.clientTimestamp = new Date().getTime();

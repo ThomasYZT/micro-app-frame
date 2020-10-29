@@ -1,5 +1,7 @@
 export const storageKeys = {
-  userInfo: 'lv_userInfo'
+  userInfo: 'lv_userInfo',
+  machineCode: 'machineCode',
+  channelInfo: 'lv_channelInfo'
 };
 
 export const logTypeEnums = {

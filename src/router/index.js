@@ -28,6 +28,11 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  if (!store.getters.machineCode) store.dispatch('setMachineCode');
+  if (!store.getters.channelInfo) {
+    store.dispatch('setChannelInfo', to.query.pqadtag);
+    store.dispatch('channelReport');
+  }
   if (baseLayer) {
     auth(to, from, next);
   } else {
@@ -48,6 +53,7 @@ function auth (to, from, next) {
         }).then(res => {
           flexible.clear();
           baseLayer.startMicroService();
+          store.dispatch('channelReport');
           next({ path: '/upload', replace: true });
         }).catch(err => {
           next({ path: '/', replace: true });
