@@ -92,7 +92,6 @@ export default new Vuex.Store({
         ajax.post({
           apiKey: 'channelReport',
           params: {
-            loginUid: state.userInfo && state.userInfo.uid,
             ...state.channelInfo
           }
         }).then(() => {

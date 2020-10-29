@@ -3,6 +3,7 @@ import axios from 'axios';
 import apiList from './apiList';
 import qs from 'querystring';
 import defaultsDeep from 'lodash/defaultsDeep';
+import store from '../../store';
 
 // 创建自定义axios实例
 const instance = axios.create({
@@ -28,6 +29,16 @@ instance.interceptors.response.use((res) => {
   return Promise.reject(err);
 });
 
+const getCommonParams = () => {
+  return {
+    appType: 8,
+    clientTimestamp: Date.now(),
+    loginUid: store.getters.userInfo ? store.getters.userInfo.uid : '',
+    token: store.getters.userInfo ? store.getters.userInfo.accessToken : '',
+    machineCode: store.getters.machineCode ? store.getters.machineCode : ''
+  };
+};
+
 export default {
   post ({ apiKey, params = {}, config = null, module = 'baseURL' }) {
     const myConfig = {};
@@ -36,8 +47,7 @@ export default {
       Object.assign(myConfig, config);
     }
     // 设置时间戳
-    params.clientTimestamp = Date.now();
-    params.appType = 8;
+    params = defaultsDeep({}, params, getCommonParams());
 
     const needStringify = !(myConfig.headers &&
             (myConfig.headers['content-type'].includes('application/json') ||
@@ -50,7 +60,7 @@ export default {
   },
   get ({ apiKey, params = {}, config = null, module = 'baseURL' }) {
     let myConfig = {};
-    myConfig = defaultsDeep(myConfig, { params: params });
+    myConfig = defaultsDeep(myConfig, { params: defaultsDeep({}, params, getCommonParams()) });
     // 自定义http配置
     if (config) {
       Object.assign(myConfig, config);
