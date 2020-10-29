@@ -159,6 +159,7 @@ export default {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  background-color: #FFFFFF;
 
   &::-webkit-scrollbar {
     z-index: 11;
