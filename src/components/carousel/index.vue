@@ -1,5 +1,10 @@
 <template>
-  <div class="carousel-wrapper" @mouseover="onMouseover" @mouseleave="onMouseleave">
+  <div class="carousel-wrapper"
+       @mouseover="onMouseover"
+       @mouseleave="onMouseleave"
+       @touchstart="onTouchstart"
+       @touchmove="onTouchmove"
+       @touchend="onTouchend">
     <slot></slot>
     <transition name="fade">
       <img v-if="showArrow" class="prev-arrow" src="./img/icon_viewpage_right@2x.png" alt="" @click="onPrev">
@@ -8,7 +13,8 @@
       <img v-if="showArrow" class="next-arrow" src="./img/icon_viewpage_ligt@2x.png" alt="" @click="onNext">
     </transition>
 
-    <div class="index-box">
+    <div class="index-box"
+         :style="{ bottom: bottom }">
       <span v-for="(item, index) in items"
             :key="index"
             class="index-dot"
@@ -28,6 +34,10 @@ export default {
     interval: {
       type: Number,
       default: 5000
+    },
+    bottom: {
+      type: String,
+      default: '80px'
     }
   },
   data () {
@@ -39,6 +49,24 @@ export default {
     };
   },
   methods: {
+    onTouchstart (e) {
+      this.pauseTimer();
+      const event = e.touches[0];
+      this.endX = this.startX = event.clientX;
+    },
+    onTouchmove (e) {
+      const event = e.touches[0];
+      this.endX = event.clientX;
+    },
+    onTouchend (e) {
+      this.startTimer();
+      const deltaX = this.endX - this.startX;
+      if (Math.ceil(deltaX) > 0) {
+        this.setActiveItem(this.activeIndex - 1);
+      } else if (Math.ceil(deltaX) < 0) {
+        this.setActiveItem(this.activeIndex + 1);
+      }
+    },
     onMouseover () {
       this.pauseTimer();
       this.showArrow = true;
@@ -108,6 +136,7 @@ export default {
   height: 100%;
   white-space: nowrap;
   overflow-x: hidden;
+  overflow-y: hidden;
 
   .prev-arrow, .next-arrow {
     position: absolute;

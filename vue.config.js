@@ -9,6 +9,7 @@ module.exports = {
   devServer: {
     https: false,
     hotOnly: false,
+    // host: 'localhost.yishihui.com'
   },
   configureWebpack: {
     externals: {

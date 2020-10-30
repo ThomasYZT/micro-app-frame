@@ -4,6 +4,7 @@ import config from '../config';
 import VueRouter from 'vue-router';
 import baseLayer from '../main';
 import flexible from '../assets/utils/flexible';
+import activity from './module/activity';
 
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push (location, onResolve, onReject) {
@@ -23,7 +24,8 @@ const router = new VueRouter({
       path: '/',
       name: 'home',
       component: () => import(/* webpackChunkName: "home" */ '../pages/home/index.vue')
-    }
+    },
+    ...activity
   ]
 });
 
@@ -82,7 +84,11 @@ function auth (to, from, next) {
         next({ replace: true });
       }
     } else {
-      next({ path: '/', replace: true });
+      if (to.matched && to.matched.length > 0) {
+        next();
+      } else {
+        next({ path: '/', replace: true });
+      }
     }
   }
 }
