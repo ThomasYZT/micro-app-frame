@@ -32,7 +32,8 @@ import caseDisplay from './components/caseDisplay';
 import about from './components/about';
 import productLink from './components/productLink';
 import loginByPwdModal from './components/loginByPwdModal';
-import { mapActions } from 'vuex';
+import {mapActions, mapGetters} from 'vuex';
+
 export default {
   components: {
     navBar,
@@ -51,6 +52,11 @@ export default {
       inControl: false,
       guideTop: '0px'
     };
+  },
+  computed: {
+    ...mapGetters([
+      'machineCode'
+    ])
   },
   methods: {
     ...mapActions([
@@ -116,7 +122,7 @@ export default {
       const t = performance.timing;
       const navigationStart = t.navigationStart;
       const loadTime = (new Date().getTime() - navigationStart);
-      this.log({ name: 'visitors', params: { loadTime: loadTime } });
+      this.log({ name: 'visitors', params: { loadTime: loadTime, mid: this.machineCode } });
     }
   },
   mounted () {
