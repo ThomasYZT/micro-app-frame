@@ -64,6 +64,7 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/style/scss/base";
 .home {
+  min-height: 100%;
   .home-block {
     min-height: 100%;
     margin: 0 auto;
