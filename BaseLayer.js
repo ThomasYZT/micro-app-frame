@@ -21,7 +21,7 @@ const subAppList = [
   },
   {
     name: 'longvideo-pc',
-    entry: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : pcEntry,
+    entry: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : `${pcEntry}?time=${Date.now()}`,
     container: '#app-container',
     activeRule: '/upload'
   }
