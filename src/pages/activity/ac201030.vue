@@ -70,6 +70,7 @@
         </div>
       </div>
     </div>
+    <img class="entry-btn" src="../../assets/img/activity/annie@2x.png" alt="" @click="goClip">
     <videoPlayModal ref="videoPlayModal"></videoPlayModal>
   </div>
 </template>
@@ -79,11 +80,17 @@ import carousel from '../../components/carousel';
 import carouselItem from '../../components/carousel/carouselItem';
 import videoPlayModal from '../../components/videoPlayModal';
 import { videoGroup } from './activityData';
+import { mapGetters, mapActions } from 'vuex';
 export default {
   components: {
     carousel,
     carouselItem,
     videoPlayModal
+  },
+  computed: {
+    ...mapGetters([
+      'userInfo'
+    ])
   },
   data () {
     return {
@@ -91,8 +98,18 @@ export default {
     };
   },
   methods: {
+    ...mapActions([
+      'showLoginModal'
+    ]),
     playVideo (item) {
       this.$refs.videoPlayModal.show(item.src);
+    },
+    goClip () {
+      if (this.userInfo) {
+        this.push('/clip');
+      } else {
+        this.showLoginModal();
+      }
     }
   }
 };
@@ -106,7 +123,17 @@ export default {
   font-size: 0;
   overflow-y: auto;
 
+  .entry-btn {
+    position: absolute;
+    bottom: 60Px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    cursor: pointer;
+  }
+
   .page-content {
+    position: relative;
     padding-bottom: 100Px;
   }
 

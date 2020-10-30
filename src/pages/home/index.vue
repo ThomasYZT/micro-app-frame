@@ -142,21 +142,6 @@ export default {
   overflow: hidden;
   background-color: #FFFFFF;
 
-  &::-webkit-scrollbar {
-    z-index: 11;
-    width: 0;
-  }
-
-  &::-webkit-scrollbar {
-    z-index: 11;
-    width: 2px;
-    &-thumb {
-      border-radius: 5px;
-      width: 2px;
-      background: rgba(0,0,0, .6);
-    }
-  }
-
   .guide-icon {
     @include flex_layout(column, center, center);
     position: absolute;
