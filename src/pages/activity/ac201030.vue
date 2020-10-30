@@ -106,7 +106,7 @@ export default {
     },
     goClip () {
       if (this.userInfo) {
-        this.push('/clip');
+        this.$router.push('/clip');
       } else {
         this.showLoginModal();
       }
