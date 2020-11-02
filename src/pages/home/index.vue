@@ -33,6 +33,7 @@ import about from './components/about';
 import productLink from './components/productLink';
 import loginByPwdModal from './components/loginByPwdModal';
 import {mapActions, mapGetters} from 'vuex';
+
 export default {
   components: {
     navBar,
