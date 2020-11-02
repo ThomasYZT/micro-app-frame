@@ -2,10 +2,14 @@ import Card from '../../components/card';
 import Modal from '../../components/modal';
 import ajax from '../../assets/api';
 import util from '../../assets/utils/util';
+import { carousel, carouselItem } from '@thomasyzt/lvui';
+import '@thomasyzt/lvui/dist/main.css';
 export default {
   install (Vue) {
     Vue.component(Card.name, Card);
     Vue.component(Modal.name, Modal);
+    Vue.component('TCarousel', carousel);
+    Vue.component('TCarouselItem', carouselItem);
 
     Vue.prototype.$ajax = ajax;
     Vue.prototype.$msg = msg;

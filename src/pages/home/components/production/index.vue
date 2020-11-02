@@ -8,8 +8,8 @@
                 align="center" />
       </div>
       <div class="block-content carousel-wrapper">
-        <carousel>
-          <carouselItem>
+        <t-carousel>
+          <t-carousel-item>
             <div class="block-wrapper clip">
               <div class="block-content">
                 <div class="animation-wrapper">
@@ -31,8 +31,8 @@
                 </div>
               </div>
             </div>
-          </carouselItem>
-          <carouselItem>
+          </t-carousel-item>
+          <t-carousel-item>
             <div class="block-wrapper upload">
               <div class="block-content">
                 <div class="card-wrapper">
@@ -54,8 +54,8 @@
                 </div>
               </div>
             </div>
-          </carouselItem>
-          <carouselItem>
+          </t-carousel-item>
+          <t-carousel-item>
             <div class="block-wrapper business">
               <div class="block-content">
                 <div class="animation-wrapper">
@@ -76,8 +76,8 @@
                 </div>
               </div>
             </div>
-          </carouselItem>
-        </carousel>
+          </t-carousel-item>
+        </t-carousel>
       </div>
     </div>
 
@@ -86,17 +86,13 @@
 </template>
 
 <script>
-import carousel from '../../../../components/carousel';
-import carouselItem from '../../../../components/carousel/carouselItem';
 import tutorialModal from '../tutorialModal';
 import icon1 from '../../../../assets/img/icon_arrow.png';
 import icon2 from '../../../../assets/img/btn_play_icon@2x.png';
 import { mapGetters, mapActions } from 'vuex';
 export default {
   components: {
-    tutorialModal,
-    carousel,
-    carouselItem
+    tutorialModal
   },
   data () {
     return {
