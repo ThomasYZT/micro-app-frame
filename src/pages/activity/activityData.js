@@ -115,6 +115,20 @@ export const videoGroup = [
       avatar: 'https://rescdn.yishihui.com/longvideo/pic/d76363aed5ac4334bf4c3d006eecdc931603199834177',
       nickName: '美食台',
       title: '起床就吃盖浇饭，这地方的早餐真扎实！'
+    },
+    {
+      videoCover: 'https://rescdn.yishihui.com/longvideo/pic/vpc/20201027/16888572AUo2rRRE6Sjdt0uGGm?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1280,h_720,limit_0/format,jpg',
+      src: 'https://rescdn.yishihui.com/longvideo/transcode/clip/video/e26091c6eb744db0b07f2aa368e62be8.mp4',
+      avatar: 'https://rescdn.yishihui.com/longvideo/pic/15956d015f3d4430999f182442b5d54d1600346997561',
+      nickName: '小白测评C',
+      title: '小米高管上手iPhone12感受失望：实际手感非常不好'
+    },
+    {
+      videoCover: 'https://rescdn.yishihui.com/longvideo/pic/vpc/20201028/16888610VjAFbQJVb7yghCgjyK?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1280,h_720,limit_0/format,jpg',
+      src: 'https://rescdn.yishihui.com/longvideo/transcode/clip/video/7bef80a3a80e4c258a0af25dc6eb46ad.mp4',
+      avatar: 'https://rescdn.yishihui.com/longvideo/pic/52a21c10afe347b7a6cce427dcf11e821603201753657',
+      nickName: '差评',
+      title: '吃地道北京烤鸭，了解地道美食文化'
     }
   ]
-]
+];
