@@ -2,7 +2,8 @@
   <div class="page-container">
     <div class="page-content">
       <div class="header">
-        <img src="../../assets/img/activity/tb_banner@2x.png" alt="">
+        <img src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_pic_banner_out@2x.png" alt="">
+        <img class="banner" src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_pic_banner_in@2x.png" alt="">
       </div>
 
       <div class="info-box">
@@ -20,16 +21,16 @@
             <img src="../../assets/img/activity/hdjl@2x.png" alt="">
           </div>
           <div class="img-block">
-            <img src="../../assets/img/activity/hdsj@2x.png" alt="">
+            <img src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_hdsj@2x.png" alt="">
           </div>
           <div class="img-block">
             <img src="../../assets/img/activity/pxgz@2x.png" alt="">
           </div>
           <div class="img-block">
-            <img src="../../assets/img/activity/hdyq@2x.png" alt="">
+            <img src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_hdyq@2x.png" alt="">
           </div>
           <div class="img-block">
-            <img src="../../assets/img/activity/gbfs@2x.png" alt="">
+            <img src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_gbfs@2x.png" alt="">
           </div>
           <div class="img-block">
             <img class="code-img" src="../../assets/img/activity/ewm@2x.png" alt="">
@@ -70,7 +71,7 @@
         </div>
       </div>
     </div>
-    <img class="entry-btn" src="../../assets/img/activity/annie@2x.png" alt="" @click="goClip">
+    <img class="entry-btn" src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_annie@2x.png" alt="" @click="goClip">
     <videoPlayModal ref="videoPlayModal"></videoPlayModal>
   </div>
 </template>
@@ -124,13 +125,25 @@ export default {
     bottom: 60Px;
     left: 50%;
     transform: translateX(-50%);
-    width: 240px;
+    width: 187Px;
     cursor: pointer;
   }
 
   .page-content {
     position: relative;
-    padding-bottom: 100Px;
+    padding-bottom: 130Px;
+
+    .header {
+      position: relative;
+
+      .banner {
+        position: absolute;
+        width: 900px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+      }
+    }
   }
 
   img {
@@ -143,9 +156,8 @@ export default {
       padding: 100Px 0 60Px;
 
       .carousel {
-        height: 650Px;
-        margin-top: 60Px;
-        padding-bottom: 20Px;
+        height: 600Px;
+        margin-top: 30Px;
         .video-display-block {
           @include flex_layout(row, space-between, flex-start);
           flex-wrap: wrap;
@@ -192,7 +204,7 @@ export default {
                 white-space: normal;
               }
               .user {
-                @include flex_layout(row, flex-start, center);
+                @include flex_layout(row, flex-start, flex-end);
                 font-size: 14Px;
                 img {
                   margin-right: 10Px;
