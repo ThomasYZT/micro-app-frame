@@ -44,9 +44,9 @@
         <img class="bottom-right-angle" src="../../assets/img/activity/z@2x.png" alt="">
         <div class="info-box-header">优秀案例</div>
         <div class="info-box-content">
-          <carousel class="carousel" bottom="20px">
-            <carouselItem v-for="(group, index) in videoGroup"
-                          :key="index">
+          <t-carousel class="carousel" bottom="20px">
+            <t-carousel-item v-for="(group, index) in videoGroup"
+                             :key="index">
               <div class="video-display-block">
                 <div class="video-card"
                      v-for="(item, index) in group"
@@ -65,8 +65,8 @@
                   </div>
                 </div>
               </div>
-            </carouselItem>
-          </carousel>
+            </t-carousel-item>
+          </t-carousel>
         </div>
       </div>
     </div>
@@ -76,15 +76,11 @@
 </template>
 
 <script>
-import carousel from '../../components/carousel';
-import carouselItem from '../../components/carousel/carouselItem';
 import videoPlayModal from '../../components/videoPlayModal';
 import { videoGroup } from './activityData';
 import { mapGetters, mapActions } from 'vuex';
 export default {
   components: {
-    carousel,
-    carouselItem,
     videoPlayModal
   },
   computed: {
