@@ -25,14 +25,14 @@ export default {
     };
   },
   methods: {
-    show () {
+    show (name) {
       this.visible = true;
       this.$nextTick(() => {
         new WxLogin({
           id: 'code',
           appid: config.APPID,
           scope: 'snsapi_login',
-          redirect_uri: encodeURIComponent(`${config.AUTHURL}`),
+          redirect_uri: encodeURIComponent(`${config.AUTHURL}${name ? `?jumpTo=${name}` : ''}`),
           href: 'data:text/css;base64,Ym9keSB7CiAgIGRpc3BsYXk6IGZsZXg7CiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjsKICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7Cn0KLmxvZ2luUGFuZWwgLnRpdGxlIHsKICAgIGRpc3BsYXk6IG5vbmU7CiAgfQogIC5sb2dpblBhbmVsIC5pbmZvIHsKICAgIGRpc3BsYXk6IG5vbmU7CiAgfQogIC5pbXBvd2VyQm94IC5xcmNvZGUgewogICAgd2lkdGg6IDE4MHB4OwogICAgaGVpZ2h0OiAxODBweDsKICAgIG1hcmdpbi10b3A6IDA7CiAgICBib3JkZXI6IG5vbmU7CiAgfQoud2V1aV9tc2cgewogICBwYWRkaW5nLXRvcDogMTBweDsKfQoud2V1aV9tc2cgLndldWlfaWNvbl9hcmVhIHsKICAgbWFyZ2luLWJvdHRvbTogMDsKfQ=='
         });
       });

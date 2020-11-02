@@ -14,8 +14,8 @@ export default new Vuex.Store({
   },
   state: {
     userInfo: Storage.get(storageKeys.userInfo),
-    errMsg: '',
-    loginModalStatus: false
+    loginModalStatus: { status: false, name: '' },
+    errMsg: ''
   },
   getters: {
     userInfo: state => {
@@ -33,9 +33,9 @@ export default new Vuex.Store({
       state.userInfo = data;
       Storage.set(storageKeys.userInfo, data);
     },
-    UUPDATE_LOGINMODAL_STATUS: (state, status) => {
-      state.loginModalStatus = status;
-    }
+    UUPDATE_LOGINMODAL_STATUS: (state, config) => {
+      state.loginModalStatus = config;
+    },
   },
   actions: {
     login ({ commit, dispatch }, params) {
@@ -56,13 +56,18 @@ export default new Vuex.Store({
     showMsg: (msgObj) => {
       Vue.prototype.$msg[msgObj.type](msgObj.content);
     },
-    showLoginModal: ({ commit }) => {
-      commit('UUPDATE_LOGINMODAL_STATUS', true);
+    showLoginModal: ({ commit }, name) => {
+      commit('UUPDATE_LOGINMODAL_STATUS', {
+        status: true,
+        name: name
+      });
       setTimeout(() => {
-        commit('UUPDATE_LOGINMODAL_STATUS', false);
+        commit('UUPDATE_LOGINMODAL_STATUS', {
+          status: false,
+          name: ''
+        });
       }, 0);
     },
-
     // 日志上报
     logging ({ commit, state }, params) {
       params.operationType = 'PC_' + params.operationType;
