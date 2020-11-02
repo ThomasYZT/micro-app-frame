@@ -60,7 +60,7 @@ export const videoGroup = [
     },
     {
       videoCover: 'https://rescdn.yishihui.com/longvideo/clip/snapshot/1356db3d83db473e873ef5dc634a61e9_0?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1280,h_720,limit_0/format,jpg',
-      src: 'https://rescdn.yishihui.com/longvideo/clip/snapshot/1356db3d83db473e873ef5dc634a61e9_0?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1280,h_720,limit_0/format,jpg',
+      src: 'https://rescdn.yishihui.com/longvideo/transcode/clip/video/1356db3d83db473e873ef5dc634a61e9.mp4',
       avatar: 'https://rescdn.yishihui.com/longvideo/pic/b2de1329342740289c6fd2acbec188641532438857467?x-oss-process=image/rotate,0/resize,m_fill,w_841,h_841,limit_0/format,png',
       nickName: 'JYJ',
       title: '世界最长寿老人，在新疆哪里？'
@@ -110,7 +110,7 @@ export const videoGroup = [
       title: '飙演技，装死的动物是认真的'
     },
     {
-      videoCover: 'https://rescdn.yishihui.com/longvideo/pic/vpc/20201027/16888623sxdf77QvIjy7nPUg1A?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1280,h_720,limit_0/format,jpg',
+      videoCover: 'https://rescdn.yishihui.com/longvideo/pic/vpc/20201027/16888595NR9rmXl90TeS0YM0a1?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1280,h_720,limit_0/format,jpg',
       src: 'https://rescdn.yishihui.com/longvideo/transcode/clip/video/ebbfd5c925984fb7843a3c5b81484220.mp4',
       avatar: 'https://rescdn.yishihui.com/longvideo/pic/d76363aed5ac4334bf4c3d006eecdc931603199834177',
       nickName: '美食台',
