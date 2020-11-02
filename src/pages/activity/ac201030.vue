@@ -3,10 +3,10 @@
     <div class="page-content">
       <div class="header">
         <img src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_pic_banner_out@2x.png" alt="">
-        <img class="banner" src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_pic_banner_in@2x.png" alt="">
+        <img class="banner" src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_pic_banner_in.png" alt="">
       </div>
 
-      <div class="info-box">
+      <div class="info-box" style="margin-top: -80px">
         <img class="top-left-angle" src="../../assets/img/activity/z@2x.png" alt="">
         <img class="top-right-angle" src="../../assets/img/activity/y@2x.png" alt="">
         <img class="bottom-left-angle" src="../../assets/img/activity/y@2x.png" alt="">
@@ -24,7 +24,7 @@
             <img src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_hdsj@2x.png" alt="">
           </div>
           <div class="img-block">
-            <img src="../../assets/img/activity/pxgz@2x.png" alt="">
+            <img src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_pxgz@2x.png" alt="">
           </div>
           <div class="img-block">
             <img src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_hdyq@2x.png" alt="">
@@ -141,7 +141,7 @@ export default {
         width: 900px;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -40%);
+        transform: translate(-50%, -55%);
       }
     }
   }
@@ -156,7 +156,7 @@ export default {
       padding: 100Px 0 60Px;
 
       .carousel {
-        height: 600Px;
+        height: 560Px;
         margin-top: 30Px;
         .video-display-block {
           @include flex_layout(row, space-between, flex-start);
@@ -190,6 +190,7 @@ export default {
             }
 
             .info-block {
+              position: relative;
               flex: 0 1 126Px;
               padding-top: 14Px;
               height: 126Px;
@@ -204,7 +205,9 @@ export default {
                 white-space: normal;
               }
               .user {
-                @include flex_layout(row, flex-start, flex-end);
+                position: absolute;
+                bottom: 0;
+                @include flex_layout(row, flex-start, center);
                 font-size: 14Px;
                 img {
                   margin-right: 10Px;
