@@ -78,6 +78,7 @@ function auth (to, from, next) {
         next({ replace: true });
       }
     } else {
+      flexible.init();
       if (to.matched && to.matched.length > 0) {
         next();
       } else {
