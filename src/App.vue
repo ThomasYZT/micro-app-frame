@@ -42,10 +42,11 @@ export default {
   watch: {
     loginModalStatus: {
       handler (newVal) {
-        if (newVal) {
-          this.$refs.loginModal.show();
+        if (newVal.status === true) {
+          this.$refs.loginModal.show(newVal.name);
         }
-      }
+      },
+      deep: true
     }
   }
 };

@@ -56,7 +56,16 @@ function auth (to, from, next) {
           flexible.clear();
           baseLayer.startMicroService();
           store.dispatch('channelReport');
-          next({ path: '/upload', replace: true });
+          switch (to.query.jumpTo || '') {
+            case 'clip':
+              next({ path: '/clip', replace: true });
+              break;
+            case 'upload':
+              next({ path: '/upload', replace: true });
+              break;
+            default:
+              next({ path: '/upload', replace: true });
+          }
         }).catch(err => {
           next({ path: '/', replace: true });
         });

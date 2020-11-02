@@ -16,7 +16,7 @@ export default new Vuex.Store({
     userInfo: Storage.get(storageKeys.userInfo),
     machineCode: Storage.get(storageKeys.machineCode),
     channelInfo: Storage.get(storageKeys.channelInfo),
-    loginModalStatus: false,
+    loginModalStatus: { status: false, name: '' },
     errMsg: ''
   },
   getters: {
@@ -41,8 +41,8 @@ export default new Vuex.Store({
       state.userInfo = data;
       Storage.set(storageKeys.userInfo, data);
     },
-    UUPDATE_LOGINMODAL_STATUS: (state, status) => {
-      state.loginModalStatus = status;
+    UUPDATE_LOGINMODAL_STATUS: (state, config) => {
+      state.loginModalStatus = config;
     },
     UPDATE_MACHINE_CODE: (state, data) => {
       state.machineCode = data;
@@ -104,10 +104,16 @@ export default new Vuex.Store({
     showMsg: (msgObj) => {
       Vue.prototype.$msg[msgObj.type](msgObj.content);
     },
-    showLoginModal: ({ commit }) => {
-      commit('UUPDATE_LOGINMODAL_STATUS', true);
+    showLoginModal: ({ commit }, name) => {
+      commit('UUPDATE_LOGINMODAL_STATUS', {
+        status: true,
+        name: name
+      });
       setTimeout(() => {
-        commit('UUPDATE_LOGINMODAL_STATUS', false);
+        commit('UUPDATE_LOGINMODAL_STATUS', {
+          status: false,
+          name: ''
+        });
       }, 0);
     },
     logging ({ commit, state }, params) {

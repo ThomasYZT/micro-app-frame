@@ -105,7 +105,7 @@ export default {
       if (this.userInfo) {
         this.$router.push('/clip');
       } else {
-        this.showLoginModal();
+        this.showLoginModal('clip');
       }
     }
   }
