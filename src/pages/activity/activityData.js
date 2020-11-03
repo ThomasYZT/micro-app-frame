@@ -8,11 +8,11 @@ export const videoGroup = [
       title: '芯片被美国全面封锁，中国陷入经济危机吗？制裁结果会令美方失望'
     },
     {
-      videoCover: 'https://rescdn.yishihui.com/longvideo/pic/vpc/20201102/29gWPxY5qRHBuETbRoIx?x-oss-process=image/rotate,0/resize,w_1280/resize,m_fill,w_1280,h_1280,limit_0/format,jpg',
-      src: 'https://rescdn.yishihui.com/longvideo/transcode/video/vpc/20201102/29TaQoTQnrajPvjRISgR.mp4',
+      videoCover: 'https://rescdn.yishihui.com/longvideo/pic/vpc/20201031/29F1PatlCLFSuXovNCu2?x-oss-process=image/rotate,0/resize,w_1280/resize,m_fill,w_1280,h_1280,limit_0/format,jpg',
+      src: 'https://rescdn.yishihui.com/longvideo/transcode/video/vpc/20201031/29Jjm79afiRjSxwV0Hdk.mp4',
       avatar: 'https://rescdn.yishihui.com/longvideo/pic/vpc/20200802/29hNV89SwfjwFJqsXg4X',
       nickName: 'L',
-      title: '短歌行 曹操'
+      title: '如果敦煌舞有段位？'
     },
     {
       videoCover: 'https://rescdn.yishihui.com/longvideo/clip/snapshot/ae74a8aac9ba410b80776f2df4807eb3_0?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1280,h_720,limit_0/format,jpg',
@@ -80,11 +80,11 @@ export const videoGroup = [
       title: '小提琴协奏曲《梁祝》百听不厌 分享给您  (常熟秋林)'
     },
     {
-      videoCover: 'https://rescdn.yishihui.com/longvideo/pic/vpc/20201031/29F1PatlCLFSuXovNCu2?x-oss-process=image/rotate,0/resize,w_1280/resize,m_fill,w_1280,h_1280,limit_0/format,jpg',
-      src: 'https://rescdn.yishihui.com/longvideo/transcode/video/vpc/20201031/29Jjm79afiRjSxwV0Hdk.mp4',
+      videoCover: 'https://rescdn.yishihui.com/longvideo/pic/vpc/20201102/29gWPxY5qRHBuETbRoIx?x-oss-process=image/rotate,0/resize,w_1280/resize,m_fill,w_1280,h_1280,limit_0/format,jpg',
+      src: 'https://rescdn.yishihui.com/longvideo/transcode/video/vpc/20201102/29TaQoTQnrajPvjRISgR.mp4',
       avatar: 'https://rescdn.yishihui.com/longvideo/pic/vpc/20200802/29hNV89SwfjwFJqsXg4X',
       nickName: 'L',
-      title: '如果敦煌舞有段位？'
+      title: '短歌行 曹操'
     }
   ],
   [
