@@ -30,7 +30,7 @@
             <img src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_hdyq@2x.png" alt="">
           </div>
           <div class="img-block">
-            <img src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_gbfs@2x.png" alt="">
+            <img src="https://weapppiccdn.yishihui.com/h5icon/activity/pc_gbfs.png" alt="">
           </div>
           <div class="img-block">
             <img class="code-img" src="../../assets/img/activity/ewm@2x.png" alt="">
