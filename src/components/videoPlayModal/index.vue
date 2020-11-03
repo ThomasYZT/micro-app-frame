@@ -51,13 +51,14 @@ export default {
       box-sizing: border-box;
       width: 100%;
       height: 100%;
+      background: #000000;
+      border-radius: 24Px;
 
       #video {
         width: 100%;
         height: 100%;
         border-radius: 24Px;
         outline: none;
-        object-fit: fill
       }
     }
   }
