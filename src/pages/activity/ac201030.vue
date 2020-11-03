@@ -178,7 +178,8 @@ export default {
               height: 154Px;
               width: 100%;
               border-radius: 8Px;
-              background-size: 100% 100%;
+              background-size: 100% auto;
+              background-position: center;
 
               .play-btn {
                 position: absolute;
