@@ -107,6 +107,7 @@ export default {
       } else {
         this.showLoginModal('clip');
       }
+      window.MtaH5 && window.MtaH5.clickStat('100001');
     }
   }
 };
