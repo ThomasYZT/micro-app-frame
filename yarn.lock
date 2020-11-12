@@ -991,10 +991,10 @@
   resolved "https://registry.npm.taobao.org/@soda/get-current-script/download/@soda/get-current-script-1.0.2.tgz?cache=0&sync_timestamp=1592273074614&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40soda%2Fget-current-script%2Fdownload%2F%40soda%2Fget-current-script-1.0.2.tgz#a53515db25d8038374381b73af20bb4f2e508d87"
   integrity sha1-pTUV2yXYA4N0OBtzryC7Ty5QjYc=
 
-"@thomasyzt/lvui@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@thomasyzt/lvui/-/lvui-1.3.0.tgz#971a338ddf2950f48664b21fb71290aac461ebea"
-  integrity sha512-w2z4cg7uDZUcQLgjllFyIDpGqzrGcvHL5ZNL26KSF28MrblHorH4iNhPJ83U/XalR2mdWRww1SSv4rwB0IkDbg==
+"@thomasyzt/lvui@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@thomasyzt/lvui/-/lvui-1.4.0.tgz#f16b3d3d740855e1151e493ca825c44bf7824172"
+  integrity sha512-EtFplHikW5HNeyXMCHZq8YV32ifO8ehTY6LM6uTziT85VvQeXVQJYmWTXv3Hjw/9QjRGoLXEbgbncH0ljnvFjQ==
   dependencies:
     axios "^0.18.0"
     crypto-js "^3.1.9-1"
