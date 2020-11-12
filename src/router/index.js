@@ -47,7 +47,7 @@ router.beforeEach((to, from, next) => {
 function jumpToControl (to, next) {
   switch (to.query.jumpTo) {
     case 'clip':
-      next({ path: '/clip', query: to.query, replace: true });
+      next({ path: '/clip', replace: true });
       break;
     case 'upload':
       next({ path: '/upload', replace: true });
@@ -87,6 +87,7 @@ function auth (to, from, next) {
     }
   } else {
     if (to.query.code) {
+      console.log('1111111')
       loginUnit(to, next);
     } else {
       if (/\/upload|\/clip/.test(to.path)) {
