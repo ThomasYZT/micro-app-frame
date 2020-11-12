@@ -76,7 +76,7 @@ function auth (to, from, next) {
   if (to.path === '' || to.path === '/') {
     if (!store.getters.userInfo) {
       if (to.query.code) {
-        this.loginUnit(to, next);
+        loginUnit(to, next);
       } else {
         next({ replace: true });
       }
@@ -87,7 +87,7 @@ function auth (to, from, next) {
     }
   } else {
     if (to.query.code) {
-      this.loginUnit(to, next);
+      loginUnit(to, next);
     } else {
       if (/\/upload|\/clip/.test(to.path)) {
         if (!store.getters.userInfo) {
