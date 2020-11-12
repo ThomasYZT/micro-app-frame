@@ -44,31 +44,39 @@ router.beforeEach((to, from, next) => {
   }
 });
 
+function jumpToControl (to, next) {
+  switch (to.query.jumpTo) {
+    case 'clip':
+      next({ path: '/clip', query: to.query, replace: true });
+      break;
+    case 'upload':
+      next({ path: '/upload', replace: true });
+      break;
+    default:
+      next({ path: '/upload', replace: true });
+  }
+}
+
+function loginUnit (to, next) {
+  store.dispatch('login', {
+    code: to.query.code,
+    appType: 8,
+    appId: config.APPID
+  }).then(res => {
+    flexible.clear();
+    baseLayer.startMicroService();
+    store.dispatch('channelReport');
+    this.jumpToControl(to, next);
+  }).catch(err => {
+    next({ path: '/', replace: true });
+  });
+}
+
 function auth (to, from, next) {
   if (to.path === '' || to.path === '/') {
     if (!store.getters.userInfo) {
       if (to.query.code) {
-        store.dispatch('login', {
-          code: to.query.code,
-          appType: 8,
-          appId: config.APPID
-        }).then(res => {
-          flexible.clear();
-          baseLayer.startMicroService();
-          store.dispatch('channelReport');
-          switch (to.query.jumpTo || '') {
-            case 'clip':
-              next({ path: '/clip', replace: true });
-              break;
-            case 'upload':
-              next({ path: '/upload', replace: true });
-              break;
-            default:
-              next({ path: '/upload', replace: true });
-          }
-        }).catch(err => {
-          next({ path: '/', replace: true });
-        });
+        this.loginUnit(to, next);
       } else {
         next({ replace: true });
       }
@@ -78,26 +86,30 @@ function auth (to, from, next) {
       next({ path: '/upload', replace: true });
     }
   } else {
-    if (/\/upload|\/clip/.test(to.path)) {
-      if (!store.getters.userInfo) {
-        if (to.path === '/upload/help') {
+    if (to.query.code) {
+      this.loginUnit(to, next);
+    } else {
+      if (/\/upload|\/clip/.test(to.path)) {
+        if (!store.getters.userInfo) {
+          if (to.path === '/upload/help' || /\/clip/.test(to.path)) {
+            flexible.clear();
+            baseLayer.startMicroService();
+            next();
+          } else {
+            next({ path: '/', replace: true });
+          }
+        } else {
           flexible.clear();
           baseLayer.startMicroService();
+          next({ replace: true });
+        }
+      } else {
+        flexible.init();
+        if (to.matched && to.matched.length > 0) {
           next();
         } else {
           next({ path: '/', replace: true });
         }
-      } else {
-        flexible.clear();
-        baseLayer.startMicroService();
-        next({ replace: true });
-      }
-    } else {
-      flexible.init();
-      if (to.matched && to.matched.length > 0) {
-        next();
-      } else {
-        next({ path: '/', replace: true });
       }
     }
   }
