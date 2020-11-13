@@ -73,8 +73,9 @@ function loginUnit (to, next) {
 }
 
 function auth (to, from, next) {
+  console.log(123, arguments)
   if (to && to.query && to.query.jumpTo) {
-    this.jumpToControl(to, next);
+    jumpToControl(to, next);
   } else if (to.path === '' || to.path === '/') {
     if (!store.getters.userInfo) {
       if (to.query.code) {
