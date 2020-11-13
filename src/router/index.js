@@ -83,8 +83,10 @@ function auth (to, from, next) {
       }
     } else {
       if (to && to.query && to.query.jumpTo) {
+        console.log(222)
         this.jumpToControl(to, next);
       } else {
+        console.log(333)
         flexible.clear();
         baseLayer.startMicroService();
         next({ path: '/upload', replace: true });
