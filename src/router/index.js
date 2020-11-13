@@ -57,7 +57,7 @@ function jumpToControl (to, next) {
   }
 }
 
-function loginUnit (to, next) {
+function loginUnit (to, next, path = '/') {
   store.dispatch('login', {
     code: to.query.code,
     appType: 8,
@@ -68,14 +68,15 @@ function loginUnit (to, next) {
     store.dispatch('channelReport');
     this.jumpToControl(to, next);
   }).catch(err => {
-    next({ path: '/', replace: true });
+    next({ path: path, replace: true });
   });
 }
 
 function auth (to, from, next) {
   console.log(123, arguments)
   if (to && to.query && to.query.jumpTo) {
-    jumpToControl(to, next);
+    // 登录后跳转
+    loginUnit(to, next, `/${to.query.jumpTo}`)
   } else if (to.path === '' || to.path === '/') {
     if (!store.getters.userInfo) {
       if (to.query.code) {
