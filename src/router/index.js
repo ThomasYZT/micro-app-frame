@@ -35,15 +35,9 @@ router.beforeEach((to, from, next) => {
     store.dispatch('setChannelInfo', to.query.pqadtag);
     store.dispatch('channelReport');
   }
-  alert(to)
-  alert(from)
-  alert(next)
-
   if (baseLayer) {
-    alert(1)
     auth(to, from, next);
   } else {
-    alert(2)
     setTimeout(() => {
       auth(to, from, next);
     }, 0);
@@ -79,6 +73,7 @@ function loginUnit (to, next) {
 }
 
 function auth (to, from, next) {
+  console.log(123, arguments)
   if (to.path === '' || to.path === '/') {
     if (!store.getters.userInfo) {
       if (to.query.code) {
