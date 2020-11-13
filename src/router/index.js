@@ -45,6 +45,7 @@ router.beforeEach((to, from, next) => {
 });
 
 function jumpToControl (to, next) {
+  console.log(123, to, next)
   switch (to.query.jumpTo) {
     case 'clip':
       next({ path: '/clip', replace: true });
