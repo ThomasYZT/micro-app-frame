@@ -82,9 +82,13 @@ function auth (to, from, next) {
         next({ replace: true });
       }
     } else {
-      flexible.clear();
-      baseLayer.startMicroService();
-      next({ path: '/upload', replace: true });
+      if (to && to.query && to.query.jumpTo) {
+        this.jumpToControl(to, next);
+      } else {
+        flexible.clear();
+        baseLayer.startMicroService();
+        next({ path: '/upload', replace: true });
+      }
     }
   } else {
     if (to.query.code) {
