@@ -76,7 +76,11 @@ function auth (to, from, next) {
   console.log(123, arguments)
   if (to && to.query && to.query.jumpTo) {
     // 登录后跳转
-    loginUnit(to, next, `/${to.query.jumpTo}`)
+    if (to.query.jumpTo && to.query.searchTo) {
+      loginUnit(to, next, `/${to.query.jumpTo}/${to.query.searchTo}`)
+    } else {
+      loginUnit(to, next, `/${to.query.jumpTo}`)
+    }
   } else if (to.path === '' || to.path === '/') {
     if (!store.getters.userInfo) {
       if (to.query.code) {
