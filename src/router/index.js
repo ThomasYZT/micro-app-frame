@@ -73,8 +73,9 @@ function loginUnit (to, next) {
 }
 
 function auth (to, from, next) {
-  console.log(123, arguments)
-  if (to.path === '' || to.path === '/') {
+  if (to && to.query && to.query.jumpTo) {
+    this.jumpToControl(to, next);
+  } else if (to.path === '' || to.path === '/') {
     if (!store.getters.userInfo) {
       if (to.query.code) {
         loginUnit(to, next);
@@ -82,14 +83,9 @@ function auth (to, from, next) {
         next({ replace: true });
       }
     } else {
-      console.log(222, to)
-      if (to && to.query && to.query.jumpTo) {
-        this.jumpToControl(to, next);
-      } else {
-        flexible.clear();
-        baseLayer.startMicroService();
-        next({ path: '/upload', replace: true });
-      }
+      flexible.clear();
+      baseLayer.startMicroService();
+      next({ path: '/upload', replace: true });
     }
   } else {
     if (to.query.code) {
