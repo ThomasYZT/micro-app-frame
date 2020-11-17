@@ -63,6 +63,7 @@ export default {
     text-align: left;
 
     .desc {
+      line-height: 24px;
       font-weight: bold;
     }
   }
