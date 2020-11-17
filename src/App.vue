@@ -3,19 +3,16 @@
     <transition v-if="isRouterAlive" enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
       <router-view class="tzld-view"></router-view>
     </transition>
-    <loginModal ref="loginModal"></loginModal>
+    <login-modal ref="loginModal"></login-modal>
     <div id="app-container"></div>
   </div>
 </template>
 
 <script>
-import loginModal from './components/loginModal';
+import config from './config';
 import debounce from 'lodash/debounce';
 import { mapGetters } from 'vuex';
 export default {
-  components: {
-    loginModal
-  },
   provide () {
     return {
       reload: this.reload
@@ -43,7 +40,11 @@ export default {
     loginModalStatus: {
       handler (newVal) {
         if (newVal.status === true) {
-          this.$refs.loginModal.show(newVal.name);
+          this.$refs.loginModal.show({
+            jumpTo: newVal.name,
+            APPID: config.APPID,
+            AUTHURL: config.AUTHURL
+          });
         }
       },
       deep: true
@@ -53,14 +54,14 @@ export default {
 
 const HTTP_ENV = process.env.HTTP_ENV;
 if (HTTP_ENV === 'prod') {
-  var _mtac = {"senseQuery":1};
-  (function() {
-    var mta = document.createElement("script");
-    mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
-    mta.setAttribute("name", "MTAH5");
-    mta.setAttribute("sid", "500730622");
-    mta.setAttribute("cid", "500730623");
-    var s = document.getElementsByTagName("script")[0];
+  const _mtac = { senseQuery: 1 };
+  (function () {
+    const mta = document.createElement('script');
+    mta.src = '//pingjs.qq.com/h5/stats.js?v2.0.4';
+    mta.setAttribute('name', 'MTAH5');
+    mta.setAttribute('sid', '500730622');
+    mta.setAttribute('cid', '500730623');
+    const s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(mta, s);
   })();
 }
