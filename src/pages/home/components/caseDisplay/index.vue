@@ -59,7 +59,7 @@ export default {
         {
           videoCover: 'https://rescdn.yishihui.com/longvideo/pic/e82fa588dc4e4d3bb833b2b39bec97a21605584516298?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1280,h_720,limit_0/format,jpg',
           src: 'https://rescdn.yishihui.com/longvideo/transcode/clip/video/9d9cf89dc16b4d43930fe9468e24983b.mp4',
-          title: '"图文转视频：无需视频剪辑基础，创作视频原来这么简单！',
+          title: '图文转视频：无需视频剪辑基础，创作视频原来这么简单！',
           tag: '图文转视频',
           clipAddr: 'https://www.piaoquantv.com/clip/?projectId=20201117103547222478679&draftboxId=20201116174006673569880&userInfo=null&t=1605580385083',
           userName: '晴朗',
