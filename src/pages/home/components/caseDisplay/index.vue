@@ -50,16 +50,16 @@ export default {
         {
           videoCover: 'https://rescdn.yishihui.com/longvideo/pic/vpc/20201111/15706400f1x2gvQ16N9rvAuR4i?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1280,h_720,limit_0/format,jpg',
           src: 'https://rescdn.yishihui.com/longvideo/transcode/clip/video/e5294419526e47079cdf60d09868ae1c.mp4',
-          title: '知道男人在床上能有多厉害吗？说出来吓死你！',
+          title: '真人对话配音：体验多角色对话的快乐，带你开启声音新世界~',
           tag: '真人对话配音',
           clipAddr: 'https://www.piaoquantv.com/clip/?draftboxId=20201117103305848281589&projectId=20201117103401702928644',
           userName: '颍川东逝',
           desc: `我是小白配音玩家，以前做配音反反复复得花费半天时间，而这款软件，<span class="em-text">不用匹配音轨，10分钟搞定5分钟的多人配音长视频！</span>真的爱了！`
         },
         {
-          videoCover: 'https://rescdn.yishihui.com/longvideo/clip/snapshot/9d9cf89dc16b4d43930fe9468e24983b_0',
+          videoCover: 'https://rescdn.yishihui.com/longvideo/pic/e82fa588dc4e4d3bb833b2b39bec97a21605584516298?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1280,h_720,limit_0/format,jpg',
           src: 'https://rescdn.yishihui.com/longvideo/transcode/clip/video/9d9cf89dc16b4d43930fe9468e24983b.mp4',
-          title: '高人点评：各式各样退休人，生活百态百味生！ 太精彩了！',
+          title: '"图文转视频：无需视频剪辑基础，创作视频原来这么简单！',
           tag: '图文转视频',
           clipAddr: 'https://www.piaoquantv.com/clip/?projectId=20201117103547222478679&draftboxId=20201116174006673569880&userInfo=null&t=1605580385083',
           userName: '晴朗',
@@ -68,7 +68,7 @@ export default {
         {
           videoCover: 'https://rescdn.yishihui.com/longvideo/clip/snapshot/c9066c3ac40246289cf73e8f418441be_8?x-oss-process=image/rotate,0/resize,h_720/resize,m_fill,w_1280,h_720,limit_0/format,jpg',
           src: 'https://rescdn.yishihui.com/longvideo/transcode/clip/video/c9066c3ac40246289cf73e8f418441be.mp4',
-          title: '东沟：光影与金黄的交响曲（配音版）',
+          title: '视频加讲解：加上讲解和背景音乐，普通航拍秒变大型纪录片！',
           tag: '视频加讲解',
           clipAddr: 'https://www.piaoquantv.com/clip/?draftboxId=20201116174033611519873&projectId=20201117103504214139812',
           userName: '时间の俘虏',

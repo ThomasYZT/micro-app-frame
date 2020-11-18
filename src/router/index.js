@@ -44,20 +44,34 @@ router.beforeEach((to, from, next) => {
   }
 });
 
+function resolveParams (params = {}) {
+  let queryPath = '';
+  Object.keys(params).forEach((key, index) => {
+    if (key !== 'jumpTo') {
+      if (key !== 'searchTo') {
+        queryPath += index > 0 ? `&${key}=${params[key]}` : `?${key}=${params[key]}`;
+      } else {
+        queryPath += index > 0 ? `&${params[key].split('?')[0]}` : `?${params[key].split('?')[0]}`;
+      }
+    }
+  });
+  return queryPath;
+}
+
 function jumpToControl (to, next) {
   switch (to.query.jumpTo) {
     case 'clip':
-      next({ path: '/clip', replace: true });
+      next({ path: `/clip${resolveParams(to.query)}`, replace: true });
       break;
     case 'upload':
-      next({ path: '/upload', replace: true });
+      next({ path: `/upload${resolveParams(to.query)}`, replace: true });
       break;
     default:
-      next({ path: '/upload', replace: true });
+      next({ path: `/upload${resolveParams(to.query)}`, replace: true });
   }
 }
 
-function loginUnit (to, next, path = '/') {
+function loginUnit (to, next) {
   store.dispatch('login', {
     code: to.query.code,
     appType: 8,
@@ -66,22 +80,15 @@ function loginUnit (to, next, path = '/') {
     flexible.clear();
     baseLayer.startMicroService();
     store.dispatch('channelReport');
-    this.jumpToControl(to, next);
+    jumpToControl(to, next);
   }).catch(err => {
-    next({ path: path, replace: true });
+    next({ path: '/', replace: true });
   });
 }
 
 function auth (to, from, next) {
-  console.log(123, arguments)
-  if (to && to.query && to.query.jumpTo) {
-    // 登录后跳转
-    if (to.query.jumpTo && to.query.searchTo) {
-      loginUnit(to, next, `/${to.query.jumpTo}/${to.query.searchTo}`)
-    } else {
-      loginUnit(to, next, `/${to.query.jumpTo}`)
-    }
-  } else if (to.path === '' || to.path === '/') {
+  if (to.path === '' || to.path === '/') {
+    // 根路由
     if (!store.getters.userInfo) {
       if (to.query.code) {
         loginUnit(to, next);
@@ -94,8 +101,8 @@ function auth (to, from, next) {
       next({ path: '/upload', replace: true });
     }
   } else {
+    // 非根路由
     if (to.query.code) {
-      console.log('1111111')
       loginUnit(to, next);
     } else {
       if (/\/upload|\/clip/.test(to.path)) {
