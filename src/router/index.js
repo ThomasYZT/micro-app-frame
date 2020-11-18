@@ -47,7 +47,7 @@ router.beforeEach((to, from, next) => {
 function resolveParams (params = {}) {
   let queryPath = '';
   Object.keys(params).forEach((key, index) => {
-    if (key !== 'jumpTo') {
+    if (['jumpTo', 'code', 'state'].indexOf(key) < 0) {
       if (key !== 'searchTo') {
         queryPath += index > 0 ? `&${key}=${params[key]}` : `?${key}=${params[key]}`;
       } else {
