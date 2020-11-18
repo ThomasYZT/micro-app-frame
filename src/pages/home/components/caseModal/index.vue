@@ -58,7 +58,6 @@
 
 <script>
 import debounce from 'lodash/debounce';
-import util from '../../../../assets/utils/util';
 import { mapActions, mapGetters } from 'vuex';
 export default {
   directives: {
@@ -140,16 +139,16 @@ export default {
       curHash: 0,
       navList: [
         {
-          name: '文章生成视频',
+          name: '真人对话配音',
           hash: 0,
           active: true
         },
         {
-          name: '视频加讲解',
+          name: '图文转视频',
           hash: 1
         },
         {
-          name: '极速剪辑',
+          name: '视频加讲解',
           hash: 2
         }
       ]
@@ -264,8 +263,11 @@ export default {
           }
 
           .detail-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             flex: 0 1 353px;
-            padding: 10px 0 0 30px;
+            padding: 0 0 0 30px;
             width: 100%;
             height: 100%;
 
@@ -290,7 +292,6 @@ export default {
             }
 
             .operator {
-              margin-top: 30px;
               display: flex;
               justify-content: space-between;
               align-items: center;
