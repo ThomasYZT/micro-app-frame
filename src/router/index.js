@@ -46,13 +46,19 @@ router.beforeEach((to, from, next) => {
 
 function resolveParams (params = {}) {
   let queryPath = '';
-  Object.keys(params).forEach((key, index) => {
+  let queryIndex = 0;
+  Object.keys(params).forEach(key => {
     if (['jumpTo', 'code', 'state'].indexOf(key) < 0) {
       if (key !== 'searchTo') {
-        queryPath += index > 0 ? `&${key}=${params[key]}` : `?${key}=${params[key]}`;
+        queryPath += queryIndex > 0 ? `&${key}=${params[key]}` : `?${key}=${params[key]}`;
       } else {
-        queryPath += index > 0 ? `&${params[key].split('?')[0]}` : `?${params[key].split('?')[0]}`;
+        let searchTo = decodeURIComponent(params[key]);
+        searchTo = searchTo.indexOf('?') >= 0 ? searchTo.split('?')[1] : searchTo;
+        queryPath += queryIndex > 0
+          ? `&${searchTo}`
+          : `?${searchTo}`;
       }
+      queryIndex++;
     }
   });
   return queryPath;
