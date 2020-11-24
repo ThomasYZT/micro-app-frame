@@ -178,6 +178,8 @@ export default {
     .text-block {
         text-align: center;
         font-size: 18px;
+        white-space: nowrap;
+        font-weight: bold;
         color: #FFFFFF;
     }
 
