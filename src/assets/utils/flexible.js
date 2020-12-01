@@ -11,7 +11,11 @@ export default (function (win, lib) {
   function refreshRem () {
     let width = docEl.getBoundingClientRect().width;
     if (width / dpr > 540) {
-      width = width * dpr;
+      if (width / dpr > 1600) {
+        width = 1600 * dpr;
+      } else {
+        width = width * dpr;
+      }
     }
     const rem = width / 10;
     docEl.style.fontSize = rem + 'px';
